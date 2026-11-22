@@ -44,7 +44,8 @@ def test_analyze_ve_pdf(client):
     r = client.post("/api/analyze", json={"geojson": POLY})
     assert r.status_code == 200, r.text
     d = r.json()
-    assert d["skor_kapsami"]["tur"] == "kısmi"
+    # A1 sonrası S gerçek ARIA verisiyle dolu: kapsam "tam" olabilir.
+    assert d["skor_kapsami"]["tur"] in ("tam", "kısmi")
     assert d["yasal_kisit_durumu"] in ("dogrulandi", "dogrulanamadi")
     assert d["veto"] is False
     qid = d["parsel_id"].split(":")[0]

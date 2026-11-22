@@ -41,8 +41,9 @@ def test_insar_ve_iklim_ve_tasin(monkeypatch, tmp_path):
     )
     f = download_flood.indir()
     assert f["wms_erisiildi"] is False
-    i = download_insar.indir()
-    assert i["insar_velocity"] == "yok"
+    # A1: artık ARIA GUNW akışı var; boş granül listesi boş dönüş üretir.
+    assert download_insar.indir([]) == []
+    assert (PROCESSED_DIR / "insar_durum.json").exists()
 
     assert (PROCESSED_DIR / "iklim_normalleri.csv").exists()
     assert (RAW_DIR / "tasin_kaynak.json").exists()

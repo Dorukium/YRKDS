@@ -93,6 +93,8 @@ def arama(limit: int = 60) -> list[Any]:
 
 
 def indir(granuller: list[Any], hedef: Path | None = None) -> list[Path]:
+    if not granuller:
+        return []
     import earthaccess
 
     hedef = hedef or (RAW_DIR / "aria_gunw")
