@@ -28,5 +28,5 @@ L1 artık iki yolla denendi: **GEE bağlantısı başarılı** (proje
 2003-12/2008-01 ile tarih eşleşmesi **0**; ayrıca GFD GeoTIFF bucket'ının
 merkez bazlı taranması (913 olay, AOI'de 0 merkez). L2 fiziksel olarak
 olanaksız (S1 2014+), L3 literatürde koordinatlı etiket yok. Kanıt:
-`data/labels/gfd_antalya_events.json`, `gfd_validation_labels.json`,
-`gfd_2003_2008_manifest.json`. Etiket üretilmedi; ADR kalıcı.
+`data/raw/labels/gfd_antalya_events.json`, `gfd_validation_labels.json`,
+`data/labels/gfd_2003_2008_manifest.json`. Etiket üretilmedi; ADR kalıcı.

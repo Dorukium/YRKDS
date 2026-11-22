@@ -12,7 +12,7 @@
         "hedef_tarihler": ["2003-12-10", "2008-01-27"],
         "tarih_eslesen_olay_sayisi": 0,
         "yakin_olaylar": ["2003-02-04..2003-03-12 (id 2175)", "2004-01-24..2004-02-14 (id 2433)"],
-        "kanit": "data/labels/gfd_antalya_events.json + gfd_validation_labels.json",
+        "kanit": "data/raw/labels/gfd_antalya_events.json + gfd_validation_labels.json",
         "yetkinlik": "Otorite"
       },
       "neden": "GFD'de Antalya AOI'sini kesen 11 olay var; hiçbiri 2003-12-10 veya 2008-01-27 tarihlerini kapsamıyor. Bu nedenle bağımsız etiket yok."

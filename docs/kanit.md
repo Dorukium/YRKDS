@@ -146,7 +146,7 @@ tarihsel olarak yok, literatürde etiket yok (ADR-0003/0018/0025 kalıcı);
 A7/A3 vektör pafta yok (ADR-0007/0017); TDTH deaktif (ADR-0004). GEE proje ID'si
 (`rosy-fiber-478123-i1`) sağlandıktan sonra `ee.Initialize()` başarılı; GFD'de
 AOI'yi kesen 11 olay bulundu ama 2003-12/2008-01 ile eşleşen **0** — etiket
-yok, `data/labels/gfd_validation_labels.json` kanıtı. Git remote olmadığı için GitHub release
+yok, `data/raw/labels/gfd_validation_labels.json` kanıtı. Git remote olmadığı için GitHub release
 oluşturulamadı; yerel `v5.0.0` etiketi basıldı.
 
 ## V5 / A3 + A7 + A2-L3 MERDİVEN DENEMELERİ (U12) — 2026-11-22
