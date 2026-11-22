@@ -320,6 +320,34 @@
       "version": "2.21.0"
     },
     {
+      "bom-ref": "SALib==1.6.0",
+      "description": "Tools for global sensitivity analysis. Contains Sobol', Morris, FAST, DGSM, PAWN, HDMR, Moment Independent and fractional factorial methods",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://salib.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Source code",
+          "type": "other",
+          "url": "https://github.com/SALib/SALib"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "SALib",
+      "purl": "pkg:pypi/salib@1.6.0",
+      "type": "library",
+      "version": "1.6.0"
+    },
+    {
       "bom-ref": "SQLAlchemy==2.1.9",
       "description": "Database Abstraction Library",
       "externalReferences": [
@@ -1028,6 +1056,44 @@
       "version": "8.5.1"
     },
     {
+      "bom-ref": "contourpy==1.4.0",
+      "description": "Python library for calculating contours of 2D quadrilateral grids",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://contourpy.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://contourpy.readthedocs.io/en/latest/changelog.html"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/contourpy/contourpy"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Homepage",
+          "type": "website",
+          "url": "https://github.com/contourpy/contourpy"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "contourpy",
+      "purl": "pkg:pypi/contourpy@1.4.0",
+      "type": "library",
+      "version": "1.4.0"
+    },
+    {
       "bom-ref": "coverage==7.17.4",
       "description": "Code coverage measurement for Python",
       "externalReferences": [
@@ -1122,6 +1188,34 @@
       "purl": "pkg:pypi/cssselect2@0.10.1",
       "type": "library",
       "version": "0.10.1"
+    },
+    {
+      "bom-ref": "cycler==0.12.1",
+      "description": "Composable style cycles",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: repository",
+          "type": "vcs",
+          "url": "https://github.com/matplotlib/cycler"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: homepage",
+          "type": "website",
+          "url": "https://matplotlib.org/cycler/"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: BSD License"
+          }
+        }
+      ],
+      "name": "cycler",
+      "purl": "pkg:pypi/cycler@0.12.1",
+      "type": "library",
+      "version": "0.12.1"
     },
     {
       "bom-ref": "cyclonedx-bom==9.0.0",
@@ -1258,6 +1352,55 @@
       "purl": "pkg:pypi/defusedxml@0.7.1",
       "type": "library",
       "version": "0.7.1"
+    },
+    {
+      "bom-ref": "dill==0.4.1",
+      "description": "serialize all of Python",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata: Download-URL",
+          "type": "distribution",
+          "url": "https://pypi.org/project/dill/#files"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "http://dill.rtfd.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Bug Tracker",
+          "type": "issue-tracker",
+          "url": "https://github.com/uqfoundation/dill/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Source Code",
+          "type": "other",
+          "url": "https://github.com/uqfoundation/dill"
+        },
+        {
+          "comment": "from packaging metadata: Home-page",
+          "type": "website",
+          "url": "https://github.com/uqfoundation/dill"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "BSD-3-Clause"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: BSD License"
+          }
+        }
+      ],
+      "name": "dill",
+      "purl": "pkg:pypi/dill@0.4.1",
+      "type": "library",
+      "version": "0.4.1"
     },
     {
       "bom-ref": "ecmwf-datastores-client==0.6.0",
@@ -1835,6 +1978,44 @@
       "version": "2025.9.1"
     },
     {
+      "bom-ref": "kiwisolver==1.5.1",
+      "description": "A fast implementation of the Cassowary constraint solver",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: documentation",
+          "type": "documentation",
+          "url": "https://kiwisolver.readthedocs.io/en/latest/"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: changelog",
+          "type": "release-notes",
+          "url": "https://github.com/nucleic/kiwi/blob/main/releasenotes.rst"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: repository",
+          "type": "vcs",
+          "url": "https://github.com/nucleic/kiwi"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: homepage",
+          "type": "website",
+          "url": "https://github.com/nucleic/kiwi"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: BSD License"
+          }
+        }
+      ],
+      "name": "kiwisolver",
+      "purl": "pkg:pypi/kiwisolver@1.5.1",
+      "type": "library",
+      "version": "1.5.1"
+    },
+    {
       "bom-ref": "lark==1.3.1",
       "description": "a modern parsing library",
       "externalReferences": [
@@ -1975,6 +2156,59 @@
       "version": "4.3.0"
     },
     {
+      "bom-ref": "matplotlib==3.11.2",
+      "description": "Python plotting package",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Download",
+          "type": "distribution",
+          "url": "https://matplotlib.org/stable/install/index.html"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://matplotlib.org"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Bug Tracker",
+          "type": "issue-tracker",
+          "url": "https://github.com/matplotlib/matplotlib/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Forum",
+          "type": "other",
+          "url": "https://discourse.matplotlib.org/"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Source Code",
+          "type": "other",
+          "url": "https://github.com/matplotlib/matplotlib"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Donate",
+          "type": "other",
+          "url": "https://numfocus.org/donate-to-matplotlib"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Homepage",
+          "type": "website",
+          "url": "https://matplotlib.org"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Python-2.0"
+          }
+        }
+      ],
+      "name": "matplotlib",
+      "purl": "pkg:pypi/matplotlib@3.11.2",
+      "type": "library",
+      "version": "3.11.2"
+    },
+    {
       "bom-ref": "mdurl==0.1.2",
       "description": "Markdown URL utilities",
       "externalReferences": [
@@ -2039,6 +2273,55 @@
       "purl": "pkg:pypi/msgpack@1.2.4",
       "type": "library",
       "version": "1.2.4"
+    },
+    {
+      "bom-ref": "multiprocess==0.70.19",
+      "description": "better multiprocessing and multithreading in Python",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata: Download-URL",
+          "type": "distribution",
+          "url": "https://pypi.org/project/multiprocess/#files"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "http://multiprocess.rtfd.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Bug Tracker",
+          "type": "issue-tracker",
+          "url": "https://github.com/uqfoundation/multiprocess/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Source Code",
+          "type": "other",
+          "url": "https://github.com/uqfoundation/multiprocess"
+        },
+        {
+          "comment": "from packaging metadata: Home-page",
+          "type": "website",
+          "url": "https://github.com/uqfoundation/multiprocess"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "BSD-3-Clause"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: BSD License"
+          }
+        }
+      ],
+      "name": "multiprocess",
+      "purl": "pkg:pypi/multiprocess@0.70.19",
+      "type": "library",
+      "version": "0.70.19"
     },
     {
       "bom-ref": "multiurl==0.3.10",
@@ -2522,6 +2805,14 @@
       "purl": "pkg:pypi/pip-audit@2.10.1",
       "type": "library",
       "version": "2.10.1"
+    },
+    {
+      "bom-ref": "planetary-computer==1.0.0",
+      "description": "Planetary Computer SDK for Python",
+      "name": "planetary-computer",
+      "purl": "pkg:pypi/planetary-computer@1.0.0",
+      "type": "library",
+      "version": "1.0.0"
     },
     {
       "bom-ref": "platformdirs==4.14.8",
@@ -3161,6 +3452,44 @@
       "version": "3.3.3"
     },
     {
+      "bom-ref": "pypdf==7.1.1",
+      "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pypdf.readthedocs.io/en/latest/"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Bug Reports",
+          "type": "issue-tracker",
+          "url": "https://github.com/py-pdf/pypdf/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Source",
+          "type": "other",
+          "url": "https://github.com/py-pdf/pypdf"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://pypdf.readthedocs.io/en/latest/meta/CHANGELOG.html"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "pypdf",
+      "purl": "pkg:pypi/pypdf@7.1.1",
+      "type": "library",
+      "version": "7.1.1"
+    },
+    {
       "bom-ref": "pyphen==0.18.1",
       "description": "Pure Python module to hyphenate text",
       "externalReferences": [
@@ -3262,6 +3591,1231 @@
       "purl": "pkg:pypi/pyproj@3.8.0",
       "type": "library",
       "version": "3.8.0"
+    },
+    {
+      "bom-ref": "pystac==1.16.1",
+      "description": "Python library for working with the SpatioTemporal Asset Catalog (STAC) specification",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac",
+      "purl": "pkg:pypi/pystac@1.16.1",
+      "type": "library",
+      "version": "1.16.1"
+    },
+    {
+      "bom-ref": "pystac-client==0.9.1",
+      "description": "Python library for searching SpatioTemporal Asset Catalog (STAC) APIs.",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: documentation",
+          "type": "documentation",
+          "url": "https://pystac-client.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac-client/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac-client.git"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: homepage",
+          "type": "website",
+          "url": "https://github.com/stac-utils/pystac-client"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-client",
+      "purl": "pkg:pypi/pystac-client@0.9.1",
+      "type": "library",
+      "version": "0.9.1"
+    },
+    {
+      "bom-ref": "pystac-core==1.16.1",
+      "description": "Core functionality for PySTAC without extensions. Most users will want to use pystac, not this package",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-core",
+      "purl": "pkg:pypi/pystac-core@1.16.1",
+      "type": "library",
+      "version": "1.16.1"
+    },
+    {
+      "bom-ref": "pystac-ext-classification==2.0.2",
+      "description": "Classification extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-classification",
+      "purl": "pkg:pypi/pystac-ext-classification@2.0.2",
+      "type": "library",
+      "version": "2.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-datacube==2.2.2",
+      "description": "Datacube extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-datacube",
+      "purl": "pkg:pypi/pystac-ext-datacube@2.2.2",
+      "type": "library",
+      "version": "2.2.2"
+    },
+    {
+      "bom-ref": "pystac-ext-eo==1.1.2",
+      "description": "Electro-Optical extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-eo",
+      "purl": "pkg:pypi/pystac-ext-eo@1.1.2",
+      "type": "library",
+      "version": "1.1.2"
+    },
+    {
+      "bom-ref": "pystac-ext-file==2.1.2",
+      "description": "File extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-file",
+      "purl": "pkg:pypi/pystac-ext-file@2.1.2",
+      "type": "library",
+      "version": "2.1.2"
+    },
+    {
+      "bom-ref": "pystac-ext-grid==1.1.2",
+      "description": "Grid extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-grid",
+      "purl": "pkg:pypi/pystac-ext-grid@1.1.2",
+      "type": "library",
+      "version": "1.1.2"
+    },
+    {
+      "bom-ref": "pystac-ext-item-assets==1.0.2",
+      "description": "Item Assets extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-item-assets",
+      "purl": "pkg:pypi/pystac-ext-item-assets@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-label==1.0.3",
+      "description": "Label extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-label",
+      "purl": "pkg:pypi/pystac-ext-label@1.0.3",
+      "type": "library",
+      "version": "1.0.3"
+    },
+    {
+      "bom-ref": "pystac-ext-mgrs==1.0.2",
+      "description": "MGRS extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-mgrs",
+      "purl": "pkg:pypi/pystac-ext-mgrs@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-mlm==1.4.2",
+      "description": "Machine Learning Model extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-mlm",
+      "purl": "pkg:pypi/pystac-ext-mlm@1.4.2",
+      "type": "library",
+      "version": "1.4.2"
+    },
+    {
+      "bom-ref": "pystac-ext-pointcloud==1.0.2",
+      "description": "Point Cloud extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-pointcloud",
+      "purl": "pkg:pypi/pystac-ext-pointcloud@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-projection==2.0.2",
+      "description": "Projection extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-projection",
+      "purl": "pkg:pypi/pystac-ext-projection@2.0.2",
+      "type": "library",
+      "version": "2.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-raster==1.1.2",
+      "description": "Raster extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-raster",
+      "purl": "pkg:pypi/pystac-ext-raster@1.1.2",
+      "type": "library",
+      "version": "1.1.2"
+    },
+    {
+      "bom-ref": "pystac-ext-render==2.0.1",
+      "description": "Render extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-render",
+      "purl": "pkg:pypi/pystac-ext-render@2.0.1",
+      "type": "library",
+      "version": "2.0.1"
+    },
+    {
+      "bom-ref": "pystac-ext-sar==1.0.2",
+      "description": "SAR extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-sar",
+      "purl": "pkg:pypi/pystac-ext-sar@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-sat==1.0.2",
+      "description": "Satellite extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-sat",
+      "purl": "pkg:pypi/pystac-ext-sat@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-scientific==1.0.2",
+      "description": "Scientific extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-scientific",
+      "purl": "pkg:pypi/pystac-ext-scientific@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-storage==2.0.2",
+      "description": "Storage extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-storage",
+      "purl": "pkg:pypi/pystac-ext-storage@2.0.2",
+      "type": "library",
+      "version": "2.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-table==1.2.2",
+      "description": "Table extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-table",
+      "purl": "pkg:pypi/pystac-ext-table@1.2.2",
+      "type": "library",
+      "version": "1.2.2"
+    },
+    {
+      "bom-ref": "pystac-ext-timestamps==1.1.2",
+      "description": "Timestamps extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-timestamps",
+      "purl": "pkg:pypi/pystac-ext-timestamps@1.1.2",
+      "type": "library",
+      "version": "1.1.2"
+    },
+    {
+      "bom-ref": "pystac-ext-version==1.2.2",
+      "description": "Version extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-version",
+      "purl": "pkg:pypi/pystac-ext-version@1.2.2",
+      "type": "library",
+      "version": "1.2.2"
+    },
+    {
+      "bom-ref": "pystac-ext-view==1.0.2",
+      "description": "View extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-view",
+      "purl": "pkg:pypi/pystac-ext-view@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
+    },
+    {
+      "bom-ref": "pystac-ext-xarray-assets==1.0.2",
+      "description": "Xarray Assets extension for PySTAC",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://pystac.readthedocs.io"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Issues",
+          "type": "issue-tracker",
+          "url": "https://github.com/stac-utils/pystac/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discussions",
+          "type": "other",
+          "url": "https://github.com/radiantearth/stac-spec/discussions/categories/stac-software"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/stac-utils/pystac/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/stac-utils/pystac"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "Apache-2.0"
+          }
+        },
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: Apache Software License"
+          }
+        }
+      ],
+      "name": "pystac-ext-xarray-assets",
+      "purl": "pkg:pypi/pystac-ext-xarray-assets@1.0.2",
+      "type": "library",
+      "version": "1.0.2"
     },
     {
       "bom-ref": "pytest==9.2.0",
@@ -3841,6 +5395,49 @@
       "purl": "pkg:pypi/ruff@0.17.6",
       "type": "library",
       "version": "0.17.6"
+    },
+    {
+      "bom-ref": "scipy==1.18.1",
+      "description": "Fundamental algorithms for scientific computing in Python",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: download",
+          "type": "distribution",
+          "url": "https://github.com/scipy/scipy/releases"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: documentation",
+          "type": "documentation",
+          "url": "https://docs.scipy.org/doc/scipy/"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: tracker",
+          "type": "issue-tracker",
+          "url": "https://github.com/scipy/scipy/issues"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: source",
+          "type": "other",
+          "url": "https://github.com/scipy/scipy"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: homepage",
+          "type": "website",
+          "url": "https://scipy.org/"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "name": "License :: OSI Approved :: BSD License"
+          }
+        }
+      ],
+      "name": "scipy",
+      "purl": "pkg:pypi/scipy@1.18.1",
+      "type": "library",
+      "version": "1.18.1"
     },
     {
       "bom-ref": "shapely==2.2.0",
@@ -4739,7 +6336,7 @@
       "version": "17.4"
     },
     {
-      "bom-ref": "yrkds==0.1.0",
+      "bom-ref": "yrkds==3.0.0",
       "description": "Antalya Yatirim Riski Karar Destek Sistemi",
       "externalReferences": [
         {
@@ -4750,7 +6347,7 @@
       ],
       "name": "yrkds",
       "type": "library",
-      "version": "0.1.0"
+      "version": "3.0.0"
     },
     {
       "bom-ref": "zopfli==0.4.3",
@@ -4833,6 +6430,18 @@
     },
     {
       "ref": "Pygments==2.21.0"
+    },
+    {
+      "dependsOn": [
+        "matplotlib==3.11.2",
+        "multiprocess==0.70.19",
+        "numpy==2.5.5",
+        "pandas==3.1.1",
+        "pytest-cov==7.1.0",
+        "pytest==9.2.0",
+        "scipy==1.18.1"
+      ],
+      "ref": "SALib==1.6.0"
     },
     {
       "dependsOn": [
@@ -4945,6 +6554,17 @@
       "ref": "click==8.5.1"
     },
     {
+      "dependsOn": [
+        "matplotlib==3.11.2",
+        "mypy==2.4.1",
+        "numpy==2.5.5",
+        "pillow==13.0.0",
+        "pytest-cov==7.1.0",
+        "pytest==9.2.0"
+      ],
+      "ref": "contourpy==1.4.0"
+    },
+    {
       "ref": "coverage==7.17.4"
     },
     {
@@ -4955,6 +6575,14 @@
         "webencodings==0.6.1"
       ],
       "ref": "cssselect2==0.10.1"
+    },
+    {
+      "dependsOn": [
+        "matplotlib==3.11.2",
+        "pytest-cov==7.1.0",
+        "pytest==9.2.0"
+      ],
+      "ref": "cycler==0.12.1"
     },
     {
       "dependsOn": [
@@ -4982,6 +6610,9 @@
     },
     {
       "ref": "defusedxml==0.7.1"
+    },
+    {
+      "ref": "dill==0.4.1"
     },
     {
       "dependsOn": [
@@ -5018,6 +6649,8 @@
       "dependsOn": [
         "brotli==1.2.1",
         "lxml==6.1.3",
+        "matplotlib==3.11.2",
+        "scipy==1.18.1",
         "zopfli==0.4.3"
       ],
       "ref": "fonttools==4.68.0"
@@ -5029,6 +6662,7 @@
       "dependsOn": [
         "GeoAlchemy2==0.21.0",
         "SQLAlchemy==2.1.9",
+        "matplotlib==3.11.2",
         "numpy==2.5.5",
         "packaging==26.3",
         "pandas==3.1.1",
@@ -5036,6 +6670,7 @@
         "pyarrow==26.0.1",
         "pyogrio==0.13.0",
         "pyproj==3.8.0",
+        "scipy==1.18.1",
         "shapely==2.2.0"
       ],
       "ref": "geopandas==1.2.0"
@@ -5116,6 +6751,9 @@
       "ref": "jsonschema==4.26.0"
     },
     {
+      "ref": "kiwisolver==1.5.1"
+    },
+    {
       "ref": "lark==1.3.1"
     },
     {
@@ -5150,10 +6788,30 @@
       "ref": "markdown-it-py==4.3.0"
     },
     {
+      "dependsOn": [
+        "contourpy==1.4.0",
+        "cycler==0.12.1",
+        "fonttools==4.68.0",
+        "kiwisolver==1.5.1",
+        "numpy==2.5.5",
+        "packaging==26.3",
+        "pillow==13.0.0",
+        "pyparsing==3.3.3",
+        "python-dateutil==4.0.0"
+      ],
+      "ref": "matplotlib==3.11.2"
+    },
+    {
       "ref": "mdurl==0.1.2"
     },
     {
       "ref": "msgpack==1.2.4"
+    },
+    {
+      "dependsOn": [
+        "dill==0.4.1"
+      ],
+      "ref": "multiprocess==0.70.19"
     },
     {
       "dependsOn": [
@@ -5206,11 +6864,13 @@
         "SQLAlchemy==2.1.9",
         "beautifulsoup4==4.15.0",
         "lxml==6.1.3",
+        "matplotlib==3.11.2",
         "numpy==2.5.5",
         "pyarrow==26.0.1",
         "pytest==9.2.0",
         "python-dateutil==4.0.0",
         "pytz==2026.6",
+        "scipy==1.18.1",
         "tzdata==2026.6"
       ],
       "ref": "pandas==3.1.1"
@@ -5270,6 +6930,22 @@
       "ref": "pip_audit==2.10.1"
     },
     {
+      "dependsOn": [
+        "click==8.5.1",
+        "mypy==2.4.1",
+        "packaging==26.3",
+        "pydantic==2.14.4",
+        "pystac-client==0.9.1",
+        "pystac==1.16.1",
+        "pytest==9.2.0",
+        "python-dotenv==1.2.4",
+        "pytz==2026.6",
+        "requests==2.34.2",
+        "types-requests==2.33.0.20261030"
+      ],
+      "ref": "planetary-computer==1.0.0"
+    },
+    {
       "ref": "platformdirs==4.14.8"
     },
     {
@@ -5281,6 +6957,7 @@
     {
       "dependsOn": [
         "SQLAlchemy==2.1.9",
+        "matplotlib==3.11.2",
         "numpy==2.5.5",
         "pandas==3.1.1",
         "polars-runtime-32==2.1.0",
@@ -5375,6 +7052,16 @@
     },
     {
       "dependsOn": [
+        "brotli==1.2.1",
+        "fonttools==4.68.0",
+        "pillow==13.0.0",
+        "pytest-cov==7.1.0",
+        "typing_extensions==4.16.0"
+      ],
+      "ref": "pypdf==7.1.1"
+    },
+    {
+      "dependsOn": [
         "pytest==9.2.0",
         "ruff==0.17.6"
       ],
@@ -5385,6 +7072,188 @@
         "certifi==2026.11.20"
       ],
       "ref": "pyproj==3.8.0"
+    },
+    {
+      "dependsOn": [
+        "pystac==1.16.1",
+        "python-dateutil==4.0.0",
+        "requests==2.34.2"
+      ],
+      "ref": "pystac-client==0.9.1"
+    },
+    {
+      "dependsOn": [
+        "python-dateutil==4.0.0"
+      ],
+      "ref": "pystac-core==1.16.1"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1",
+        "pystac-ext-raster==1.1.2"
+      ],
+      "ref": "pystac-ext-classification==2.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-datacube==2.2.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1",
+        "pystac-ext-projection==2.0.2",
+        "pystac-ext-view==1.0.2"
+      ],
+      "ref": "pystac-ext-eo==1.1.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-file==2.1.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-grid==1.1.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-item-assets==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-label==1.0.3"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-mgrs==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1",
+        "pystac-ext-classification==2.0.2",
+        "pystac-ext-raster==1.1.2"
+      ],
+      "ref": "pystac-ext-mlm==1.4.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-pointcloud==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-projection==2.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-raster==1.1.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-render==2.0.1"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-sar==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-sat==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-scientific==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-storage==2.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-table==1.2.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-timestamps==1.1.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-version==1.2.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-view==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "pystac-core==1.16.1"
+      ],
+      "ref": "pystac-ext-xarray-assets==1.0.2"
+    },
+    {
+      "dependsOn": [
+        "Jinja2==3.1.6",
+        "jsonschema==4.26.0",
+        "pystac-core==1.16.1",
+        "pystac-ext-classification==2.0.2",
+        "pystac-ext-datacube==2.2.2",
+        "pystac-ext-eo==1.1.2",
+        "pystac-ext-file==2.1.2",
+        "pystac-ext-grid==1.1.2",
+        "pystac-ext-item-assets==1.0.2",
+        "pystac-ext-label==1.0.3",
+        "pystac-ext-mgrs==1.0.2",
+        "pystac-ext-mlm==1.4.2",
+        "pystac-ext-pointcloud==1.0.2",
+        "pystac-ext-projection==2.0.2",
+        "pystac-ext-raster==1.1.2",
+        "pystac-ext-render==2.0.1",
+        "pystac-ext-sar==1.0.2",
+        "pystac-ext-sat==1.0.2",
+        "pystac-ext-scientific==1.0.2",
+        "pystac-ext-storage==2.0.2",
+        "pystac-ext-table==1.2.2",
+        "pystac-ext-timestamps==1.1.2",
+        "pystac-ext-version==1.2.2",
+        "pystac-ext-view==1.0.2",
+        "pystac-ext-xarray-assets==1.0.2",
+        "urllib3==2.8.0"
+      ],
+      "ref": "pystac==1.16.1"
     },
     {
       "dependsOn": [
@@ -5433,6 +7302,7 @@
         "attrs==26.1.0",
         "certifi==2026.11.20",
         "click==8.5.1",
+        "matplotlib==3.11.2",
         "numpy==2.5.5",
         "packaging==26.3",
         "pyparsing==3.3.3",
@@ -5496,6 +7366,19 @@
     },
     {
       "ref": "ruff==0.17.6"
+    },
+    {
+      "dependsOn": [
+        "click==8.5.1",
+        "matplotlib==3.11.2",
+        "mypy==2.4.1",
+        "numpy==2.5.5",
+        "pytest-cov==7.1.0",
+        "pytest==9.2.0",
+        "ruff==0.17.6",
+        "typing_extensions==4.16.0"
+      ],
+      "ref": "scipy==1.18.1"
     },
     {
       "dependsOn": [
@@ -5655,6 +7538,7 @@
         "APScheduler==3.11.3",
         "GeoAlchemy2==0.21.0",
         "Jinja2==3.1.6",
+        "SALib==1.6.0",
         "SQLAlchemy==2.1.9",
         "alembic==1.20.1",
         "argon2-cffi==25.1.0",
@@ -5669,11 +7553,14 @@
         "numpy==2.5.5",
         "pandas==3.1.1",
         "pip_audit==2.10.1",
+        "planetary-computer==1.0.0",
         "polars==2.1.0",
         "prometheus_client==0.26.0",
         "psycopg==3.3.9",
         "pyarrow==26.0.1",
+        "pypdf==7.1.1",
         "pyproj==3.8.0",
+        "pystac-client==0.9.1",
         "pytest-cov==7.1.0",
         "pytest==9.2.0",
         "python-dotenv==1.2.4",
@@ -5687,7 +7574,7 @@
         "uvicorn==0.54.0",
         "weasyprint==70.0"
       ],
-      "ref": "yrkds==0.1.0"
+      "ref": "yrkds==3.0.0"
     },
     {
       "dependsOn": [
@@ -5697,7 +7584,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-11-22T14:30:33.383763+00:00",
+    "timestamp": "2026-11-22T16:15:08.649860+00:00",
     "tools": {
       "components": [
         {
@@ -5801,7 +7688,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:92a088bb-1af3-4b9c-b170-f91815915076",
+  "serialNumber": "urn:uuid:9377594e-88fe-4f92-be5e-1f3a34ff1375",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",

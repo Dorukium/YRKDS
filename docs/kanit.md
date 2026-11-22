@@ -128,6 +128,16 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V3 SON KABUL — 2026-11-22
+Komut: `make gate-all > /tmp/gate_v3b.log 2>&1`
+Çıktı özeti: `All checks passed!` · `Success: no issues found in 52 source files`
+· `91 passed` · kapsam `90.37%` · E2E `23 passed` · axe `9 passed` ·
+Lighthouse `100/100/100/91` · k6 hata `0.00%`, p95 `243 ms` ·
+`No known vulnerabilities found` · `TUM KAPILAR YEŞİL` · `GATE_EXIT=0`.
+Sürüm: 3.0.0 · CHANGELOG güncel · MIT lisans · Zenodo DOI bekliyor (ADR-0023).
+A1 (EGMS), A2 (2003/2008 etiket), D1 ZAP yerel koşusu ve D4 dinamik metin
+i18n kapsamı ADR + dürüst rozetle açık; geri kalan tüm maddeler kanıtlı kapalı.
+
 ## [V3 / FAZ 4] D1–D4 — Sertleştirme — 2026-11-22
 Komut: CI workflow + `docker compose config` + pytest
 Çıktı özeti: OWASP ZAP baseline adımı CI'da; Redis tile önbelleği (TTL 24s,
