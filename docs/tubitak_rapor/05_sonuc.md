@@ -56,8 +56,11 @@ eğitimi, ancak yeterli ve bağımsız etiket oluştuğunda gündeme alınmalıd
 Projenin ticari ürüne dönüştürülmesi hedefi göz önüne alındığında,
 lisans yönetimi ayrı bir önem taşımaktadır. GEM verisi CC BY-NC-SA olduğu
 için ürüne gömülmemiş, yalnızca araştırma etiketiyle referans verilmiştir.
-Ticari dağıtım öncesinde veri lisanslarının yeniden denetlenmesi ve Zenodo
-DOI, CHANGELOG ve semantik sürüm yönetiminin tamamlanması gerekir.
+Ticari dağıtım öncesinde veri lisanslarının yeniden denetlenmesi gerekir.
+Zenodo DOI alınmış, `CITATION.cff` ve CHANGELOG v5.0.0 ile güncellenmiştir
+(bkz. `10.5281/zenodo.24449066`). Bağımsız 2003/2008 etiketi bulunamadığı
+için Recall ≥0.60 hedefi doğrulanmamıştır; bu eksiklik sonuç bölümünde
+açıkça belirtilmiştir.
 
 ## 5.4 Kapanış
 

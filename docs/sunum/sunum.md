@@ -8,7 +8,9 @@ footer: 'Deterministik · Kanıtlı · Belirsizliği açık'
 
 <!-- _class: lead -->
 # Antalya Yatırım Riski Karar Destek Sistemi
-## YRKDS v3.0 — Jüri Sunumu
+## YRKDS v5.0 — Jüri Sunumu
+
+> Akademik atıf: [10.5281/zenodo.24449066](https://doi.org/10.5281/zenodo.24449066)
 
 ![bg right:40% contain](../../frontend/assets/icons/og.svg)
 
