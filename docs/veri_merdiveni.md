@@ -6,7 +6,7 @@ bir sonrakine geçilir; karar ve sonuç bu dosyaya kaydedilir (K1/K2).
 | Görev | 1. basamak (Otorite) | 2. basamak (Proxy) | 3. basamak (Eksik) | Durum |
 |---|---|---|---|---|
 | A1 InSAR (S) | NASA Earthdata ARIA S1 GUNW (kimlik var) | COMET LiCSAR / JASMIN arşivi | NULL + güven cezası | 1. basamak denendi |
-| A2 2003/2008 etiket | GFD MODIS extent (GEE) | Sentinel-1 SAR değişim tespiti (ASF) | Literatür jeoreferans → yoksa NULL | GEE kimliği yok, 2. basamak denenecek |
+| A2 2003/2008 etiket | GFD MODIS extent (GEE, 2000+) | Literatür jeoreferansı (2003/2008 raporları) | NULL + ADR-0003 (U12) | GEE kimliği kullanıcı onayında; S1 basamağı tarihsel olarak olanaksız |
 | A3 yasal VETO | Resmî Gazete ek harita koordinatları | Nominatim geocode + 300 m tampon (Tahmin) | NULL VETO + önlem bölgesi | 2. basamak (3 karar) |
 | A4 maruziyet | MS Buildings + WorldPop (STAC) | OSM bina + TÜİK ilçe nüfusu | NULL | 1. kısmi bina / 2. nüfus |
 | A5 iklim ekstremi | MGM istasyon günlük serisi | ERA5/Open-Meteo ızgara (Proxy) | NULL | 2. basamak |
@@ -17,5 +17,7 @@ bir sonrakine geçilir; karar ve sonuç bu dosyaya kaydedilir (K1/K2).
 
 ## Karar kayıtları
 - 2026-11-22: A1 için kullanıcı NASA Earthdata hesabını sağladı; ASF DAAC EULA programatik kabul edildi, granül erişimi HTTP 206 ile doğrulandı.
-- 2026-11-22: A2 için GEE kimliği yok; Sentinel-1 alternatifi ASF üzerinden denenecek.
+- 2026-11-22: A2 için GEE kimliği yok; `earthengine-api 1.7.53` kuruldu, kullanıcı `uv run earthengine authenticate` onayını vermeli.
+- 2026-11-22: **Teknik uyarı** — Sentinel-1 2014'te fırlatıldı; 2003-12-10 ve 2008-01-27 olayları için S1 verisi yok. Bu nedenle v5 merdiveninde S1 basamağı yerine literatür jeoreferansı (L2′) kullanılacak. GFD MODIS (2000+) L1 olarak geçerli.
+- 2026-11-22: A6/TDTH kaynağı deaktif; ADR-0004 kalıcı açık, alternatif GEM+USGS "Araştırma" rozetli. Yeni erişim denemesi yapılmadı.
 - 2026-11-22: A6 için e-Devlet insan adımı; ajan beklerken GEM+USGS çapraz kontrolü kuruldu (docs/sop_tdth.md).
