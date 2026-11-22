@@ -128,6 +128,20 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5 / FAZ 1 — Kimlik hazırlığı ve TDTH ADR (U11) — 2026-11-22
+Komut: `uv sync --python 3.12 --all-extras` + `uv run earthengine --help` +
+`make check-auth` + `make citation` + `make cov`
+Çıktı özeti: `earthengine-api 1.7.53` kuruldu, CLI çalışıyor (`usage: earthengine ...`);
+`ee 1.7.53` import edildi. `make check-auth` → NASA `var`, GEE `yok`, Zenodo `yok`,
+TDTH `deaktif`, genel `eksik kimlik var`. `make citation` → `CITATION.cff`
+`doi: 10.5281/zenodo.PENDING` (sahte DOI yok). Kapsam `%90.17`, 57 kaynak dosya,
+mypy/ruff temiz.
+Commit: `05322259904cd7de9503fe77826673d894f525d3`
+Karar: TDTH deaktif — ADR-0004 "kalıcı açık, alternatif GEM+USGS Araştırma
+rozeti" olarak güncellendi; **yeni erişim denemesi yapılmadı**. GEE ve Zenodo
+kimlikleri kullanıcı onayı/beklemede; A2/A7/DOI görevleri merdivenin ilgili
+basamağına kaydırıldı (U12).
+
 ## V4 SON KABUL — 2026-11-22
 Komut: `make gate-all > /tmp/gate_v4d.log 2>&1`
 Çıktı özeti: `All checks passed!` · `Success: no issues found in 54 source files`
