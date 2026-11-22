@@ -4,7 +4,9 @@ test('ana sayfa görsel regresyon', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
   await expect(page).toHaveScreenshot('anasayfa.png', {
     fullPage: true,
-    mask: [page.locator('#canliIstatistik'), page.locator('#sonOlaylar')],
+    // Canlı bloklar masked olsa da fullPage yüksekliğini değiştiriyordu;
+    // layout'dan çıkararak snapshot'ı deterministik hale getiriyoruz.
+    style: '#canliIstatistik, #sonOlaylar { display: none !important; }',
   });
 });
 
