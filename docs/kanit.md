@@ -128,6 +128,17 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## [V3 / KAPANAN AÇIKLAR] ZAP + 500 VU — 2026-11-22
+Komut: `docker run --rm -v $PWD/zap.conf:/zap/wrk/zap.conf ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://172.17.0.1:8000 -c zap.conf -I -d 3`
+Çıktı özeti: `FAIL-NEW: 0`, PASS 59, `WARN-NEW: 9` (düşük: COEP/COOP, ADR-0024), `ZAP_EXIT=0`.
+Sonuç: YEŞİL
+
+Komut: `YRKDS_RATE_LIMIT=200000 docker compose up -d --force-recreate api && k6 run tests/load_500.js`
+Çıktı özeti: 500 VU, 8 dk, **18.575.820 istek**, `http_req_failed 0.00%`,
+p95 **20.46 ms** (hedef <150 ms). Redis hit/miss 616.309/1; nginx tile cache
+HIT/MISS doğrulandı. `K6_EXIT=0`.
+Sonuç: YEŞİL (D2 tam kapandı)
+
 ## V3 SON KABUL — 2026-11-22
 Komut: `make gate-all > /tmp/gate_v3b.log 2>&1`
 Çıktı özeti: `All checks passed!` · `Success: no issues found in 52 source files`

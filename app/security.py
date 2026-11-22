@@ -48,7 +48,8 @@ class GuvenlikBasliklari(BaseHTTPMiddleware):
 
 class HizSiniri(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: CallNext) -> Response:
-        if not request.url.path.startswith("/api/"):
+        # Statik risk tile'ları hız sınırına tabi değildir (önbellekli, salt okunur)
+        if not request.url.path.startswith("/api/") or request.url.path.startswith("/tiles/"):
             return await call_next(request)
         ip = request.client.host if request.client else "bilinmiyor"
         if _redis_client is not None:

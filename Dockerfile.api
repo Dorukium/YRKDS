@@ -19,9 +19,10 @@ WORKDIR /app
 COPY pyproject.toml uv.lock README.md ./
 COPY app ./app
 COPY templates ./templates
+COPY frontend ./frontend
 COPY sql ./sql
 COPY --from=rust-builder /wheels /wheels
 ENV VIRTUAL_ENV=/app/.venv PATH="/app/.venv/bin:${PATH}"
 RUN uv sync --frozen --no-install-project --all-extras && uv pip install /wheels/*.whl
 EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "8"]

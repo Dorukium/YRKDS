@@ -78,7 +78,7 @@ def _tile(z: int, x: int, y: int) -> bytes:
 
 
 @router.get("/tiles/{z}/{x}/{y}.png")
-def tile(z: int, x: int, y: int) -> Response:
+async def tile(z: int, x: int, y: int) -> Response:
     if not (0 <= z <= 16) or x < 0 or y < 0:
         raise HTTPException(400, "Geçersiz tile koordinatı")
     anahtar = f"yrkds:tile:v3:{z}:{x}:{y}"
