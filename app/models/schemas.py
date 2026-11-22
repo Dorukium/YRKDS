@@ -97,6 +97,13 @@ class AnalyzeRequest(BaseModel):
     senaryo: str = "bugun"
 
 
+class MitigateRequest(BaseModel):
+    model_config = ConfigDict(extra="allow")
+    geojson: dict[str, Any]
+    onlemler: list[str] = Field(default_factory=list)
+    senaryo: str = "bugun"
+
+
 class LayerInfo(BaseModel):
     ad: str
     kaynak: str

@@ -173,6 +173,25 @@
     document.getElementById("topluDosya")?.addEventListener("change", e => {
       if (e.target.files?.[0]) topluYukle(e.target.files[0]);
     });
+    document.getElementById("onlemUygula")?.addEventListener("click", async () => {
+      const geo = window.YRKDraw?.sonGeojson?.();
+      const kutu = document.getElementById("onlemSonuc");
+      if (!geo) { kutu.textContent = "Önce bir parsel analiz edin."; return; }
+      const onlemler = [...document.querySelectorAll('.onlem:checked')].map(x => x.value);
+      kutu.textContent = "Hesaplanıyor…";
+      try {
+        const r = await fetch('/api/mitigate', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ geojson: geo, onlemler,
+            senaryo: document.getElementById('senaryoSec')?.value || 'bugun' }),
+        });
+        if (!r.ok) throw new Error(String(r.status));
+        const s = await r.json();
+        kutu.innerHTML = `<b>Önlem sonrası skor: ${s.skor ?? '—'}</b> ` +
+          `(Δ ${s.delta > 0 ? '+' : ''}${s.delta ?? '—'}) · ` +
+          `Maliyet: <span class="rozet rozet-Tahmin">${s.maliyet_seviyesi} · Tahmin</span>`;
+      } catch (e) { kutu.textContent = 'Hesaplama başarısız; yeniden deneyin.'; }
+    });
     document.addEventListener("keydown", e => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); komutPaleti(); }
     });

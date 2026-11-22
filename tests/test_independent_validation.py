@@ -15,10 +15,14 @@ def test_olay_bazli_bagimsiz_veri_yok_ve_durust_raporlu():
     r = hesapla()
     assert r["kalibrasyon"]["bagimsiz_mi"] is False
     assert "kalibre" in r["kalibrasyon"]["aciklama"].lower()
-    adr = ROOT / "docs/ADR/0003-bagimsiz-dogrulama-verisi.md"
+    adr = ROOT / "docs/ADR/0018-bagimsiz-olay-etiketi.md"
     assert adr.exists()
     icerik = adr.read_text(encoding="utf-8")
     assert "2003" in icerik and "2008" in icerik
+    assert "GLOBAL_FLOOD_DB" in icerik and "COPERNICUS/S1_GRD" in icerik
+    # K2 alternatif ölçüm: mekansal blok recall + CI raporlanır
+    assert len(r["metrikler"]["recall_ci95"]) == 2
+    assert any(v["recall"] >= 0.60 for v in r["bloklar"].values())
 
 
 def test_mekansal_holdout_mechanizmasi_calisiyor():

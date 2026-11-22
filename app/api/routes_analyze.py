@@ -11,9 +11,16 @@ from app.auth import oturum_oku
 from app.core.backtest import hesapla as backtest_hesapla
 from app.core.engine import analiz_et
 from app.core.legal_veto import legal_veto
+from app.core.mitigation import sonuc_uret
 from app.core.provenance import katalog
 from app.db import get_conn
-from app.models.schemas import AnalyzeRequest, AnalyzeResponse, BacktestResponse, StatsResponse
+from app.models.schemas import (
+    AnalyzeRequest,
+    AnalyzeResponse,
+    BacktestResponse,
+    MitigateRequest,
+    StatsResponse,
+)
 
 router = APIRouter()
 
@@ -87,6 +94,20 @@ def ilce_stats(ad: str) -> StatsResponse:
         ["hucre_sayisi", "ort_egim", "ort_vs30", "ort_fay_km", "ort_kum_pct",
          "ort_yass_m", "ort_veri_tamligi_pct"], r,
     )))
+
+
+@router.post("/api/mitigate")
+def mitigate(req: MitigateRequest, request: Request) -> dict[str, object]:
+    geojson = _geom_cikar(req.geojson)
+    girdi, _meta = poligondan_girdi(geojson)
+    baz = analiz_et(girdi, legal=legal_veto(geojson), senaryo_adi=req.senaryo)
+    sonuc = sonuc_uret(baz.tehlike_kirilimi, req.onlemler)
+    sonuc["baz_skor"] = baz.skor
+    sonuc["delta"] = (
+        round(sonuc["skor"] - baz.skor, 1)
+        if sonuc["skor"] is not None and baz.skor is not None else None
+    )
+    return sonuc
 
 
 @router.get("/api/catalog")

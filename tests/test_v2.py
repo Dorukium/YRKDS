@@ -112,6 +112,21 @@ def test_u7_kanit_rozeti_ve_f4_senaryo():
     assert any("S bileşeni için güvenilir iklim çarpanı yok" in u for u in ssp["uyarilar"])
 
 
+def test_b1_what_if_onlem_modulu():
+    with TestClient(app, follow_redirects=False) as c:
+        baz = c.post("/api/analyze", json={"geojson": POLY}).json()
+        r = c.post("/api/mitigate", json={
+            "geojson": POLY, "onlemler": ["kazikli_temel", "drenaj"]})
+    assert r.status_code == 200
+    sonuc = r.json()
+    assert sonuc["rozet"] == "Tahmin"
+    assert sonuc["baz_skor"] == baz["skor"]
+    assert sonuc["skor"] <= baz["skor"]
+    assert sonuc["maliyet_seviyesi"] in ("düşük", "orta", "yüksek")
+    assert "ADR-0019" in sonuc["aciklama"]
+    assert (ROOT / "docs/ADR/0019-onlem-katsayilari.md").exists()
+
+
 def test_f6_tile_ve_nokta_api():
     with TestClient(app, follow_redirects=False) as c:
         tile = c.get("/tiles/11/1200/770.png")

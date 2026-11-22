@@ -3,6 +3,7 @@ window.YRKDraw = (function () {
   let harita = null;
   let ui = null;
   let cizilen = null;
+  let sonGeo = null;
 
   function renk(skor) {
     if (skor === null) return "#777";
@@ -17,6 +18,7 @@ window.YRKDraw = (function () {
     ui.durumMetin = "HESAPLANIYOR";
     try {
       const geojson = layer.toGeoJSON();
+      sonGeo = geojson;
       const r = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -54,6 +56,7 @@ window.YRKDraw = (function () {
   }
 
   return {
+    sonGeojson() { return sonGeo; },
     temizle() {
       if (cizilen && harita) {
         harita.eachLayer(l => { if (l.hasLayer && l.hasLayer(cizilen)) l.removeLayer(cizilen); });
