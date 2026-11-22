@@ -128,6 +128,26 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5.0.0 SON KABUL — 2026-11-23
+Komut: `make publish` · `uv lock` · `make check-auth` · `make gate-all`
+Çıktı özeti: Zenodo DOI **10.5281/zenodo.24449066** (`"durum": "ok"`, deposition
+24449066); `CITATION.cff` 1.2.0 / v5.0.0 / DOI doğrulandı; README ve rapor
+özeti/sonuç/slayt güncellendi. `make check-auth` → NASA/GEE/Zenodo `var`,
+TDTH `deaktif`. Kapılar: `All checks passed!` · `Success: no issues found in
+57 source files` · `117 passed` · kapsam `90.19%` · E2E `25 passed` · axe
+`9 passed` · Lighthouse `100/100/100/91` · k6 `0.00%` hata (0/20698), p95
+`195.35 ms` · `No known vulnerabilities found` · `TUM KAPILAR YEŞİL` ·
+`GATE_EXIT=0`.
+Commitler: `606a20757164796c418a67dc73d00278ce827178` (DOI + A2 kanıtları +
+sürüm), `f4a18eba9b41f5019db1212bba4d99f27d22c81d` (görsel snapshot'lar),
+`6147d150793f031a6ee0c359c54f5120cb7cd8bf` (rapor/slayt).
+Açık (dürüst): A2 Recall ≥0.60 doğrulanamadı — GFD'de AOI'de 0 olay, S1
+tarihsel olarak yok, literatürde etiket yok (ADR-0003/0018/0025 kalıcı);
+A7/A3 vektör pafta yok (ADR-0007/0017); TDTH deaktif (ADR-0004). GEE kimlik
+dosyası var fakat `ee.Initialize()` hâlâ "project is not registered" — kullanıcı
+Google Cloud proje ID'sini sağlamalı. Git remote olmadığı için GitHub release
+oluşturulamadı; yerel `v5.0.0` etiketi basıldı.
+
 ## V5 / A3 + A7 + A2-L3 MERDİVEN DENEMELERİ (U12) — 2026-11-22
 Komut: Firecrawl/Exa aramaları + `curl` WMS + RG arşiv taraması + PDF scrape
 Çıktı özeti:

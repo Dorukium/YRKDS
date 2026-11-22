@@ -7750,7 +7750,7 @@
       "version": "1.25.1"
     },
     {
-      "bom-ref": "yrkds==4.0.0",
+      "bom-ref": "yrkds==5.0.0",
       "description": "Antalya Yatirim Riski Karar Destek Sistemi",
       "externalReferences": [
         {
@@ -7761,7 +7761,7 @@
       ],
       "name": "yrkds",
       "type": "library",
-      "version": "4.0.0"
+      "version": "5.0.0"
     },
     {
       "bom-ref": "zopfli==0.4.3",
@@ -9337,7 +9337,7 @@
         "weasyprint==70.0",
         "xarray==2026.9.0"
       ],
-      "ref": "yrkds==4.0.0"
+      "ref": "yrkds==5.0.0"
     },
     {
       "dependsOn": [
@@ -9347,7 +9347,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-11-22T20:35:03.305995+00:00",
+    "timestamp": "2026-11-22T21:13:10.154441+00:00",
     "tools": {
       "components": [
         {
@@ -9451,7 +9451,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:ca5b22fb-7f53-47c5-96d1-d1ba91e14c0b",
+  "serialNumber": "urn:uuid:2cf89fe5-f5cc-4a0a-9f7b-1e637c9325db",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
