@@ -5,8 +5,6 @@ S bileşeni NULL olduğu için ağırlığı perturbasyona rağmen skora etki et
 """
 from __future__ import annotations
 
-from pathlib import Path
-
 import numpy as np
 from SALib.analyze import morris
 from SALib.sample import morris as morris_sample

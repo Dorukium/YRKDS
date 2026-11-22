@@ -183,7 +183,6 @@ def test_v3_yeni_pipeline_fonksiyonlari(monkeypatch, tmp_path):
 
 
 def test_v3_exposure_stac_taklit(monkeypatch, tmp_path):
-    from types import SimpleNamespace
 
     from app.data_pipeline import download_exposure as dex
 
@@ -194,9 +193,10 @@ def test_v3_exposure_stac_taklit(monkeypatch, tmp_path):
         href = "https://example.invalid/cog.tif"
 
     class FakeItem:
-        id = "test-item"
-        assets = {"map": FakeAsset()}
-        datetime = "2021-01-01T00:00:00Z"
+        def __init__(self):
+            self.id = "test-item"
+            self.assets = {"map": FakeAsset()}
+            self.datetime = "2021-01-01T00:00:00Z"
 
     class FakeSearch:
         def items(self):
