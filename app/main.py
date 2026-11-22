@@ -43,7 +43,7 @@ async def yasam_dongusu(app: FastAPI) -> AsyncIterator[None]:
 
 app = FastAPI(
     title="YRKDS — Antalya Yatırım Riski Karar Destek Sistemi",
-    version="4.0.0",
+    version="5.0.0",
     description="Deterministik, kural tabanlı parsel ön-tarama risk skorlama API'si.",
     lifespan=yasam_dongusu,
 )

@@ -17,8 +17,10 @@ from pathlib import Path
 from typing import Any
 
 import requests
+from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[2]
+load_dotenv(ROOT / ".env")
 API = "https://sandbox.zenodo.org/api" if os.getenv("ZENODO_SANDBOX", "").lower() == "true" \
     else "https://zenodo.org/api"
 

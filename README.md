@@ -82,3 +82,5 @@ yapılandırılır. Güvenlik başlıkları middleware ile eklenir.
   aynı etiketlerle kalibre edildiği için **bağımsız doğrulama değildir**.
 
 TÜBİTAK 2204-A bağlamında geliştirilmiştir.
+
+**Zenodo DOI:** [10.5281/zenodo.24449066](https://doi.org/10.5281/zenodo.24449066)

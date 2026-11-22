@@ -1,0 +1,50 @@
+{
+  "gorev": "A2 — 2003/2008 bağımsız taşkın etiketi",
+  "tarih": "2026-11-22",
+  "ilke": "K3 dürüstlük: etiket yoksa etiket üretilmez; Recall hesaplanmaz.",
+  "denemeler": [
+    {
+      "basamak": "L1a — GEE Global Flood Database",
+      "komut": "ee.Initialize() → GLOBAL_FLOOD_DB/MODIS_EVENTS/V1",
+      "sonuc": "basarisiz",
+      "neden": "EEException: Not signed up for Earth Engine or project is not registered. ~/.config/earthengine/credentials var ama proje yok; kullanıcı Google Cloud'da EE API'sini etkinleştirip proje oluşturmalı."
+    },
+    {
+      "basamak": "L1b — GFD GeoTIFF (GEE'siz, GCS bucket gfd_v1_4)",
+      "komut": "GET https://storage.googleapis.com/storage/v1/b/gfd_v1_4/o?maxResults=1000",
+      "sonuc": "basarisiz",
+      "bulgu": {
+        "toplam_olay": 913,
+        "antalya_aoi_28_34E_35_38N_olay_sayisi": 0,
+        "tarih_eslesen_olaylar": [
+          {"id": 2403, "ulke": "Indonesia", "tarih": "2003-12-10"},
+          {"id": 3257, "ulke": "Australia", "tarih": "2008-01-14"}
+        ],
+        "kaynak_csv": "https://raw.githubusercontent.com/cloudtostreet/MODIS_GlobalFloodDatabase/master/data/gfd_qcdatabase_2019_08_01.csv",
+        "yetkinlik": "Otorite"
+      },
+      "neden": "GFD v1 veritabanında Antalya AOI'sinde hiçbir taşkın olayı yok; 2003/2008 için etiket çıkarılamaz."
+    },
+    {
+      "basamak": "L2 — Sentinel-1 SAR değişim tespiti",
+      "sonuc": "fiziksel_olarak_olanaksiz",
+      "neden": "Sentinel-1A 2014'te fırlatıldı; 2003-12-10 ve 2008-01-27 için arşiv verisi yok."
+    },
+    {
+      "basamak": "L3 — Literatür jeoreferansı",
+      "sonuc": "basarisiz",
+      "kaynaklar": [
+        "IMO — Sel/Taşkın: Türkiye ve Antalya (23-26 Aralık 2003)",
+        "JMO — Boğaçay Kıyı Ovası Mühendislik Jeolojisi",
+        "Akdeniz Üniv. — Konyaaltı Q100 Taşkın Risk Bölgeleri Haritası atfı"
+      ],
+      "neden": "Makine okunabilir, jeoreferanslı 2003/2008 nokta etiketi yok; GCP'li pafta bulunamadı."
+    }
+  ],
+  "k4_dogrulama_ayriligi": {
+    "kalibrasyon": {"olay": "2009-12-16 Boğaçay", "nokta": 18, "kullanim": "yalnızca kalibrasyon"},
+    "dogrulama": {"olaylar": ["2003-12-10", "2008-01-27"], "etiket_sayisi": 0},
+    "not": "Kalibrasyon ve doğrulama verileri ayrı tutuldu. Doğrulama etiketi olmadığı için Recall hesaplanmadı; 0.60 hedefi doğrulanamadı."
+  },
+  "karar": "ADR-0003 / ADR-0018 / ADR-0025 kalıcı açık. Uydurma etiket üretilmedi."
+}

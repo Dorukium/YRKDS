@@ -63,3 +63,5 @@ taşkın paftaları, TDTH grid) temini ve saha uzmanı incelemesi tamamlanmadan
 belediye pilotunda nihai karar aracı olarak kullanılması önerilmez. Bu
 sınırlılık, raporun ilgili bölümlerinde ve ürün arayüzünde açıkça ifade
 edilmektedir.
+
+**Zenodo DOI:** [10.5281/zenodo.24449066](https://doi.org/10.5281/zenodo.24449066)

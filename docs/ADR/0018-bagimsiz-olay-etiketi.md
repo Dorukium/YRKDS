@@ -21,3 +21,9 @@ olay bazlı bağımsız doğrulama **değildir**.
 ## DoD durumu
 Recall ≥0.60 hedefi 2003+2008 için **doğrulanamadı**. Test bunu kanıtlar;
 eşik kaydırma yapılmadı (git geçmişi: kalibrasyon eşikleri 0.7/6/5/2 sabit).
+
+## V5 güncellemesi (2026-11-22)
+L1 artık iki yolla denendi: GEE (hesap EE'ye kayıtlı değil) **ve** GFD GeoTIFF
+bucket'ının doğrudan taranması (913 olay, AOI'de 0). L2 fiziksel olarak
+olanaksız (S1 2014+), L3 literatürde koordinatlı etiket yok. 4 denemeli kanıt:
+`data/labels/gfd_2003_2008_manifest.json`. Etiket üretilmedi; ADR kalıcı.

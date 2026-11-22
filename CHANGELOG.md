@@ -2,6 +2,26 @@
 
 Tüm önemli değişiklikler bu dosyada kaydedilir. Semantik sürüm: MAJOR.MINOR.PATCH.
 
+## [5.0.0] — 2026-11-22
+
+V5 kapanış sprinti:
+- Zenodo DOI alındı: **10.5281/zenodo.24449066** (ADR-0023 kapandı);
+  `CITATION.cff`, `README.md` ve TÜBİTAK raporu özeti güncellendi.
+- TDTH kaynağı deaktif: ADR-0004 kalıcı açık, GEM+USGS "Araştırma" rozeti,
+  yeni erişim denemesi yok.
+- A3 (Resmî Gazete 11600) ve A7 (SYGM/JRC) için 3'er erişim yolu denendi;
+  resmî vektör geometri/pafta bulunamadı, mevcut proxy'ler dürüst etiketle
+  korundu (ADR-0007, ADR-0017).
+- A2: GFD v1'in tamamı (913 olay) tarandı; Antalya AOI'sinde olay yok.
+  GEE hesabı Earth Engine'e kayıtlı olmadığı için L1 erişilemedi; S1 2003/2008
+  için fiziksel olarak olanaksız; literatürde jeoreferanslı etiket yok.
+  4 denemeli kanıt `data/labels/gfd_2003_2008_manifest.json`'de; Recall ≥0.60
+  hedefi doğrulanmadı (ADR-0003/0018/0025 kalıcı açık). K4 korundu.
+- K2 regresyon fix'i: `ensure_schema()` advisory lock ile 8 worker DDL
+  deadlock'u giderildi; k6 hata oranı %34.29 → %0.00.
+- `make check-auth`, `make publish`, `earthengine` CLI kurulumu; 57 kaynak
+  dosya, 117 pytest, kapsam >%90.
+
 ## [4.0.0] — 2026-11-22
 
 V4 master sprint:

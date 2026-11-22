@@ -35,6 +35,21 @@ def test_mekansal_holdout_mechanizmasi_calisiyor():
     assert "leave-one-district-out" in r["yontem"]
 
 
+def test_a2_gfd_taramasi_kaniti():
+    """V5: GFD veritabanı tarandı; AOI'de olay yok, Recall hesaplanmadı."""
+    import json
+
+    dosya = ROOT / "data/labels/gfd_2003_2008_manifest.json"
+    assert dosya.exists()
+    m = json.loads(dosya.read_text(encoding="utf-8"))
+    assert len(m["denemeler"]) >= 3
+    assert m["k4_dogrulama_ayriligi"]["dogrulama"]["etiket_sayisi"] == 0
+    assert m["k4_dogrulama_ayriligi"]["kalibrasyon"]["nokta"] == 18
+    gfd = m["denemeler"][1]["bulgu"]
+    assert gfd["toplam_olay"] == 913
+    assert gfd["antalya_aoi_28_34E_35_38N_olay_sayisi"] == 0
+
+
 def test_dogrulama_tarihleri_manifestte_yok():
     """2003/2008 için etiket dosyası olmadığını kanıtla (uydurma etiket yok)."""
     raw = ROOT / "data/raw"
