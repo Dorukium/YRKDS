@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="css/style.css">
 <script>try{var _t=localStorage.getItem('yrkds-tema');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script></head><body>
 <header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Veri Kataloğu</h1></div></div>
-<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html">Raporlar</a>
-<a href="/veri-katalogu.html" aria-current="page">Veri Kataloğu</a><a href="/yontem.html">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a><a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html" data-i18n="nav.map">Harita &amp; Analiz</a><a href="/raporlar.html" data-i18n="nav.reports">Raporlar</a>
+<a href="/veri-katalogu.html" aria-current="page" data-i18n="nav.catalog">Veri Kataloğu</a><a href="/yontem.html" data-i18n="nav.method">Yöntem</a><a href="/olay-izleme.html" data-i18n="nav.events">Olay İzleme</a><a href="/yardim.html" data-i18n="nav.help">Yardım</a><a href="/login" data-i18n="nav.login">Giriş</a><select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav></header>
 <main class="auth-icerik">
 <div class="kart"><h2>Katman envanteri</h2><p class="kucuk">Her katman U7 yetkinlik rozetiyle gösterilir:
 <b>Otorite</b> birincil ölçüm, <b>Proxy</b> vekil ölçüm, <b>Tahmin</b> türetilmiş değer,
@@ -27,4 +27,5 @@ t.innerHTML=d.map(k=>`<tr><td>${k.ad}</td><td><span class="rozet rozet-${String(
 <td class="tabular">${k.kapsam_pct}%</td><td>${k.guncelleme}</td><td class="kucuk">${k.kaynak}<br>${k.lisans}</td>
 <td class="kucuk">${k.not}</td></tr>`).join('');}
 catch(e){t.innerHTML='<tr><td colspan="6" class="muted">Katalog yüklenemedi — yeniden deneyin.</td></tr>';}})();
-</script></body></html>
+</script><script src="js/i18n.js"></script>
+</body></html>

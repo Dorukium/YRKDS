@@ -112,6 +112,20 @@ def test_u7_kanit_rozeti_ve_f4_senaryo():
     assert any("S bileşeni için güvenilir iklim çarpanı yok" in u for u in ssp["uyarilar"])
 
 
+def test_d2_d3_d4_altyapi():
+    with TestClient(app, follow_redirects=False) as c:
+        assert c.get("/locales/tr.json").status_code == 200
+        assert c.get("/locales/en.json").status_code == 200
+        tr = c.get("/locales/tr.json").json()
+        en = c.get("/locales/en.json").json()
+        assert set(tr) == set(en)
+        assert en["nav.map"] == "Map & Analysis"
+    assert (ROOT / "tests/load_500.js").exists()
+    assert (ROOT / "monitoring/prometheus.yml").exists()
+    assert (ROOT / "monitoring/grafana/dashboards/yrkds.json").exists()
+    assert (ROOT / "docs/ADR/0022-i18n-kapsam.md").exists()
+
+
 def test_b4_b5_embed_ve_pwa():
     with TestClient(app, follow_redirects=False) as c:
         assert c.get("/embed.html").status_code == 200

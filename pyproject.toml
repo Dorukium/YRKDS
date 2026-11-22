@@ -1,6 +1,6 @@
 [project]
 name = "yrkds"
-version = "0.1.0"
+version = "3.0.0"
 description = "Antalya Yatirim Riski Karar Destek Sistemi"
 readme = "README.md"
 # Kilitli veri kaynaklarinin wheel uyumsuzlugunu onlemek icin 3.12 sabitlendi.

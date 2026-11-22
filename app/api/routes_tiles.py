@@ -5,8 +5,11 @@ kullanır. p95 hedefi <120 ms (bellek önbelleği + GiST indeksi).
 """
 from __future__ import annotations
 
+import base64
 import io
+import logging
 import math
+import os
 from functools import lru_cache
 
 from fastapi import APIRouter, HTTPException
@@ -16,6 +19,15 @@ from PIL import Image, ImageDraw
 from app.db import get_conn
 
 router = APIRouter()
+REDIS_URL = os.getenv("REDIS_URL", "")
+_redis = None
+if REDIS_URL:
+    try:
+        import redis
+
+        _redis = redis.Redis.from_url(REDIS_URL, socket_timeout=1)
+    except Exception:
+        _redis = None
 RENKLER = ["#440154", "#3b528b", "#21918c", "#5ec962", "#fde725"]
 
 
@@ -69,8 +81,25 @@ def _tile(z: int, x: int, y: int) -> bytes:
 def tile(z: int, x: int, y: int) -> Response:
     if not (0 <= z <= 16) or x < 0 or y < 0:
         raise HTTPException(400, "Geçersiz tile koordinatı")
-    return Response(content=_tile(z, x, y), media_type="image/png",
-                    headers={"Cache-Control": "public, max-age=3600"})
+    anahtar = f"yrkds:tile:v3:{z}:{x}:{y}"
+    if _redis is not None:
+        try:
+            cached = _redis.get(anahtar)
+            if cached:
+                return Response(content=base64.b64decode(cached),
+                                media_type="image/png",
+                                headers={"Cache-Control": "public, max-age=86400",
+                                         "X-Cache": "HIT"})
+        except Exception as exc:
+            logging.getLogger("yrkds.tiles").warning("Redis okuma hatası: %s", exc)
+    png = _tile(z, x, y)
+    if _redis is not None:
+        try:
+            _redis.setex(anahtar, 86400, base64.b64encode(png))
+        except Exception as exc:
+            logging.getLogger("yrkds.tiles").warning("Redis okuma hatası: %s", exc)
+    return Response(content=png, media_type="image/png",
+                    headers={"Cache-Control": "public, max-age=86400", "X-Cache": "MISS"})
 
 
 @router.get("/api/cell")

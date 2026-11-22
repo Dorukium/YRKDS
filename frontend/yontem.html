@@ -5,8 +5,8 @@
 <meta property="og:image" content="/assets/icons/og.svg">
 <link rel="stylesheet" href="css/style.css"></head><body>
 <header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Yöntem</h1></div></div>
-<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html">Raporlar</a>
-<a href="/veri-katalogu.html">Veri Kataloğu</a><a href="/yontem.html" aria-current="page">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a><a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html" data-i18n="nav.map">Harita &amp; Analiz</a><a href="/raporlar.html" data-i18n="nav.reports">Raporlar</a>
+<a href="/veri-katalogu.html" data-i18n="nav.catalog">Veri Kataloğu</a><a href="/yontem.html" aria-current="page" data-i18n="nav.method">Yöntem</a><a href="/olay-izleme.html" data-i18n="nav.events">Olay İzleme</a><a href="/yardim.html" data-i18n="nav.help">Yardım</a><a href="/login" data-i18n="nav.login">Giriş</a><select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav></header>
 <main class="auth-icerik">
 <div class="kart"><h2>Skor formülü</h2>
 <p><code>skor = 100 × (0.25·ZB + 0.20·L + 0.25·S + 0.15·H + 0.15·F)</code></p>
@@ -27,5 +27,6 @@ Ayrıntı: <a href="/docs/dogrulama_raporu.md">dogrulama_raporu.md</a>.</p></div
 <div class="kart"><h3>Sınırlılıklar</h3><p class="kucuk">Parsel bazlı InSAR/YASS ölçümü yok; Vs30/fay jeolojisi ilçe düzeyi türetilmiş;
 model eğitilmez. Metodoloji: <a href="/docs/metodoloji.md">metodoloji.md</a>.</p></div>
 </main>
-<footer class="alt-bilgi"><span>v0.2.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+<footer class="alt-bilgi"><span>v3.0.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+<script src="js/i18n.js"></script>
 </body></html>

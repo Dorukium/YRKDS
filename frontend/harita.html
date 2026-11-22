@@ -22,14 +22,14 @@
     </div>
     <nav class="ust-menu" aria-label="Ana menü">
       <a href="/">Ana Sayfa</a>
-      <a href="/harita.html" aria-current="page">Harita &amp; Analiz</a>
-      <a href="/raporlar.html">Raporlar</a>
-      <a href="/veri-katalogu.html">Veri Kataloğu</a>
-      <a href="/yontem.html">Yöntem</a>
-      <a href="/olay-izleme.html">Olay İzleme</a>
-      <a href="/yardim.html">Yardım</a>
-      <a href="/login">Giriş</a>
-    </nav>
+      <a href="/harita.html" aria-current="page" data-i18n="nav.map">Harita &amp; Analiz</a>
+      <a href="/raporlar.html" data-i18n="nav.reports">Raporlar</a>
+      <a href="/veri-katalogu.html" data-i18n="nav.catalog">Veri Kataloğu</a>
+      <a href="/yontem.html" data-i18n="nav.method">Yöntem</a>
+      <a href="/olay-izleme.html" data-i18n="nav.events">Olay İzleme</a>
+      <a href="/yardim.html" data-i18n="nav.help">Yardım</a>
+      <a href="/login" data-i18n="nav.login">Giriş</a>
+    <select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav>
     <div class="durum">
       <span class="nişan">ML YOK</span>
       <span class="nişan" x-text="durumMetin">HAZIR</span>
@@ -254,7 +254,7 @@
 </div>
 
 <footer class="alt-bilgi">
-  <span>v0.2.0 · MIT · <a href="/api/docs">API docs</a></span>
+  <span>v3.0.0 · MIT · <a href="/api/docs">API docs</a></span>
   <a href="/yardim.html#veri-kaynaklari">Veri kaynakları</a>
   <a href="/yardim.html#erisilebilirlik">Erişilebilirlik beyanı</a>
   <a href="/yardim.html#kvkk">KVKK</a>
@@ -282,5 +282,6 @@
 <script src="js/ux.js"></script>
 <script src="js/map.js"></script>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}))</script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

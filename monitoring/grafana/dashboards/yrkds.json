@@ -1,0 +1,37 @@
+{
+  "title": "YRKDS — API Sağlığı",
+  "uid": "yrkds-api",
+  "schemaVersion": 39,
+  "panels": [
+    {
+      "title": "İstek oranı (req/s)",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "targets": [{"expr": "sum(rate(yrkds_requests_total[1m]))", "refId": "A"}]
+    },
+    {
+      "title": "p95 gecikme (s)",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "targets": [{"expr": "histogram_quantile(0.95, sum(rate(yrkds_request_duration_seconds_bucket[5m])) by (le))", "refId": "A"}]
+    },
+    {
+      "title": "Hata oranı (%)",
+      "type": "stat",
+      "gridPos": {"h": 8, "w": 8, "x": 0, "y": 8},
+      "targets": [{"expr": "100 * sum(rate(yrkds_requests_total{status=~'5..'}[5m])) / sum(rate(yrkds_requests_total[5m]))", "refId": "A"}]
+    },
+    {
+      "title": "Aktif DB havuzu",
+      "type": "stat",
+      "gridPos": {"h": 8, "w": 8, "x": 8, "y": 8},
+      "targets": [{"expr": "yrkds_requests_total", "refId": "A"}]
+    },
+    {
+      "title": "Katman/tile istekleri",
+      "type": "timeseries",
+      "gridPos": {"h": 8, "w": 8, "x": 16, "y": 8},
+      "targets": [{"expr": "sum(rate(yrkds_requests_total{path='tiles'}[5m]))", "refId": "A"}]
+    }
+  ]
+}

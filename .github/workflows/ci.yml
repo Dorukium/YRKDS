@@ -47,3 +47,8 @@ jobs:
           make e2e a11y
       - name: Güvenlik + SBOM
         run: make security sbom
+      - name: OWASP ZAP baseline
+        run: |
+          docker run --rm -v $PWD/zap.conf:/zap/wrk/zap.conf \
+            owasp/zap2docker-stable zap-baseline.py \
+            -t http://yrkds_api:8000 -c zap.conf -I -d 5

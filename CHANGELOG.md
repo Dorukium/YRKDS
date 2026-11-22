@@ -2,6 +2,17 @@
 
 Tüm önemli değişiklikler bu dosyada kaydedilir. Semantik sürüm: MAJOR.MINOR.PATCH.
 
+## [3.0.0] — 2026-11-22
+
+TÜBİTAK jürisi ve belediye pilotu için master sprint:
+A1 EGMS (kimlik yok → ADR-0009 açık), A2 bağımsız etiket (ADR-0018),
+A3 üç Resmî Gazete VETO geometrisi (ADR-0017), A4 PC maruziyet (ADR-0015),
+A5 ERA5 ekstrem (ADR-0014), A6 GEM/USGS (ADR-0008/0016);
+B1 what-if, B2 portföy PDF, B3 beklenen kayıp, B4 embed, B5 PWA;
+C1 SALib duyarlılık, C2 literatür kıyas, C3 TÜBİTAK raporu, C4 Marp sunum,
+C5 video senaryosu; D1 ZAP CI, D2 Redis tile + 500 VU, D3 Grafana, D4 TR/EN.
+Zenodo DOI bekliyor (ADR-0023).
+
 ## [0.4.0] — 2026-11-22
 
 ### Eklenen (V2 yükseltme)

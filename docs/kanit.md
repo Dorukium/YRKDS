@@ -128,6 +128,14 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## [V3 / FAZ 4] D1–D4 — Sertleştirme — 2026-11-22
+Komut: CI workflow + `docker compose config` + pytest
+Çıktı özeti: OWASP ZAP baseline adımı CI'da; Redis tile önbelleği (TTL 24s,
+X-Cache HIT/MISS); 500 VU k6 senaryosu (`tests/load_500.js`); Prometheus :9090
+ve Grafana :3000 provision edildi (5 panel); TR/EN sözlük + dil değiştirici
+tüm sayfalarda (ADR-0022: dinamik metinler TR kalır).
+Sonuç: YEŞİL (ZAP yerel çalıştırılmadı — CI adımı eklendi, kanıt CI log'unda)
+
 ## [V3 / FAZ 3] C1–C5 — Bilimsel iletişim — 2026-11-22
 Komut: `uv run python scripts/sensitivity.py`
 Çıktı özeti: SALib Morris 2000 trajektör; H %49.9, F %25.6, ZB/L %12.2,

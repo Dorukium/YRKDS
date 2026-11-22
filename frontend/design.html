@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/style.css">
 <script>try{var _t=localStorage.getItem('yrkds-tema');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script></head><body>
 <header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Tasarım Sistemi — bileşen galerisi</h1></div></div>
-<nav class="ust-menu"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita</a><a href="/design.html" aria-current="page">Tasarım</a></nav></header>
+<nav class="ust-menu"><a href="/">Ana Sayfa</a><a href="/harita.html" data-i18n="nav.map">Harita</a><a href="/design.html" aria-current="page">Tasarım</a><select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav></header>
 <main class="auth-icerik">
 <div class="kart"><h2>Tipografi</h2><p style="font-size:28px;font-weight:600">28 / 20 / 16 / 14 / 12</p>
 <p class="kucuk">Inter · 400 gövde · 500 etiket · 600 başlık · tabular-nums</p></div>
@@ -32,4 +32,5 @@
 <button class="ray-adim">3. Sonuç</button><button class="ray-adim">4. Rapor</button></div></div>
 </main>
 <footer class="alt-bilgi"><span>v0.4.0 · MIT</span><a href="/docs/tasarim_sistemi.md">dokümantasyon</a></footer>
+<script src="js/i18n.js"></script>
 </body></html>

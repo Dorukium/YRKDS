@@ -18,14 +18,14 @@
   </div>
   <nav class="ust-menu" aria-label="Ana menü">
     <a href="/" aria-current="page">Ana Sayfa</a>
-    <a href="/harita.html">Harita &amp; Analiz</a>
-    <a href="/raporlar.html">Raporlar</a>
-    <a href="/veri-katalogu.html">Veri Kataloğu</a>
-    <a href="/yontem.html">Yöntem</a>
-    <a href="/olay-izleme.html">Olay İzleme</a>
-    <a href="/yardim.html">Yardım</a>
-    <a href="/login">Giriş</a>
-  </nav>
+    <a href="/harita.html" data-i18n="nav.map">Harita &amp; Analiz</a>
+    <a href="/raporlar.html" data-i18n="nav.reports">Raporlar</a>
+    <a href="/veri-katalogu.html" data-i18n="nav.catalog">Veri Kataloğu</a>
+    <a href="/yontem.html" data-i18n="nav.method">Yöntem</a>
+    <a href="/olay-izleme.html" data-i18n="nav.events">Olay İzleme</a>
+    <a href="/yardim.html" data-i18n="nav.help">Yardım</a>
+    <a href="/login" data-i18n="nav.login">Giriş</a>
+  <select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav>
   <div class="durum"><button class="tema-butonu" id="temaButonu" aria-label="Temayı değiştir" title="Tema">◐</button></div>
 </header>
 
@@ -100,7 +100,7 @@
     <a href="https://soilgrids.org" target="_blank" rel="noopener">SoilGrids</a>
     <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>
     <a href="https://www.resmigazete.gov.tr" target="_blank" rel="noopener">Resmî Gazete</a>
-    <a href="/veri-katalogu.html">Tüm katalog →</a>
+    <a href="/veri-katalogu.html" data-i18n="nav.catalog">Tüm katalog →</a>
   </div>
 </section>
 
@@ -113,7 +113,7 @@
   <h2 class="bolum-baslik">Örnek rapor</h2>
   <div class="kart">
     <p class="kucuk">Aşağıda örnek bir parsemin PDF raporu önizlenir. Kendi parseliniz için
-      <a href="/harita.html">haritada analiz</a> yapın.</p>
+      <a href="/harita.html" data-i18n="nav.map">haritada analiz</a> yapın.</p>
     <object data="/api/report/1.pdf" type="application/pdf" width="100%" height="380" aria-label="Örnek PDF rapor">
       <p>PDF önizleme desteklenmiyor. <a href="/api/report/1.pdf">Raporu indir</a>.</p>
     </object>
@@ -128,14 +128,14 @@
     <details><summary>Skor ne demek?</summary><p class="kucuk">Göreli risk sıralamasıdır; olasılık veya yıkım tahmini değildir.</p></details>
     <details><summary>Veri eksikse ne olur?</summary><p class="kucuk">Eksik alan NULL bırakılır, güven düşürülür; kapsam %50 altındaysa sayısal skor gösterilmez.</p></details>
     <details><summary>Yasal geçerliliği var mı?</summary><p class="kucuk">Yok. Resmî imar ve afet mevzuatı kontrolü ayrıca yapılmalıdır.</p></details>
-    <details><summary>Kaynaklar nerede?</summary><p class="kucuk"><a href="/veri-katalogu.html">Veri Kataloğu</a> sayfasında lisans, SHA256 ve kalite özetleriyle.</p></details>
+    <details><summary>Kaynaklar nerede?</summary><p class="kucuk"><a href="/veri-katalogu.html" data-i18n="nav.catalog">Veri Kataloğu</a> sayfasında lisans, SHA256 ve kalite özetleriyle.</p></details>
     <details><summary>Nasıl katkı yapabilirim?</summary><p class="kucuk">Açık veri önerileri için <a href="/yardim.html#iletisim">iletişim</a> bölümüne bakın.</p></details>
   </div>
 </section>
 </main>
 
 <footer class="alt-bilgi">
-  <span>v0.2.0 · MIT · <a href="/api/docs">API docs</a></span>
+  <span>v3.0.0 · MIT · <a href="/api/docs">API docs</a></span>
   <a href="/yardim.html#veri-kaynaklari">Veri kaynakları</a>
   <a href="/yardim.html#erisilebilirlik">Erişilebilirlik beyanı</a>
   <a href="/yardim.html#kvkk">KVKK</a>
@@ -143,5 +143,6 @@
 </footer>
 <script src="js/home.js"></script>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}))</script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

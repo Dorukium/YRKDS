@@ -5,8 +5,8 @@
 <meta property="og:image" content="/assets/icons/og.svg">
 <link rel="stylesheet" href="css/style.css"></head><body>
 <header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Olay İzleme</h1></div></div>
-<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html">Raporlar</a>
-<a href="/veri-katalogu.html">Veri Kataloğu</a><a href="/yontem.html">Yöntem</a><a href="/olay-izleme.html" aria-current="page">Olay İzleme</a><a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html" data-i18n="nav.map">Harita &amp; Analiz</a><a href="/raporlar.html" data-i18n="nav.reports">Raporlar</a>
+<a href="/veri-katalogu.html" data-i18n="nav.catalog">Veri Kataloğu</a><a href="/yontem.html" data-i18n="nav.method">Yöntem</a><a href="/olay-izleme.html" aria-current="page" data-i18n="nav.events">Olay İzleme</a><a href="/yardim.html" data-i18n="nav.help">Yardım</a><a href="/login" data-i18n="nav.login">Giriş</a><select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav></header>
 <main class="auth-icerik">
 <div class="kart"><h2>Olay kayıtları</h2>
 <div class="ara-kutu"><select id="tur" aria-label="Olay türü"><option value="">Tüm türler</option><option value="deprem">Deprem</option><option value="taskin">Taşkın</option><option value="tasin_etiketi">Doğrulama etiketi</option></select>
@@ -14,5 +14,6 @@
 <div id="miniHarita" style="height:260px;background:var(--soft);border-radius:var(--radius);margin:10px 0;display:grid;place-items:center;color:var(--muted)" role="img" aria-label="Olay yoğunluğu özeti">Mini harita görünümü — koordinatlı olaylar haritada gösterilir</div>
 <table class="tablo"><thead><tr><th>Tarih</th><th>Tür</th><th>Yer</th><th>Etki</th><th>Kaynak</th><th>Durum</th></tr></thead><tbody id="olaylar"><tr><td colspan="6">Yükleniyor…</td></tr></tbody></table>
 </div></main>
-<footer class="alt-bilgi"><span>v0.2.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
-<script src="js/events.js"></script></body></html>
+<footer class="alt-bilgi"><span>v3.0.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+<script src="js/events.js"></script><script src="js/i18n.js"></script>
+</body></html>

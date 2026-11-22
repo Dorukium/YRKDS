@@ -6,17 +6,17 @@
 <link rel="stylesheet" href="css/style.css"></head><body>
 <header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a>
 <div><h1>Raporlar</h1></div></div><nav class="ust-menu" aria-label="Ana menü">
-<a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html" aria-current="page">Raporlar</a>
-<a href="/veri-katalogu.html">Veri Kataloğu</a><a href="/yontem.html">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a>
-<a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<a href="/">Ana Sayfa</a><a href="/harita.html" data-i18n="nav.map">Harita &amp; Analiz</a><a href="/raporlar.html" aria-current="page" data-i18n="nav.reports">Raporlar</a>
+<a href="/veri-katalogu.html" data-i18n="nav.catalog">Veri Kataloğu</a><a href="/yontem.html" data-i18n="nav.method">Yöntem</a><a href="/olay-izleme.html" data-i18n="nav.events">Olay İzleme</a>
+<a href="/yardim.html" data-i18n="nav.help">Yardım</a><a href="/login" data-i18n="nav.login">Giriş</a><select id="dilSec" aria-label="Dil / Language" style="font-size:10px;padding:3px"><option value="tr">TR</option><option value="en">EN</option></select></nav></header>
 <main class="auth-icerik">
 <div class="kart">
   <h2>Sorgu geçmişi</h2>
-  <p class="kucuk" id="girisMesaji">Geçmiş sorgularınızı görmek için <a href="/login">giriş yapın</a>. Anonim olarak yalnızca örnek raporlar görüntülenir.</p>
+  <p class="kucuk" id="girisMesaji">Geçmiş sorgularınızı görmek için <a href="/login" data-i18n="nav.login">giriş yapın</a>. Anonim olarak yalnızca örnek raporlar görüntülenir.</p>
   <table class="tablo" id="raporTablosu" hidden>
     <thead><tr><th>Tarih</th><th>Parsel</th><th>Skor</th><th>Bant</th><th>PDF</th><th>GeoJSON</th></tr></thead><tbody></tbody>
   </table>
-  <div id="raporBos" class="bos-durum" hidden><p class="muted">Henüz sorgunuz yok. <a href="/harita.html">Haritada analiz yapın.</a></p></div>
+  <div id="raporBos" class="bos-durum" hidden><p class="muted">Henüz sorgunuz yok. <a href="/harita.html" data-i18n="nav.map">Haritada analiz yapın.</a></p></div>
   <div style="margin-top:10px"><button class="btn btn-dark btn-sm" id="portfoyBtn" hidden>Portföy Oluştur (PDF)</button></div>
   <div class="ara-kutu" style="margin-top:14px">
     <select id="ilceFiltre" aria-label="İlçe filtresi"><option value="">Tüm ilçeler</option><option>Kepez</option><option>Muratpasa</option><option>Konyaalti</option></select>
@@ -27,5 +27,6 @@
 </div>
 <div class="kart"><h3>Örnek rapor</h3><a class="btn btn-outline btn-sm" href="/api/report/1.pdf">Örnek PDF indir</a></div>
 </main>
-<footer class="alt-bilgi"><span>v0.2.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
-<script src="js/reports.js"></script></body></html>
+<footer class="alt-bilgi"><span>v3.0.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+<script src="js/reports.js"></script><script src="js/i18n.js"></script>
+</body></html>
