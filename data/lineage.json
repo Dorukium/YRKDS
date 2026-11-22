@@ -1,0 +1,18 @@
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "entities": [
+    {"id": "raw/dem_raw.tif", "source": "AWS Terrarium SRTM-derived", "sha256_manifest": "data/raw/dem_kaynak.json"},
+    {"id": "raw/soil_samples.npz", "source": "SoilGrids v2 REST", "sha256_manifest": "data/raw/soil_kaynak.json"},
+    {"id": "processed/osm_bina.gpkg", "source": "OpenStreetMap Overpass bbox"},
+    {"id": "processed/grid_25m.parquet", "source": "process_grid.py", "cells": 799594},
+    {"id": "db/grid_cells", "source": "load_postgis.py"}
+  ],
+  "activities": [
+    {"id": "download_dem", "used": [], "generated": ["raw/dem_raw.tif"]},
+    {"id": "download_soil", "used": [], "generated": ["raw/soil_samples.npz"]},
+    {"id": "process_grid", "used": ["raw/dem_raw.tif", "raw/soil_samples.npz", "processed/osm_su_yollari.gpkg"], "generated": ["processed/grid_25m.parquet"]},
+    {"id": "load_postgis", "used": ["processed/grid_25m.parquet"], "generated": ["db/grid_cells"]},
+    {"id": "seed_legal", "used": ["RES-001"], "generated": ["db/legal_constraints"]}
+  ],
+  "agents": [{"id": "yrkds-pipeline", "version": "0.2.0"}]
+}

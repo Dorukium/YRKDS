@@ -1,0 +1,13 @@
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "skor_motoru"
+version = "0.1.0"
+description = "YRKDS deterministik skorlama cekirdegi (PyO3)"
+requires-python = ">=3.12"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+module-name = "skor_motoru"

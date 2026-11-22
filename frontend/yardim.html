@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="description" content="YRKDS — Antalya merkez ilçeleri için deterministik, kanıtlı parsel afet riski ön-tarama ve karar destek sistemi.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yardım — YRKDS</title><link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<meta property="og:image" content="/assets/icons/og.svg">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Yardım</h1></div></div>
+<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html">Raporlar</a>
+<a href="/veri-katalogu.html">Veri Kataloğu</a><a href="/yontem.html">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a><a href="/yardim.html" aria-current="page">Yardım</a><a href="/login">Giriş</a></nav></header>
+<main class="auth-icerik">
+<div class="kart"><h2>Başlangıç turu</h2><p class="kucuk">Harita sayfasında 4 adımlı tur: arama, katmanlar, çizim, sonuç/PDF.
+Tur durumunda <code>localStorage</code> kullanılır; gizli veri saklanmaz.</p>
+<a class="btn btn-dark btn-sm" href="/harita.html">Haritayı aç ve turu başlat</a></div>
+<div class="kart"><h3>Klavye kısayolları</h3><table class="tablo"><tbody>
+<tr><td><kbd>D</kbd></td><td>Poligon çiz</td><td><kbd>Enter</kbd></td><td>Çizimi bitir</td></tr>
+<tr><td><kbd>Esc</kbd></td><td>İptal</td><td><kbd>Ctrl+Z</kbd></td><td>Son köşeyi geri al</td></tr>
+<tr><td><kbd>Del</kbd></td><td>Çizimi temizle</td><td><kbd>M</kbd></td><td>Ölç</td></tr>
+<tr><td><kbd>L</kbd></td><td>Katmanlar</td><td><kbd>G</kbd></td><td>Lejant</td></tr>
+<tr><td><kbd>E</kbd></td><td>Dışa aktar</td><td><kbd>F</kbd></td><td>Tam ekran</td></tr>
+</tbody></table></div>
+<div class="kart"><h3>Sözlük</h3><dl class="kucuk">
+<dt><b>DEM</b></dt><dd>Sayısal yükseklik modeli; eğim, TWI ve HAND türetilir.</dd>
+<dt><b>TWI</b></dt><dd>Topografik ıslaklık indeksi; su birikme eğilimi.</dd>
+<dt><b>Vs30</b></dt><dd>Üst 30 m ortalama kayma dalgası hızı; zemin sınıfı belirler.</dd>
+<dt><b>InSAR</b></dt><dd>Uydu radar interferometrisi ile yer deformasyon hızı (mm/yıl). Bu kurulumda yok.</dd>
+<dt><b>HAND</b></dt><dd>En yakın drenaj noktasına göre yükseklik; taşkın proxy'si.</dd>
+</dl></div>
+<div class="kart" id="kvkk"><h3>KVKK / gizlilik beyanı</h3><p class="kucuk">Yalnızca kullanıcı adı, argon2id parola özeti, rol ve son giriş zamanı saklanır.
+Oturum çerezi imzalıdır; harici analitiğe veya üçüncü taraf izleyiciye veri gönderilmez.
+Harita karoları OSM/Esri/OpenTopoMap sunucularından yüklenir; bu taleplerde IP adresiniz ilgili
+karu sağlayıcısının erişim kayıtlarına düşebilir.</p></div>
+<div class="kart" id="erisilebilirlik"><h3>Erişilebilirlik beyanı</h3><p class="kucuk">WCAG 2.2 AA hedeflenir: ≥4.5:1 metin kontrastı, klavye erişimi, görünür odak halkası,
+aria-live sonuç paneli, renk körlüğü güvenli Okabe-Ito paleti. axe-core taraması kapılarda çalışır.</p></div>
+<div class="kart" id="veri-kaynaklari"><h3>Veri kaynakları</h3><p class="kucuk"><a href="/veri-katalogu.html">Veri Kataloğu</a> ve
+<a href="/data/raw/research_manifest.json">araştırma manifesti</a>.</p></div>
+<div class="kart" id="iletisim"><h3>İletişim</h3><p class="kucuk">Açık veri önerileri ve hata bildirimleri için proje deposu üzerinden iletişim kurun.</p></div>
+</main>
+<footer class="alt-bilgi"><span>v0.2.0 · MIT</span><a href="#kvkk">KVKK</a><a href="#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+</body></html>

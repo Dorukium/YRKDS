@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="YRKDS — Antalya merkez ilçeleri için deterministik, kanıtlı parsel afet riski ön-tarama ve karar destek sistemi.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harita &amp; Analiz — YRKDS</title>
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<meta property="og:image" content="/assets/icons/og.svg">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+<link rel="stylesheet" href="css/style.css">
+<script>try{var _t=localStorage.getItem('yrkds-tema');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script>
+</head>
+<body>
+<div id="app" x-data="yrkds()" x-init="baslat()">
+  <header class="ust">
+    <div class="baslik">
+      <a href="/" class="logo-link" aria-label="YRKDS ana sayfa"><span class="logo">YRKDS</span></a>
+      <div><h1>Harita &amp; Analiz — deterministik parsel risk skorlaması</h1></div>
+    </div>
+    <nav class="ust-menu" aria-label="Ana menü">
+      <a href="/">Ana Sayfa</a>
+      <a href="/harita.html" aria-current="page">Harita &amp; Analiz</a>
+      <a href="/raporlar.html">Raporlar</a>
+      <a href="/veri-katalogu.html">Veri Kataloğu</a>
+      <a href="/yontem.html">Yöntem</a>
+      <a href="/olay-izleme.html">Olay İzleme</a>
+      <a href="/yardim.html">Yardım</a>
+      <a href="/login">Giriş</a>
+    </nav>
+    <div class="durum">
+      <span class="nişan">ML YOK</span>
+      <span class="nişan" x-text="durumMetin">HAZIR</span>
+      <button class="tema-butonu" id="temaButonu" aria-label="Temayı değiştir" title="Tema">◐</button>
+    </div>
+  </header>
+
+  <main class="harita-duzen">
+    <aside class="sol">
+      <div class="sekmeler" role="tablist" aria-label="Yan panel sekmeleri">
+        <button role="tab" data-sekme="katmanlar" aria-selected="true">Katmanlar</button>
+        <button role="tab" data-sekme="lejant" aria-selected="false">Lejant</button>
+        <button role="tab" data-sekme="analiz" aria-selected="false">Analiz</button>
+        <button role="tab" data-sekme="kanit" aria-selected="false">Kanıt</button>
+        <button role="tab" data-sekme="ayarlar" aria-selected="false">Ayarlar</button>
+      </div>
+
+      <section data-panel="katmanlar">
+        <div class="kart">
+          <h5>Ara / Git</h5>
+          <form class="ara-kutu" id="araForm" role="search">
+            <input id="araGirdi" aria-label="Mahalle, ilçe, koordinat veya GeoJSON" placeholder="Mahalle, 36.89,30.70 veya GeoJSON">
+            <button class="btn btn-dark btn-sm" type="submit">Git</button>
+          </form>
+          <div id="araSonuc" class="kucuk muted" role="status"></div>
+        </div>
+        <div class="kart">
+          <h5>Katmanlar</h5>
+          <div class="katman-listesi">
+            <label><input type="checkbox" data-katman="grid" checked> Risk ızgarası (25 m)</label>
+            <label><input type="checkbox" data-katman="bina"> OSM bina ayak izleri</label>
+            <label><input type="checkbox" data-katman="su_yollari"> Su yolları</label>
+            <label><input type="checkbox" data-katman="taskin"> Taşkın yakını</label>
+            <label><input type="checkbox" data-katman="afete_maruz"> Afete maruz bölge</label>
+            <label><input type="checkbox" data-katman="deprem" checked> Deprem olayları</label>
+          </div>
+        </div>
+        <div class="kart">
+          <h5>Meşgul katmanlar</h5>
+          <div id="katmanDurumu" class="kucuk muted">Yükleniyor…</div>
+        </div>
+      </section>
+
+      <section data-panel="lejant" hidden>
+        <div class="kart">
+          <h5>Lejant</h5>
+          <div class="bant-kutu low">Düşük · 0–25</div>
+          <div class="bant-kutu lowmid">Düşük-Orta · 25–50</div>
+          <div class="bant-kutu mid">Orta-Yüksek · 50–70</div>
+          <div class="bant-kutu high">Yüksek · 70–85</div>
+          <div class="bant-kutu crit">Kritik · 85–100</div>
+          <p class="kucuk">VETO ve eksik veri katmanları aşağıda gösterilir.</p>
+          <div class="veto-ornek">VETO — yasal kısıt (mor çapraz tarama)</div>
+          <div class="null-ornek" style="margin-top:6px">NULL — veri yok / doğrulanamadı (gri nokta)</div>
+        </div>
+      </section>
+
+      <section data-panel="analiz" hidden>
+        <div class="kart">
+          <h5>Karşılaştırma / toplu</h5>
+          <button class="btn btn-outline btn-sm w-100" id="karsilastirBtn">İki parseli karşılaştır</button>
+          <label class="kucuk" for="topluDosya" style="display:block;margin-top:8px">GeoJSON/CSV yükle (aday listesi)</label>
+          <input id="topluDosya" type="file" accept=".geojson,.json,.csv" aria-label="Aday dosyası">
+          <div id="karsilastirKutu" hidden></div>
+          <div id="topluKutu"></div>
+        </div>
+        <div class="kart">
+          <h5>Çizim kısayolları</h5>
+          <ul class="kucuk">
+            <li><kbd>D</kbd> çiz · <kbd>Enter</kbd> bitir · <kbd>Esc</kbd> iptal</li>
+            <li><kbd>Ctrl+Z</kbd> son köşe · <kbd>Del</kbd> temizle</li>
+            <li><kbd>M</kbd> ölç · <kbd>L</kbd> katman · <kbd>G</kbd> lejant</li>
+            <li><kbd>E</kbd> dışa aktar · <kbd>F</kbd> tam ekran</li>
+          </ul>
+        </div>
+      </section>
+
+      <section data-panel="kanit" hidden>
+        <div class="kart kucuk" id="kanitOzet">Henüz analiz yok.</div>
+      </section>
+
+      <section data-panel="ayarlar" hidden>
+        <div class="kart">
+          <h5>İklim senaryosu (F4)</h5>
+          <label for="senaryoSec" class="kucuk">Yalnız F bileşenini etkiler · Tahmin rozetli</label>
+          <select id="senaryoSec" aria-label="İklim senaryosu">
+            <option value="bugun">Bugün</option>
+            <option value="ssp245_2050">2050 · SSP2-4.5</option>
+            <option value="ssp585_2050">2050 · SSP5-8.5</option>
+          </select>
+        </div>
+        <div class="kart">
+          <h5>Görünüm</h5>
+          <label><input type="checkbox" id="hareketAzalt"> Hareketi azalt</label>
+          <label><input type="checkbox" id="turSifirla"> Turu yeniden başlat</label>
+          <button class="btn btn-outline btn-sm" id="turBaslat">Tur başlat</button>
+        </div>
+      </section>
+    </aside>
+
+    <section class="harita-alani">
+      <div id="kilavuzRay" class="kilavuz-ray" role="navigation" aria-label="Kılavuz ray"></div>
+      <div id="harita"></div>
+      <div class="leaflet-ust"><span class="goto">Antalya merkez üç ilçe</span></div>
+      <div class="arac-cubugu" role="toolbar" aria-label="Harita araçları">
+        <button data-action="zoom-in" title="Yakınlaştır (+)" aria-label="Yakınlaştır">+</button>
+        <button data-action="zoom-out" title="Uzaklaştır (−)" aria-label="Uzaklaştır">−</button>
+        <button data-action="draw" title="Poligon çiz (D)" aria-label="Poligon çiz">✎</button>
+        <button data-action="measure" title="Ölç (M)" aria-label="Ölç">∿</button>
+        <button data-action="layers" title="Katmanlar (L)" aria-label="Katmanlar">☰</button>
+        <button data-action="legend" title="Lejant (G)" aria-label="Lejant">▦</button>
+        <button data-action="fullscreen" title="Tam ekran (F)" aria-label="Tam ekran">⛶</button>
+        <button data-action="export" title="Dışa aktar (E)" aria-label="Dışa aktar">⇩</button>
+        <button data-action="clear" title="Temizle (Del)" aria-label="Temizle">⌫</button>
+      </div>
+      <div class="tur-uyari" id="turKutu" hidden>
+        <span class="tur-adim" id="turBaslik">1/4</span> <span id="turMetin"></span>
+        <button class="btn btn-sm btn-outline" id="turKapat">Kapat</button>
+      </div>
+      <div class="harita-alt">
+        <span id="koordinat">36.9000°K, 30.7300°D</span>
+        <span id="olcumEtiket" role="status"></span>
+        <span>© OSM · Esri · OpenTopoMap</span>
+      </div>
+    </section>
+
+    <aside class="sag" aria-live="polite" aria-label="Parsel analiz sonucu">
+      <div class="kart bos-durum" id="bosDurum">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M3 6h18v12H3z"/><path d="M7 10l4 4 3-3 3 3"/><circle cx="8" cy="8" r="1"/>
+        </svg>
+        <p>Henüz poligon çizilmedi. Haritada <b>✎</b> aracıyla bir parsel çizin.</p>
+      </div>
+      <template x-if="sonuc">
+      <div class="kart sonuc">
+        <div class="sonuc-baslik">
+          <h5>Parsel Analizi</h5>
+          <button class="kapat" @click="kapat()" aria-label="Paneli kapat">×</button>
+        </div>
+        <div class="skor-kutu" :class="bantSinifi(sonuc.bant)">
+          <div class="skor-buyuk" x-text="sonuc.skor === null ? '—' : sonuc.skor"></div>
+          <div>
+            <div x-text="sonuc.bant" class="bant"></div>
+            <div class="kucuk" x-text="sonuc.karar"></div>
+          </div>
+        </div>
+        <div class="metrikler">
+          <div><span>Güven</span><b x-text="(sonuc.guven_skoru*100).toFixed(0)+'%'"></b>
+            <div class="cubuk"><i :style="`width:${(sonuc.guven_skoru*100).toFixed(0)}%`"></i></div></div>
+          <div><span>Tamlık</span><b x-text="(sonuc.veri_tamligi*100).toFixed(0)+'%'"></b>
+            <div class="cubuk"><i :style="`width:${(sonuc.veri_tamligi*100).toFixed(0)}%`"></i></div></div>
+          <div><span>Yasal kısıt</span><b x-text="sonuc.yasal_kisit_durumu !== 'dogrulandi' ? 'DOĞRULANAMADI' : (sonuc.veto ? 'VAR' : 'YOK')"></b></div>
+        </div>
+        <div class="viz-v2">
+          <svg class="skor-halka" viewBox="0 0 96 96" role="img" aria-label="Skor göstergesi">
+            <circle cx="48" cy="48" r="40" fill="none" stroke="var(--border)" stroke-width="8"/>
+            <circle cx="48" cy="48" r="40" fill="none" stroke="var(--accent)" stroke-width="8"
+              stroke-dasharray="251" :stroke-dashoffset="251 - 251 * Math.min(1, (sonuc.skor ?? 0) / 100)"
+              transform="rotate(-90 48 48)"/>
+            <text x="48" y="54" text-anchor="middle" font-size="20" fill="var(--text)"
+              x-text="sonuc.skor ?? '—'"></text>
+          </svg>
+          <div class="bant-cubuklari">
+            <template x-for="k in ['ZB','L','S','H','F']" :key="k">
+              <div class="bant-satir"><span x-text="k"></span>
+                <div class="bant-iz"><i :style="`width:${Math.max(0,Math.min(1,sonuc.tehlike_kirilimi[k] ?? 0))*100}%`"></i></div>
+                <b class="tabular" x-text="sonuc.tehlike_kirilimi[k] === null ? '—' : sonuc.tehlike_kirilimi[k]"></b>
+              </div>
+            </template>
+            <svg class="sparkline" viewBox="0 0 120 24" aria-label="Duyarlılık aralığı">
+              <line x1="0" y1="12" x2="120" y2="12" stroke="var(--border)"/>
+              <circle :cx="Math.max(0,Math.min(120,(sonuc.skor_araligi.p5 ?? 0)*1.2))" cy="12" r="4" fill="var(--accent)"/>
+              <circle :cx="Math.max(0,Math.min(120,(sonuc.skor_araligi.p95 ?? 0)*1.2))" cy="12" r="4" fill="var(--accent)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="belirsizlik">
+          Duyarlılık aralığı (p5–p95):
+          <b x-text="(sonuc.skor_araligi.p5 ?? '—') + ' – ' + (sonuc.skor_araligi.p95 ?? '—')"></b>
+          · <span x-text="sonuc.guven_ifadesi"></span>
+        </div>
+        <div class="kucuk" x-text="'Senaryo: ' + (sonuc.senaryo?.ad || 'Bugün') + ' · ' + (sonuc.senaryo?.rozet || '—')"></div>
+        <div x-show="sonuc.veto" class="veto-uyari" x-text="sonuc.veto_neden"></div>
+        <canvas id="radar" height="220"></canvas>
+        <details open><summary>Öneri</summary>
+        <p class="kucuk" x-text="sonuc.oneri"></p></details>
+        <details open><summary>Kanıt zinciri</summary>
+        <div class="kanit-listesi">
+          <template x-for="k in sonuc.kanit" :key="k.katman+k.kaynak">
+            <div class="kanit"><b x-text="k.katman"></b> <span class="kaynak" x-text="k.kaynak"></span>
+              <div x-text="k.deger"></div></div>
+          </template>
+        </div>
+        </details>
+        <details><summary>Belirsizlikler</summary>
+        <div x-show="sonuc.uyarilar.length" class="uyarilar">
+          <ul class="kucuk"><template x-for="u in sonuc.uyarilar" :key="u"><li x-text="u"></li></template></ul>
+        </div></details>
+        <details open><summary>Eylemler</summary>
+        <div class="cta">
+          <a class="btn btn-dark btn-sm" :href="'/api/report/'+sonuc.parsel_id.split(':')[0]+'.pdf'">PDF raporu indir</a>
+          <button class="btn btn-outline btn-sm" id="geojsonIndir">GeoJSON indir</button>
+        </div></details>
+      </div>
+      </template>
+    </aside>
+  </main>
+</div>
+
+<footer class="alt-bilgi">
+  <span>v0.2.0 · MIT · <a href="/api/docs">API docs</a></span>
+  <a href="/yardim.html#veri-kaynaklari">Veri kaynakları</a>
+  <a href="/yardim.html#erisilebilirlik">Erişilebilirlik beyanı</a>
+  <a href="/yardim.html#kvkk">KVKK</a>
+  <a href="/yardim.html#iletisim">İletişim</a>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js" defer></script>
+<script src="js/charts.js"></script>
+<script src="js/panels.js"></script>
+<script src="js/layers.js"></script>
+<script src="js/draw.js"></script>
+<div class="modal" id="komutPaleti" hidden>
+  <div class="kart">
+    <h3>Komut paleti (Ctrl+K)</h3>
+    <input type="search" aria-label="Komut ara" placeholder="Sayfa, katman, eylem…" style="width:100%;padding:8px">
+    <ul style="list-style:none;padding:0"></ul>
+    <button class="btn btn-outline btn-sm" data-kapat>Kapat</button>
+  </div>
+</div>
+<script src="js/v2.js"></script>
+<script src="js/ux.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>

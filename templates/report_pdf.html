@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>YRKDS Risk Raporu — {{ sonuc.parsel_id }}</title>
+<style>
+  @page { size: A4; margin: 18mm; }
+  body { font-family: "DejaVu Sans", Arial, sans-serif; color: #1b2430; font-size: 10pt; }
+  h1 { font-size: 18pt; color: #0b5c5d; margin-bottom: 2mm; }
+  h2 { font-size: 12pt; color: #0b5c5d; border-bottom: 1px solid #ccc; padding-bottom: 2mm; margin-top: 8mm; }
+  .alt { color: #667; font-size: 8pt; }
+  table { width: 100%; border-collapse: collapse; margin-top: 3mm; }
+  th, td { border: 1px solid #ccc; padding: 2mm; text-align: left; vertical-align: top; }
+  th { background: #eef5f4; }
+  .karar { font-size: 14pt; font-weight: bold; padding: 4mm; background: #eef5f4; border-left: 4px solid #0b5c5d; }
+  .uyari { color: #8a4b00; font-size: 9pt; }
+  .footer { margin-top: 10mm; font-size: 8pt; color: #667; }
+  .kapak { padding: 40mm 0 20mm; text-align:center; }
+  .kapak-logo { display:inline-block; border:3px solid #0b5c5d; color:#0b5c5d; border-radius:8px;
+                padding:8px 18px; font-size:22pt; font-weight:700; letter-spacing:2px; }
+  .kapak h1 { font-size:26pt; margin:24mm 0 8mm; }
+  .kapak-bantlar i { display:inline-block; width:28mm; height:3mm; margin:2mm; }
+  .kapak .alt { margin-top:20mm; }
+</style>
+</head>
+<body>
+<div class="kapak">
+  <div class="kapak-logo">YRKDS</div>
+  <h1>Antalya Yatırım Riski<br>Karar Destek Sistemi</h1>
+  <p>Parsel risk değerlendirme raporu</p>
+  <div class="kapak-bantlar"><i style="background:#009E73"></i><i style="background:#56B4E9"></i>
+    <i style="background:#F0E442"></i><i style="background:#E69F00"></i><i style="background:#D55E00"></i></div>
+  <p class="alt">Deterministik ön-tarama · yasal izin yerine geçmez · v0.4.0</p>
+</div>
+<div style="page-break-after:always"></div>
+<h1>Antalya Yatırım Riski Karar Destek Sistemi</h1>
+<div class="alt">Parsel risk değerlendirme raporu · {{ sonuc.olusturulma.strftime('%Y-%m-%d %H:%M UTC') }}</div>
+
+<h2>1. Kimlik ve Karar</h2>
+<table>
+  <tr><th>Parsel / Sorgu ID</th><td>{{ sonuc.parsel_id }}</td></tr>
+  <tr><th>Skor (0–100)</th><td>{{ sonuc.skor if sonuc.skor is not none else 'KARARSIZ — sayısal skor yok' }}</td></tr>
+  <tr><th>Bant</th><td>{{ sonuc.bant }}</td></tr>
+  <tr><th>Karar</th><td>{{ sonuc.karar }}</td></tr>
+  <tr><th>Skor aralığı (±%10 ağırlık, p5–p95)</th>
+      <td>{{ sonuc.skor_araligi.p5 }} – {{ sonuc.skor_araligi.p95 }}</td></tr>
+  <tr><th>Güven</th><td>{{ '%.2f'|format(sonuc.guven_skoru) }} — {{ sonuc.guven_ifadesi }}</td></tr>
+  <tr><th>Veri tamlığı</th><td>{{ '%.0f'|format(sonuc.veri_tamligi * 100) }}% — {{ sonuc.veri_tamligi_aciklama }}</td></tr>
+</table>
+
+<div class="karar">{{ sonuc.karar }}</div>
+
+<h2>1.1 Teknik olmayan özet</h2>
+<p>Bu parselde yapılaşma değerlendirmesi, afet riskinin yalnızca bir ön
+göstergesidir. Hesaplanan puan {{ sonuc.skor if sonuc.skor is not none else 'yok' }}
+olarak bulunmuştur; gerçek değerin {{ sonuc.skor_araligi.p5 }} ile
+{{ sonuc.skor_araligi.p95 }} arasında olabileceği düşünülmektedir.
+Buna göre risk değerlendirmesi <b>{{ sonuc.guven_ifadesi }}</b> düzeyindedir.
+Kesin bir karar için yerinde zemin etüdü ve resmî imar/afet mevzuatı kontrolü
+gerekir. Bu rapor "bina yıkılır/yıkılmaz" demez; koşullu risk ve belirsizlik
+sunar.</p>
+{% if sonuc.veto %}<p class="uyari"><b>Yasal kısıt:</b> {{ sonuc.veto_neden }}</p>{% endif %}
+
+<h2>2. Tehlike Kırılımı (0–1)</h2>
+<table>
+  <tr><th>Kod</th><th>Tehlike</th><th>Puan</th></tr>
+  {% for kod, ad in [('ZB','Zemin büyütmesi'),('L','Sıvılaşma'),('S','Oturma/çökme'),('H','Heyelan/kaya düşmesi'),('F','Taşkın')] %}
+  <tr><td>{{ kod }}</td><td>{{ ad }}</td>
+      <td>{{ '%.2f'|format(sonuc.tehlike_kirilimi[kod]) if sonuc.tehlike_kirilimi.get(kod) is not none else 'veri yok' }}</td></tr>
+  {% endfor %}
+</table>
+
+<h2>3. Öneri</h2>
+<p>{{ sonuc.oneri }}</p>
+
+<h2>4. Kanıt Zinciri</h2>
+<table>
+  <tr><th>Katman</th><th>Kaynak</th><th>Değer</th><th>Güven</th><th>Yetkinlik</th></tr>
+  {% for k in sonuc.kanit %}
+  <tr><td>{{ k.katman }}</td><td>{{ k.kaynak }}</td><td>{{ k.deger }}</td>
+      <td>{{ k.guven }}</td><td>{{ k.yetkinlik }}</td></tr>
+  {% endfor %}
+</table>
+
+{% if sonuc.uyarilar %}
+<h2>5. Belirsizlikler ve Uyarılar</h2>
+<ul>{% for u in sonuc.uyarilar %}<li class="uyari">{{ u }}</li>{% endfor %}</ul>
+{% endif %}
+
+<div class="footer">
+Bu rapor olasılıksal risk değerlendirmesidir; "bina yıkılır/yıkılmaz" iddiası içermez.
+Deterministik kural tabanlı hesaplama yapılır, ML modeli eğitilmez. Eksik veri açıkça beyan edilir.
+Kaynak: TÜBİTAK 2204-A YRKDS proje veri seti, Copernicus/SoilGrids/OSM açık verileri.
+</div>
+</body>
+</html>

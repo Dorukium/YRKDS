@@ -1,0 +1,27 @@
+# --- Rust skor motoru wheel ---
+FROM python:3.12-slim AS rust-builder
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl build-essential && rm -rf /var/lib/apt/lists/*
+RUN curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN pip install --no-cache-dir maturin
+WORKDIR /build
+COPY skor_motoru ./skor_motoru
+RUN maturin build --release --manifest-path skor_motoru/Cargo.toml --out /wheels
+
+# --- API imaji ---
+FROM python:3.12-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpango-1.0-0 libpangoft2-1.0-0 libcairo2 libgdk-pixbuf-2.0-0 libffi8 \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir uv
+WORKDIR /app
+COPY pyproject.toml uv.lock README.md ./
+COPY app ./app
+COPY templates ./templates
+COPY sql ./sql
+COPY --from=rust-builder /wheels /wheels
+ENV VIRTUAL_ENV=/app/.venv PATH="/app/.venv/bin:${PATH}"
+RUN uv sync --frozen --no-install-project --all-extras && uv pip install /wheels/*.whl
+EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

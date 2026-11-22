@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}YRKDS{% endblock %}</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="auth-sayfa">
+<header class="ust">
+  <div class="baslik">
+    <a href="/" class="logo-link" aria-label="YRKDS ana sayfa"><span class="logo">YRKDS</span></a>
+    <div><h1>{% block baslik %}Yatırım Riski Karar Destek Sistemi{% endblock %}</h1></div>
+  </div>
+  <nav class="ust-menu" aria-label="Ana menü">
+    <a href="/">Ana Sayfa</a>
+    <a href="/harita.html">Harita &amp; Analiz</a>
+    <a href="/raporlar.html">Raporlar</a>
+    <a href="/veri-katalogu.html">Veri Kataloğu</a>
+    <a href="/yontem.html">Yöntem</a>
+    <a href="/olay-izleme.html">Olay İzleme</a>
+    <a href="/yardim.html">Yardım</a>
+    {% if oturum %}<a href="/profile">{{ oturum.u }}</a><a href="/logout">Çıkış</a>
+    {% else %}<a href="/login">Giriş</a>{% endif %}
+  </nav>
+</header>
+<main class="auth-icerik">
+  {% if hata %}<div class="form-hata" role="alert">{{ hata }}</div>{% endif %}
+  {% if bilgi %}<div class="form-bilgi" role="status">{{ bilgi }}</div>{% endif %}
+  {% block icerik %}{% endblock %}
+</main>
+<footer class="alt-bilgi">
+  <span>v0.2.0 · <a href="/api/docs">API docs</a> · <a href="/yardim.html#kvkk">KVKK</a> ·
+  <a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+name: YRKDS Gates
+
+on: [push, pull_request]
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_DB: yrkds
+          POSTGRES_USER: yrkds
+          POSTGRES_PASSWORD: yrkds
+        ports: ['55432:5432']
+        options: >-
+          --health-cmd "pg_isready -U yrkds -d yrkds"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with: { version: "latest" }
+      - name: Python 3.12
+        run: uv python install 3.12
+      - name: Rust + maturin
+        run: |
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+          pip install maturin
+      - name: Kurulum
+        run: |
+          uv sync --python 3.12 --all-extras
+          VIRTUAL_ENV="$PWD/.venv" maturin develop --release --manifest-path skor_motoru/Cargo.toml
+          docker compose exec -T db psql -U yrkds -d yrkds -f /dev/stdin < sql/init.sql || true
+      - name: Lint + tip
+        run: make lint typecheck
+      - name: Test + kapsam
+        run: make test cov
+      - name: Kapılar
+        run: make parity hydro independent seismic legal
+      - name: Servisleri başlat
+        run: docker compose up -d --build
+      - name: E2E + erişilebilirlik
+        run: |
+          npm i -g playwright @axe-core/playwright
+          npx playwright install chromium
+          make e2e a11y
+      - name: Güvenlik + SBOM
+        run: make security sbom

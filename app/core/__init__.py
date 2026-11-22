@@ -1,0 +1,1 @@
+"""Deterministik skorlama çekirdeği."""

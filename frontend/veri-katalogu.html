@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="YRKDS veri katmanları, yetkinlik rozetleri, kapsam ve lisans bilgileri.">
+<title>Veri Kataloğu — YRKDS</title><link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<meta property="og:image" content="/assets/icons/og.svg">
+<link rel="stylesheet" href="css/style.css">
+<script>try{var _t=localStorage.getItem('yrkds-tema');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script></head><body>
+<header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Veri Kataloğu</h1></div></div>
+<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html">Raporlar</a>
+<a href="/veri-katalogu.html" aria-current="page">Veri Kataloğu</a><a href="/yontem.html">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a><a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<main class="auth-icerik">
+<div class="kart"><h2>Katman envanteri</h2><p class="kucuk">Her katman U7 yetkinlik rozetiyle gösterilir:
+<b>Otorite</b> birincil ölçüm, <b>Proxy</b> vekil ölçüm, <b>Tahmin</b> türetilmiş değer,
+<b>Araştırma</b> resmi olmayan çapraz kontrol, <b>Eksik</b> veri yok.</p></div>
+<div class="kart"><h3>Katmanlar</h3>
+<table class="tablo"><thead><tr><th>Katman</th><th>Yetkinlik</th><th>Kapsam</th><th>Güncelleme</th><th>Kaynak / lisans</th><th>Not</th></tr></thead>
+<tbody id="katalogSatirlar"><tr><td colspan="6">Yükleniyor…</td></tr></tbody></table></div>
+<div class="kart"><h3>Çapraz kontroller</h3><p class="kucuk"><a href="/docs/capraz_kontrol.md">capraz_kontrol.md</a> ·
+<a href="/data/raw/enrichment_manifest.json">enrichment manifest</a> ·
+<a href="/data/raw/soil_wcs_manifest.json">SoilGrids WCS manifest</a></p></div>
+</main>
+<footer class="alt-bilgi"><span>v0.3.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+<script>
+(async()=>{const t=document.getElementById('katalogSatirlar');
+try{const r=await fetch('/api/catalog');const d=await r.json();
+t.innerHTML=d.map(k=>`<tr><td>${k.ad}</td><td><span class="rozet rozet-${String(k.yetkinlik)}">${k.yetkinlik}</span></td>
+<td class="tabular">${k.kapsam_pct}%</td><td>${k.guncelleme}</td><td class="kucuk">${k.kaynak}<br>${k.lisans}</td>
+<td class="kucuk">${k.not}</td></tr>`).join('');}
+catch(e){t.innerHTML='<tr><td colspan="6" class="muted">Katalog yüklenemedi — yeniden deneyin.</td></tr>';}})();
+</script></body></html>

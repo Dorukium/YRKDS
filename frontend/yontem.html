@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="description" content="YRKDS — Antalya merkez ilçeleri için deterministik, kanıtlı parsel afet riski ön-tarama ve karar destek sistemi.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yöntem — YRKDS</title><link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<meta property="og:image" content="/assets/icons/og.svg">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a><div><h1>Yöntem</h1></div></div>
+<nav class="ust-menu" aria-label="Ana menü"><a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html">Raporlar</a>
+<a href="/veri-katalogu.html">Veri Kataloğu</a><a href="/yontem.html" aria-current="page">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a><a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<main class="auth-icerik">
+<div class="kart"><h2>Skor formülü</h2>
+<p><code>skor = 100 × (0.25·ZB + 0.20·L + 0.25·S + 0.15·H + 0.15·F)</code></p>
+<p class="kucuk">Her alt puan 0–1. Eksik alt puan 0 varsayılmaz; mevcut ağırlıklar yeniden normalize edilir ve güven kareyle cezalandırılır.</p></div>
+<div class="kart"><h3>Karar bantları ve üst kurallar</h3>
+<ul class="kucuk"><li>0–25 Düşük · 25–50 Düşük-Orta · 50–70 Orta-Yüksek · 70–85 Yüksek · 85–100 Kritik</li>
+<li><b>VETO:</b> doğrulanmış yasal kısıt varsa skor ne olursa olsun "Uygun Değil".</li>
+<li><b>KARARSIZ:</b> veri tamlığı %40 altı veya bileşen kapsamı %50 altıysa sayısal skor yok.</li></ul></div>
+<div class="kart"><h3>Doğrulama özeti</h3>
+<p class="kucuk">2009 kalibrasyon: Precision 0.941 · Recall 0.941 · Wilson %95 CI [0.730, 0.990].
+2003/2008 bağımsız olay etiketi bulunamadı; <b>bu bağımsız doğrulama değildir</b>.
+Ayrıntı: <a href="/docs/dogrulama_raporu.md">dogrulama_raporu.md</a>.</p></div>
+<div class="kart"><h3>ADR arşivi</h3>
+<ul class="kucuk"><li><a href="/docs/ADR/0001-dem-kaynagi.md">0001</a> DEM kaynağı</li>
+<li><a href="/docs/ADR/0002-veto-proxy-kaldirildi.md">0002</a> VETO proxy kaldırıldı</li>
+<li><a href="/docs/ADR/0003-bagimsiz-dogrulama-verisi.md">0003</a> Bağımsız doğrulama verisi</li>
+<li><a href="/docs/ADR/0004-sismik-model-lisans.md">0004</a> Sismik model lisansı</li></ul></div>
+<div class="kart"><h3>Sınırlılıklar</h3><p class="kucuk">Parsel bazlı InSAR/YASS ölçümü yok; Vs30/fay jeolojisi ilçe düzeyi türetilmiş;
+model eğitilmez. Metodoloji: <a href="/docs/metodoloji.md">metodoloji.md</a>.</p></div>
+</main>
+<footer class="alt-bilgi"><span>v0.2.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+</body></html>

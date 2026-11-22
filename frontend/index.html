@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="YRKDS — Antalya merkez ilçeleri için deterministik, kanıtlı parsel afet riski ön-tarama ve karar destek sistemi.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YRKDS — Antalya Yatırım Riski Karar Destek Sistemi</title>
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<meta property="og:image" content="/assets/icons/og.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="ust">
+  <div class="baslik">
+    <a href="/" class="logo-link" aria-label="YRKDS ana sayfa"><span class="logo">YRKDS</span></a>
+    <div><h1>Antalya Yatırım Riski Karar Destek Sistemi</h1></div>
+  </div>
+  <nav class="ust-menu" aria-label="Ana menü">
+    <a href="/" aria-current="page">Ana Sayfa</a>
+    <a href="/harita.html">Harita &amp; Analiz</a>
+    <a href="/raporlar.html">Raporlar</a>
+    <a href="/veri-katalogu.html">Veri Kataloğu</a>
+    <a href="/yontem.html">Yöntem</a>
+    <a href="/olay-izleme.html">Olay İzleme</a>
+    <a href="/yardim.html">Yardım</a>
+    <a href="/login">Giriş</a>
+  </nav>
+  <div class="durum"><button class="tema-butonu" id="temaButonu" aria-label="Temayı değiştir" title="Tema">◐</button></div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <h2>Antalya'da yatırım parsellerinin afet riskini <span style="color:var(--accent)">şeffafça</span> ön-tara</h2>
+    <p>Kepez, Muratpaşa ve Konyaaltı için 25 m grid üzerinde deterministik, kural tabanlı
+       risk skoru üretir. Neden bu kararı verdiğimizi kanıtlarıyla gösteririz.</p>
+    <div class="cta">
+      <a class="btn btn-dark" href="/harita.html">Haritayı Aç</a>
+      <a class="btn btn-outline" href="/yontem.html">Yöntemi İncele</a>
+    </div>
+  </div>
+  <div class="istatistik-kutu" id="canliIstatistik" aria-live="polite">
+    <div class="istatistik"><span>Grid hücresi</span><b class="skeleton" style="width:90px"></b></div>
+    <div class="istatistik"><span>Olay kaydı</span><b class="skeleton" style="width:60px"></b></div>
+    <div class="istatistik"><span>Katman</span><b>10</b></div>
+    <div class="istatistik"><span>Son veri güncelleme</span><b>22.11.2026</b></div>
+  </div>
+</section>
+
+<section class="bolum">
+  <h2 class="bolum-baslik">Nasıl çalışır?</h2>
+  <div class="adimlar">
+    <div class="kart adim"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 8-16 8z"/></svg>
+      <h3>1 — Çiz</h3><p class="kucuk">Haritada parsel poligonunu çiz veya koordinat gir.</p></div>
+    <div class="kart adim"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <h3>2 — Hesapla</h3><p class="kucuk">Beş tehlike bileşeni kuralla hesaplanır; eksik veri cezalandırılır.</p></div>
+    <div class="kart adim"><svg class="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7"/></svg>
+      <h3>3 — Raporla</h3><p class="kucuk">Gerekçeli PDF raporu ve GeoJSON çıktısını indir.</p></div>
+  </div>
+</section>
+
+<section class="bolum">
+  <h2 class="bolum-baslik">Risk bantları</h2>
+  <div class="bantlar">
+    <div class="bant-kutu low"><b>Düşük</b><br>0–25<br><span class="muted">standart etüt</span></div>
+    <div class="bant-kutu lowmid"><b>Düşük-Orta</b><br>25–50<br><span class="muted">zemin etüdü + drenaj</span></div>
+    <div class="bant-kutu mid"><b>Orta-Yüksek</b><br>50–70<br><span class="muted">detaylı etüt</span></div>
+    <div class="bant-kutu high"><b>Yüksek</b><br>70–85<br><span class="muted">alternatif parsel</span></div>
+    <div class="bant-kutu crit"><b>Kritik</b><br>85–100<br><span class="muted">uygun değil</span></div>
+  </div>
+  <div class="kart" style="margin-top:12px">
+    <div class="veto-ornek">VETO — yasal kısıt: skor ne olursa olsun "Uygun Değil".</div>
+    <p class="kucuk muted" style="margin-top:8px">Renk körlüğü güvenli Okabe-Ito paleti kullanılır; tek başına renge güvenilmez.</p>
+  </div>
+</section>
+
+<section class="bolum">
+  <h2 class="bolum-baslik">Dürüst sınırlar</h2>
+  <div class="kart">
+    <h3>Bu sistem neyi iddia etmez?</h3>
+    <ul class="kucuk">
+      <li>Yasal izin veya imar hakkı yerine geçmez.</li>
+      <li>"Bina yıkılır / yıkılmaz" demez; olasılıksal risk ve belirsizlik sunar.</li>
+      <li>Eksik veriyi ölçüm gibi sunmaz; NULL bırakıp güveni düşürür.</li>
+      <li>InSAR, SYGM taşkın haritası ve TDTH grid verisi bu kurulumda yoktur.</li>
+    </ul>
+    <a class="kucuk" href="/yontem.html">Tüm sınırlılıkların detayı →</a>
+  </div>
+</section>
+
+<section class="bolum">
+  <h2 class="bolum-baslik">Veri kaynakları</h2>
+  <div class="kart kaynak-listesi" id="kaynakRozetleri">
+    <a href="https://deprem.afad.gov.tr" target="_blank" rel="noopener">AFAD</a>
+    <a href="https://yerbilimleri.mta.gov.tr" target="_blank" rel="noopener">MTA</a>
+    <a href="https://mgm.gov.tr" target="_blank" rel="noopener">MGM</a>
+    <a href="https://www.tarimorman.gov.tr/SYGM" target="_blank" rel="noopener">SYGM</a>
+    <a href="https://dataspace.copernicus.eu" target="_blank" rel="noopener">Copernicus</a>
+    <a href="https://soilgrids.org" target="_blank" rel="noopener">SoilGrids</a>
+    <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a>
+    <a href="https://www.resmigazete.gov.tr" target="_blank" rel="noopener">Resmî Gazete</a>
+    <a href="/veri-katalogu.html">Tüm katalog →</a>
+  </div>
+</section>
+
+<section class="bolum">
+  <h2 class="bolum-baslik">Son olaylar</h2>
+  <div class="kart"><ul class="olay-akisi" id="sonOlaylar" aria-live="polite"><li class="muted">Yükleniyor…</li></ul></div>
+</section>
+
+<section class="bolum">
+  <h2 class="bolum-baslik">Örnek rapor</h2>
+  <div class="kart">
+    <p class="kucuk">Aşağıda örnek bir parsemin PDF raporu önizlenir. Kendi parseliniz için
+      <a href="/harita.html">haritada analiz</a> yapın.</p>
+    <object data="/api/report/1.pdf" type="application/pdf" width="100%" height="380" aria-label="Örnek PDF rapor">
+      <p>PDF önizleme desteklenmiyor. <a href="/api/report/1.pdf">Raporu indir</a>.</p>
+    </object>
+    <div style="margin-top:8px"><a class="btn btn-outline btn-sm" href="/api/report/1.pdf">PDF indir</a></div>
+  </div>
+</section>
+
+<section class="bolum sss">
+  <h2 class="bolum-baslik">Sık sorulan sorular</h2>
+  <div class="kart akordeon">
+    <details><summary>Neden ML yok?</summary><p class="kucuk">Kural tabanlı deterministik hesaplama, denetlenebilirlik ve tekrarlanabilirlik için tercih edildi. Eğitim verisi yetersiz.</p></details>
+    <details><summary>Skor ne demek?</summary><p class="kucuk">Göreli risk sıralamasıdır; olasılık veya yıkım tahmini değildir.</p></details>
+    <details><summary>Veri eksikse ne olur?</summary><p class="kucuk">Eksik alan NULL bırakılır, güven düşürülür; kapsam %50 altındaysa sayısal skor gösterilmez.</p></details>
+    <details><summary>Yasal geçerliliği var mı?</summary><p class="kucuk">Yok. Resmî imar ve afet mevzuatı kontrolü ayrıca yapılmalıdır.</p></details>
+    <details><summary>Kaynaklar nerede?</summary><p class="kucuk"><a href="/veri-katalogu.html">Veri Kataloğu</a> sayfasında lisans, SHA256 ve kalite özetleriyle.</p></details>
+    <details><summary>Nasıl katkı yapabilirim?</summary><p class="kucuk">Açık veri önerileri için <a href="/yardim.html#iletisim">iletişim</a> bölümüne bakın.</p></details>
+  </div>
+</section>
+</main>
+
+<footer class="alt-bilgi">
+  <span>v0.2.0 · MIT · <a href="/api/docs">API docs</a></span>
+  <a href="/yardim.html#veri-kaynaklari">Veri kaynakları</a>
+  <a href="/yardim.html#erisilebilirlik">Erişilebilirlik beyanı</a>
+  <a href="/yardim.html#kvkk">KVKK</a>
+  <a href="/yardim.html#iletisim">İletişim</a>
+</footer>
+<script src="js/home.js"></script>
+</body>
+</html>

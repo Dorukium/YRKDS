@@ -1,0 +1,24 @@
+{% extends "base_auth.html" %}
+{% block title %}Kullanıcılar — YRKDS{% endblock %}
+{% block baslik %}Yönetim — Kullanıcılar{% endblock %}
+{% block icerik %}
+<section class="kart">
+  <h2>Kullanıcılar</h2>
+  <table class="tablo">
+    <thead><tr><th>Kullanıcı</th><th>Rol</th><th>Son giriş</th><th>Parola değiştirmeli</th></tr></thead>
+    <tbody>{% for k in kullanicilar %}
+      <tr><td>{{ k.username }}</td><td>{{ k.role }}</td><td>{{ k.last_login or '—' }}</td>
+      <td>{{ 'evet' if k.must_change_password else 'hayır' }}</td></tr>
+    {% endfor %}</tbody>
+  </table>
+  <h3>Yeni analist</h3>
+  <form method="post" action="/admin/users" class="auth-form">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <label for="yeni_kullanici">Kullanıcı adı</label>
+    <input id="yeni_kullanici" name="username" required maxlength="80">
+    <label for="yeni_parola">Geçici parola (en az 12 karakter)</label>
+    <input id="yeni_parola" type="password" name="password" required minlength="12">
+    <button type="submit" class="btn btn-dark">Oluştur</button>
+  </form>
+</section>
+{% endblock %}

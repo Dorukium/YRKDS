@@ -1,0 +1,20 @@
+{% extends "base_auth.html" %}
+{% block title %}Giriş — YRKDS{% endblock %}
+{% block baslik %}Oturum Açma{% endblock %}
+{% block icerik %}
+<section class="kart auth-kart">
+  <h2>Giriş</h2>
+  <p class="kucuk">Sorgu geçmişiniz ve CSV dışa aktarım için oturum açın.</p>
+  <form method="post" action="/login" class="auth-form">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <label for="kullanici">Kullanıcı adı</label>
+    <input id="kullanici" name="username" autocomplete="username" required maxlength="80">
+    <label for="parola">Parola</label>
+    <input id="parola" type="password" name="password" autocomplete="current-password" required minlength="12">
+    <button type="submit" class="btn btn-dark w-100">Giriş yap</button>
+  </form>
+  {% if kalan_saniye %}
+  <p class="kucuk" role="status">Çok fazla başarısız deneme. {{ kalan_saniye }} saniye sonra tekrar deneyin.</p>
+  {% endif %}
+</section>
+{% endblock %}

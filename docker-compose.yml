@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: yrkds_db
+    environment:
+      POSTGRES_DB: yrkds
+      POSTGRES_USER: yrkds
+      POSTGRES_PASSWORD: yrkds
+    ports:
+      - "55432:5432"
+    volumes:
+      - yrkds_pgdata:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U yrkds -d yrkds"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: yrkds_api
+    environment:
+      DATABASE_URL: postgresql+psycopg://yrkds:yrkds@db:5432/yrkds
+      YRKDS_RATE_LIMIT: ${YRKDS_RATE_LIMIT:-300}
+      REDIS_URL: ${REDIS_URL:-}
+      YRKDS_API_KEY: ${YRKDS_API_KEY:-}
+      YRKDS_ADMIN_USER: ${YRKDS_ADMIN_USER:-admin}
+      YRKDS_ADMIN_PASSWORD: ${YRKDS_ADMIN_PASSWORD:-}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - ./data:/app/data
+      - ./templates:/app/templates
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: yrkds_nginx
+    ports:
+      - "80:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  yrkds_pgdata:

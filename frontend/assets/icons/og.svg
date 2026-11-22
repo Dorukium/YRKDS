@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#0B1220"/>
+<rect x="60" y="60" width="180" height="60" rx="12" fill="none" stroke="#2DD4BF" stroke-width="4"/>
+<text x="80" y="102" fill="#2DD4BF" font-family="sans-serif" font-size="34" font-weight="700">YRKDS</text>
+<text x="60" y="260" fill="#E5EDF5" font-family="sans-serif" font-size="62" font-weight="700">Antalya yatırım riski</text>
+<text x="60" y="340" fill="#E5EDF5" font-family="sans-serif" font-size="62" font-weight="700">karar destek sistemi</text>
+<text x="60" y="430" fill="#A9B8C9" font-family="sans-serif" font-size="30">Deterministik · Kanıtlı · Belirsizliği açık</text>
+<rect x="60" y="500" width="60" height="12" fill="#009E73"/><rect x="128" y="500" width="60" height="12" fill="#56B4E9"/>
+<rect x="196" y="500" width="60" height="12" fill="#F0E442"/><rect x="264" y="500" width="60" height="12" fill="#E69F00"/>
+<rect x="332" y="500" width="60" height="12" fill="#D55E00"/>
+</svg>

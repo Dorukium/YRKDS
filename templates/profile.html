@@ -1,0 +1,23 @@
+{% extends "base_auth.html" %}
+{% block title %}Profil — YRKDS{% endblock %}
+{% block baslik %}Profil{% endblock %}
+{% block icerik %}
+<section class="kart auth-kart">
+  <h2>Hesabım</h2>
+  <table class="tablo">
+    <tr><th>Kullanıcı</th><td>{{ kullanici.username }}</td></tr>
+    <tr><th>Rol</th><td>{{ kullanici.role }}</td></tr>
+    <tr><th>Son giriş</th><td>{{ kullanici.last_login or '—' }}</td></tr>
+  </table>
+  <h3>Parola değiştir</h3>
+  <form method="post" action="/profile/password" class="auth-form">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <label for="eski">Mevcut parola</label>
+    <input id="eski" type="password" name="old" required minlength="12">
+    <label for="yeni">Yeni parola (en az 12 karakter)</label>
+    <input id="yeni" type="password" name="new" required minlength="12">
+    <button type="submit" class="btn btn-dark">Parolayı güncelle</button>
+  </form>
+  {% if kullanici.role == 'admin' %}<p><a href="/admin/users">Kullanıcı yönetimi</a></p>{% endif %}
+</section>
+{% endblock %}

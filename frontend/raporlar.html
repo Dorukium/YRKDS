@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="description" content="YRKDS — Antalya merkez ilçeleri için deterministik, kanıtlı parsel afet riski ön-tarama ve karar destek sistemi.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raporlar — YRKDS</title><link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<meta property="og:image" content="/assets/icons/og.svg">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header class="ust"><div class="baslik"><a href="/" class="logo-link"><span class="logo">YRKDS</span></a>
+<div><h1>Raporlar</h1></div></div><nav class="ust-menu" aria-label="Ana menü">
+<a href="/">Ana Sayfa</a><a href="/harita.html">Harita &amp; Analiz</a><a href="/raporlar.html" aria-current="page">Raporlar</a>
+<a href="/veri-katalogu.html">Veri Kataloğu</a><a href="/yontem.html">Yöntem</a><a href="/olay-izleme.html">Olay İzleme</a>
+<a href="/yardim.html">Yardım</a><a href="/login">Giriş</a></nav></header>
+<main class="auth-icerik">
+<div class="kart">
+  <h2>Sorgu geçmişi</h2>
+  <p class="kucuk" id="girisMesaji">Geçmiş sorgularınızı görmek için <a href="/login">giriş yapın</a>. Anonim olarak yalnızca örnek raporlar görüntülenir.</p>
+  <table class="tablo" id="raporTablosu" hidden>
+    <thead><tr><th>Tarih</th><th>Parsel</th><th>Skor</th><th>Bant</th><th>PDF</th><th>GeoJSON</th></tr></thead><tbody></tbody>
+  </table>
+  <div id="raporBos" class="bos-durum" hidden><p class="muted">Henüz sorgunuz yok. <a href="/harita.html">Haritada analiz yapın.</a></p></div>
+  <div class="ara-kutu" style="margin-top:14px">
+    <select id="ilceFiltre" aria-label="İlçe filtresi"><option value="">Tüm ilçeler</option><option>Kepez</option><option>Muratpasa</option><option>Konyaalti</option></select>
+    <select id="bantFiltre" aria-label="Bant filtresi"><option value="">Tüm bantlar</option><option>Düşük</option><option>Düşük-Orta</option><option>Orta-Yüksek</option><option>Yüksek</option><option>Kritik</option></select>
+    <input id="tarihFiltre" type="date" aria-label="Tarih filtresi">
+    <button class="btn btn-outline btn-sm" id="csvIndir" hidden>CSV indir (analist)</button>
+  </div>
+</div>
+<div class="kart"><h3>Örnek rapor</h3><a class="btn btn-outline btn-sm" href="/api/report/1.pdf">Örnek PDF indir</a></div>
+</main>
+<footer class="alt-bilgi"><span>v0.2.0 · MIT</span><a href="/yardim.html#kvkk">KVKK</a><a href="/yardim.html#erisilebilirlik">Erişilebilirlik</a><a href="/api/docs">API docs</a></footer>
+<script src="js/reports.js"></script></body></html>
