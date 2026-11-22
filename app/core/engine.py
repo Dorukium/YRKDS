@@ -24,6 +24,7 @@ from app.core.confidence import (
     veri_tamligi,
 )
 from app.core.evidence import kanit_olustur
+from app.core.loss import beklenen_kayip
 from app.core.scoring import alt_puanlar, karar_bandi, toplam_skor
 from app.core.sensitivity import guven_ifadesi, skor_araligi
 from app.core.veto_rules import veto_kontrol
@@ -74,6 +75,7 @@ def analiz_et(
     parsel_id: str | None = None,
     legal: dict[str, Any] | None = None,
     senaryo_adi: str = "bugun",
+    ilce: str | None = None,
 ) -> AnalyzeResponse:
     pid = parsel_id or "Q-" + datetime.now(UTC).strftime("%Y%m%d-%H%M%S-%f")[:-3]
     durum = katman_durumu(girdi)
@@ -197,6 +199,7 @@ def analiz_et(
         skor_araligi=skor_araligi(alt),
         guven_ifadesi=guven_ifadesi(guven),
         senaryo=senaryo_bilgi,
+        beklenen_kayip=beklenen_kayip(bant, ilce),
         yasal_kisit_durumu=yasal_durum,
         onlem_bolgesi=bool(legal.get("onlem_bolgesi")) if legal else False,
         oneri=oneri,

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="YRKDS gömme parsel risk widget'ı.">
+<title>YRKDS — Parsel riski</title>
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+<link rel="stylesheet" href="css/style.css"></head>
+<body style="background:transparent">
+<main class="kart" style="max-width:520px;margin:12px auto">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo">YRKDS</span><span class="rozet">TÜBİTAK 2204-A</span>
+  </div>
+  <h2 style="margin-top:10px">Parsel risk özeti</h2>
+  <div id="icerik" class="kucuk" aria-live="polite">Yükleniyor…</div>
+  <p class="alt" style="margin-top:10px">YRKDS © TÜBİTAK 2204-A · olasılıksal ön-tarama, yasal izin değildir.</p>
+  <a id="tamRapor" class="btn btn-dark btn-sm" href="/" target="_blank" rel="noopener">Tam rapor için YRKDS'ye git</a>
+</main>
+<script>
+(async()=>{
+ const id=new URLSearchParams(location.search).get('parcel'); const kutu=document.getElementById('icerik');
+ if(!id){kutu.textContent='Parsel ID belirtilmedi.';return;}
+ try{
+  const r=await fetch('/api/query/'+encodeURIComponent(id)); if(!r.ok) throw new Error(String(r.status));
+  const s=await r.json();
+  document.getElementById('tamRapor').href='/harita.html?q='+encodeURIComponent(id);
+  kutu.innerHTML=`<div class="skor-kutu ${s.bant}"><div class="skor-buyuk">${s.skor??'—'}</div>
+    <div><b>${s.bant}</b><div>${s.karar}</div></div></div>
+    <p><b>Güven:</b> ${s.guven_ifadesi} · <b>Yasal kısıt:</b> ${s.yasal_kisit_durumu==='dogrulandi'?'doğrulandı':'doğrulanamadı'}</p>
+    <ul>${(s.kanit||[]).slice(0,4).map(k=>`<li><b>${k.katman}</b> — ${k.deger} <span class="rozet rozet-${k.yetkinlik}">${k.yetkinlik}</span></li>`).join('')}</ul>`;
+ }catch(e){kutu.textContent='Veri yüklenemedi. Sayfayı yenileyin.';}
+})();
+</script>
+</body></html>

@@ -1,0 +1,11 @@
+{
+  "name": "YRKDS — Antalya Yatırım Riski Karar Destek Sistemi",
+  "short_name": "YRKDS",
+  "start_url": "/harita.html",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#0F766E",
+  "icons": [
+    {"src": "/assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

@@ -45,7 +45,7 @@ def analyze(req: AnalyzeRequest, request: Request) -> AnalyzeResponse:
     geojson = _geom_cikar(req.geojson)
     girdi, meta = poligondan_girdi(geojson)
     sonuc = analiz_et(girdi, req.parsel_id, legal=legal_veto(geojson),
-                      senaryo_adi=req.senaryo)
+                      senaryo_adi=req.senaryo, ilce=meta.get("ilce"))
     if meta.get("uyari"):
         sonuc.uyarilar.append(meta["uyari"])
     sonuc.katman_durumu["kesisen_hucre_sayisi"] = str(meta["hucre_sayisi"])

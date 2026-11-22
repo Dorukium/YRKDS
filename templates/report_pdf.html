@@ -50,6 +50,13 @@
 
 <div class="karar">{{ sonuc.karar }}</div>
 
+{% if sonuc.beklenen_kayip.durum == 'ok' %}
+<h2>Beklenen yıllık kayıp (Tahmin)</h2>
+<p>{{ sonuc.beklenen_kayip.merkez_TL_yil }} TL/yıl
+   (aralık {{ sonuc.beklenen_kayip.alt_TL_yil }} – {{ sonuc.beklenen_kayip.ust_TL_yil }} TL, ±%50).
+   {{ sonuc.beklenen_kayip.aciklama }}</p>
+{% endif %}
+
 <h2>1.1 Teknik olmayan özet</h2>
 <p>Bu parselde yapılaşma değerlendirmesi, afet riskinin yalnızca bir ön
 göstergesidir. Hesaplanan puan {{ sonuc.skor if sonuc.skor is not none else 'yok' }}

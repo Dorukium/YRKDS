@@ -9,6 +9,7 @@
 <meta property="og:image" content="/assets/icons/og.svg">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="css/style.css">
 <script>try{var _t=localStorage.getItem('yrkds-tema');if(_t)document.documentElement.dataset.theme=_t}catch(e){}</script>
 </head>
@@ -220,6 +221,11 @@
           · <span x-text="sonuc.guven_ifadesi"></span>
         </div>
         <div class="kucuk" x-text="'Senaryo: ' + (sonuc.senaryo?.ad || 'Bugün') + ' · ' + (sonuc.senaryo?.rozet || '—')"></div>
+        <div class="kucuk" x-show="sonuc.beklenen_kayip && sonuc.beklenen_kayip.durum === 'ok'">
+          Beklenen yıllık kayıp:
+          <b x-text="sonuc.beklenen_kayip.merkez_TL_yil + ' TL'"></b>
+          <span class="rozet rozet-Tahmin" x-text="sonuc.beklenen_kayip.aralik + ' · Tahmin'"></span>
+        </div>
         <div x-show="sonuc.veto" class="veto-uyari" x-text="sonuc.veto_neden"></div>
         <canvas id="radar" height="220"></canvas>
         <details open><summary>Öneri</summary>
@@ -275,5 +281,6 @@
 <script src="js/v2.js"></script>
 <script src="js/ux.js"></script>
 <script src="js/map.js"></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}))</script>
 </body>
 </html>

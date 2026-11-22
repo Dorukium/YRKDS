@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8"><title>YRKDS Portföy Raporu</title>
+<style>
+@page{size:A4;margin:16mm}
+body{font-family:DejaVu Sans,sans-serif;font-size:9pt;color:#1b2430}
+h1{font-size:20pt;color:#0b5c5d}h2{font-size:13pt;border-bottom:1px solid #ccc;padding-bottom:2mm;margin-top:6mm}
+table{width:100%;border-collapse:collapse;margin:3mm 0}th,td{border:1px solid #ccc;padding:2mm;text-align:left}
+.kapak{text-align:center;padding:35mm 0}h1.kapak-baslik{font-size:26pt}
+.onerilen{background:#eef5f4;padding:4mm;border-left:4px solid #0b5c5d;font-size:11pt}
+.alt{color:#667;font-size:8pt}.sayfa{page-break-after:always}
+.rozet{border:1px solid #999;border-radius:8px;padding:1mm 3mm;font-size:8pt}
+</style></head><body>
+<div class="kapak sayfa">
+<div class="rozet">YRKDS · v0.5.0 · TÜBİTAK 2204-A</div>
+<h1 class="kapak-baslik">Parsel Portföyü<br>Değerlendirme Raporu</h1>
+<p>Belediye meclisi/sunum taslağı — deterministik ön-tarama</p>
+<p class="alt">Yasal izin yerine geçmez; yıkım/yapılabilirlik iddiası içermez.</p>
+</div>
+<h1>Portföy özeti</h1>
+<p class="onerilen">Bu rapor <b>{{ sonuclar|length }}</b> aday parsel arasından
+<b>{{ onerilen.parsel_id }}</b> parselini önermektedir (skor {{ onerilen.skor }},
+bant {{ onerilen.bant }}). Diğer adayların skorları aşağıda sıralanmıştır.</p>
+<table><thead><tr><th>#</th><th>Parsel</th><th>Skor</th><th>Bant</th><th>Karar</th><th>Güven</th></tr></thead>
+<tbody>{% for s in sirali %}<tr><td>{{ loop.index }}</td><td>{{ s.parsel_id }}</td>
+<td>{{ s.skor if s.skor is not none else 'KARARSIZ' }}</td><td>{{ s.bant }}</td>
+<td>{{ s.karar }}</td><td>{{ '%.2f'|format(s.guven_skoru) }}</td></tr>{% endfor %}</tbody></table>
+<p class="alt">Sıralama yalnızca göreli risk içindir; eksik veri güven cezası olarak yansıtıldı.</p>
+{% for s in sirali %}
+<div class="sayfa">
+<h2>{{ loop.index }}. {{ s.parsel_id }} — Analiz</h2>
+<p><b>Skor:</b> {{ s.skor if s.skor is not none else 'KARARSIZ' }} ·
+<b>Bant:</b> {{ s.bant }} · <b>Güven:</b> {{ s.guven_ifadesi }}</p>
+<p><b>Karar:</b> {{ s.karar }}</p>
+<p><b>Öneri:</b> {{ s.oneri }}</p>
+<p><b>Senaryo:</b> {{ s.senaryo.ad }} · <b>Yetkinlik uyarıları:</b>
+{{ s.uyarilar|length }}</p>
+</div>
+<div class="sayfa">
+<h2>{{ loop.index }}. {{ s.parsel_id }} — Kanıt zinciri</h2>
+<table><thead><tr><th>Katman</th><th>Kaynak</th><th>Değer</th><th>Yetkinlik</th></tr></thead>
+<tbody>{% for k in s.kanit %}<tr><td>{{ k.katman }}</td><td>{{ k.kaynak }}</td>
+<td>{{ k.deger }}</td><td>{{ k.yetkinlik }}</td></tr>{% endfor %}</tbody></table>
+<ul>{% for u in s.uyarilar %}<li>{{ u }}</li>{% endfor %}</ul>
+<p class="alt">Bu rapor olasılıksal risk + belirsizlik sunar; yıkım tahmini değildir.</p>
+</div>
+{% endfor %}
+</body></html>

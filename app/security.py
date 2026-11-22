@@ -40,7 +40,8 @@ class GuvenlikBasliklari(BaseHTTPMiddleware):
             "https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; "
             "style-src 'self' https://unpkg.com https://cdn.jsdelivr.net "
             "https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; "
-            "connect-src 'self' https://tile.openstreetmap.org https://server.arcgisonline.com",
+            "connect-src 'self' https://tile.openstreetmap.org https://server.arcgisonline.com; "
+            "frame-ancestors 'self' https://*.bel.tr https://*.gov.tr",
         )
         return response
 

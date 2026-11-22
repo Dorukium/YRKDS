@@ -79,6 +79,7 @@ class AnalyzeResponse(BaseModel):
     skor_araligi: dict[str, Any] = Field(default_factory=dict)
     guven_ifadesi: str = "düşük güven — karar için yetersiz"
     senaryo: dict[str, Any] = Field(default_factory=dict)
+    beklenen_kayip: dict[str, Any] = Field(default_factory=dict)
     yasal_kisit_durumu: str = "dogrulanamadi"
     onlem_bolgesi: bool = False
     oneri: str = ""

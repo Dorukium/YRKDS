@@ -112,6 +112,42 @@ def test_u7_kanit_rozeti_ve_f4_senaryo():
     assert any("S bileşeni için güvenilir iklim çarpanı yok" in u for u in ssp["uyarilar"])
 
 
+def test_b4_b5_embed_ve_pwa():
+    with TestClient(app, follow_redirects=False) as c:
+        assert c.get("/embed.html").status_code == 200
+        assert c.get("/sw.js").status_code == 200
+        assert c.get("/manifest.webmanifest").status_code == 200
+        assert "frame-ancestors" in c.get("/api/saglik").headers.get("content-security-policy", "")
+
+
+def test_b3_beklenen_kayip_tahmin():
+    with TestClient(app, follow_redirects=False) as c:
+        r = c.post("/api/analyze", json={"geojson": POLY}).json()
+    k = r.get("beklenen_kayip", {})
+    assert k["durum"] == "ok" and k["rozet"] == "Tahmin"
+    assert k["alt_TL_yil"] <= k["merkez_TL_yil"] <= k["ust_TL_yil"]
+    assert k["aralik"] == "±%50"
+    assert "ADR-0020" in k["aciklama"]
+
+
+def test_b2_portfoy_pdf():
+    with TestClient(app, follow_redirects=False) as c:
+        kimlikler = []
+        for _ in range(5):
+            r = c.post("/api/analyze", json={"geojson": POLY})
+            kimlikler.append(int(r.json()["parsel_id"].split(":")[0]))
+        pdf = c.post("/api/portfolio-report", json=kimlikler)
+    assert pdf.status_code == 200
+    icerik = pdf.content
+    assert icerik[:4] == b"%PDF"
+    from io import BytesIO
+
+    from pypdf import PdfReader
+
+    sayfa_sayisi = len(PdfReader(BytesIO(icerik)).pages)
+    assert sayfa_sayisi >= 10, sayfa_sayisi
+
+
 def test_b1_what_if_onlem_modulu():
     with TestClient(app, follow_redirects=False) as c:
         baz = c.post("/api/analyze", json={"geojson": POLY}).json()

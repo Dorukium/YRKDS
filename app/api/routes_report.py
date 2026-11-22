@@ -25,6 +25,33 @@ def query_json(query_id: int) -> dict[str, object]:
     return AnalyzeResponse.model_validate(satir[0]).model_dump(mode="json")
 
 
+@router.post("/api/portfolio-report")
+def portfolio_report(ids: list[int]) -> Response:
+    """B2: seçili sorgulardan tek belediye sunum PDF'i üretir."""
+    if not ids or len(ids) > 20:
+        raise HTTPException(400, "1–20 sorgu ID'si gerekli")
+    sonuclar: list[dict[str, object]] = []
+    with get_conn() as conn, conn.cursor() as cur:
+        for qid in ids:
+            cur.execute("SELECT sonuc_json FROM parcel_queries WHERE id=%s", (qid,))
+            satir = cur.fetchone()
+            if satir:
+                sonuclar.append(AnalyzeResponse.model_validate(satir[0]).model_dump(mode="json"))
+    if not sonuclar:
+        raise HTTPException(404, "Sorgu bulunamadı")
+    def _sira(s: dict[str, object]) -> float:
+        deger = s.get("skor")
+        return float(deger) if isinstance(deger, (int, float)) else 999.0
+
+    sirali = sorted(sonuclar, key=_sira)
+    html = _env.get_template("portfolio_pdf.html").render(
+        sonuclar=sonuclar, sirali=sirali, onerilen=sirali[0]
+    )
+    pdf = HTML(string=html, base_url=str(TEMPLATES_DIR)).write_pdf()
+    return Response(content=pdf, media_type="application/pdf",
+                    headers={"Content-Disposition": 'attachment; filename="yrkds-portfoy.pdf"'})
+
+
 @router.get("/api/report/{query_id}.pdf")
 def report(query_id: int) -> Response:
     with get_conn() as conn, conn.cursor() as cur:

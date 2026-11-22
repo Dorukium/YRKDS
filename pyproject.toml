@@ -41,6 +41,7 @@ dev = [
     "itsdangerous>=2.2",
     "pystac-client>=0.8",
     "planetary-computer>=1.0",
+    "pypdf>=5.0",
 ]
 
 [build-system]

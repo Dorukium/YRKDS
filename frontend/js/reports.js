@@ -9,6 +9,7 @@
       veri=await r.json();
       document.getElementById("girisMesaji").textContent="Oturum açık. Sorgularınız aşağıda listelenir.";
       document.getElementById("csvIndir").hidden=false;
+      document.getElementById("portfoyBtn").hidden=false;
       ciz();
     }catch(e){ console.warn(e); }
   }
@@ -23,6 +24,13 @@
       <td><a href="/api/query/${q.sonuc_id}.geojson">GeoJSON</a></td></tr>`).join("");
   }
   ["ilceFiltre","bantFiltre","tarihFiltre"].forEach(id=>document.getElementById(id).addEventListener("change",ciz));
+  document.getElementById("portfoyBtn").addEventListener("click", async ()=>{
+    const ids=veri.map(q=>Number(q.sonuc_id)); if(!ids.length) return;
+    const r=await fetch('/api/portfolio-report',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ids)});
+    if(!r.ok){alert('Portföy raporu üretilemedi');return;}
+    const blob=await r.blob(); const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='yrkds-portfoy.pdf'; a.click();
+  });
   document.getElementById("csvIndir").addEventListener("click",()=>{
     const satirlar=[["tarih","sonuc_id","skor","bant"],...veri.map(q=>[q.tarih,q.sonuc_id,q.skor,q.bant])];
     const csv=satirlar.map(r=>r.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n");
