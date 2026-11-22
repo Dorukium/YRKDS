@@ -58,6 +58,9 @@ def guven_skoru(tamlik: float, durum: dict[str, str]) -> float:
         guven *= 0.85
     if durum.get("sondaj") != "var":
         guven *= 0.90
+    # A1: radar gölgesi boşlukları en yakın komşu ile doldurulduysa proxy cezası
+    if durum.get("insar_proxy") == "var":
+        guven *= 0.90
     return round(min(1.0, max(0.0, guven)), 3)
 
 

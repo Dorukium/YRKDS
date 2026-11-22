@@ -59,6 +59,35 @@ test('U7 katalog rozetleri ve G1 tasarım galerisi', async ({ page, request }) =
   await expect(page.locator('.bantlar .bant-kutu')).toHaveCount(5);
 });
 
+test('A8 TKGM parsel sorgu sihirbazı', async ({ page }) => {
+  await page.goto('/harita.html', { waitUntil: 'networkidle' });
+  await page.locator('[data-sekme=analiz]').click();
+  await page.fill('#tkEnlem', '36.9050');
+  await page.fill('#tkBoylam', '30.7050');
+  await page.locator('#tkgmButon').click();
+  await expect(page.locator('.sonuc')).toBeVisible();
+  await expect(page.locator('#tkgmDurum')).toContainText('TKGM');
+  await expect(page.locator('.sonuc')).toHaveScreenshot('tkgm-panel.png');
+});
+
+test('U10 araç denetim matrisi', async ({ page }) => {
+  await page.goto('/harita.html', { waitUntil: 'networkidle' });
+  const araclar = ['zoom-in', 'zoom-out', 'draw', 'measure', 'layers', 'legend',
+                   'fullscreen', 'export', 'clear'];
+  for (const ad of araclar) {
+    await expect(page.locator(`[data-action=${ad}]`)).toBeVisible();
+  }
+  await page.locator('[data-action=zoom-in]').click();
+  await page.locator('[data-action=layers]').click();
+  await expect(page.locator('[data-panel=katmanlar]')).toBeVisible();
+  await page.locator('[data-action=legend]').click();
+  await expect(page.locator('[data-panel=lejant]')).toBeVisible();
+  await page.keyboard.press('Control+k');
+  await expect(page.locator('#komutPaleti')).toBeVisible();
+  await page.locator('#komutPaleti [data-kapat]').click();
+  await expect(page.locator('#kilavuzRay')).toHaveScreenshot('arac-cubugu.png');
+});
+
 test('F6 tile PNG', async ({ request }) => {
   const r = await request.get('/tiles/11/1200/770.png');
   expect(r.ok()).toBeTruthy();

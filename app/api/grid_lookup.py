@@ -18,7 +18,7 @@ SAYISAL = [
 ]
 BOOLEAN = [
     "taskin_100y", "taskin_500y", "taskin_yapi_yasagi", "falez_cekme_mesafesi",
-    "fay_sakinim_bandi", "afete_maruz_bolge", "karst_alan",
+    "fay_sakinim_bandi", "afete_maruz_bolge", "karst_alan", "insar_proxy",
 ]
 
 
@@ -36,7 +36,7 @@ def poligondan_girdi(geojson: dict[str, Any]) -> tuple[SkorInput, dict[str, Any]
                     BOOL_OR(taskin_100y), BOOL_OR(taskin_500y),
                     BOOL_OR(taskin_yapi_yasagi), BOOL_OR(falez_cekme_mesafesi),
                     BOOL_OR(fay_sakinim_bandi), BOOL_OR(afete_maruz_bolge),
-                    BOOL_OR(karst_alan),
+                    BOOL_OR(karst_alan), BOOL_OR(insar_proxy),
                     MODE() WITHIN GROUP (ORDER BY zemin_sinifi) AS sinif,
                     MODE() WITHIN GROUP (ORDER BY ilce) AS ilce,
                     COUNT(*) AS hucre_sayisi
@@ -59,6 +59,7 @@ def poligondan_girdi(geojson: dict[str, Any]) -> tuple[SkorInput, dict[str, Any]
         yass_m=veri["yass_m"],
         kum_orani=veri["soil_sand_pct"],
         insar_hiz=veri["insar_velocity_mm_yr"],
+        insar_proxy=veri["insar_proxy"],
         karst=veri["karst_alan"],
         heyelan_envanter=None,  # heyelan envanteri katmanı yok -> bilinmiyor
         kaya_dusmesi=None,

@@ -17,7 +17,7 @@ from app.db import get_conn
 GRID_KOLONLARI: list[str] = [
     "ilce", "geom", "dem_elevasyon", "dem_egim", "dem_twi", "dem_hand",
     "soil_clay_pct", "soil_silt_pct", "soil_sand_pct", "soil_ph", "soil_soc",
-    "insar_velocity_mm_yr", "vs30", "zemin_sinifi", "pga_g", "pga_gem_arastirma",
+    "insar_velocity_mm_yr", "insar_proxy", "vs30", "zemin_sinifi", "pga_g", "pga_gem_arastirma",
     "kiyi_2m", "kiyi_5m", "fay_mesafe_km",
     "yass_m", "akarsu_mesafe_m", "taskin_100y", "taskin_500y",
     "taskin_yapi_yasagi", "falez_cekme_mesafesi", "fay_sakinim_bandi",

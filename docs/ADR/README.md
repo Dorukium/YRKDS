@@ -17,3 +17,8 @@ dış bağımlılıklar burada karar kaydıyla belgelenir.
 | 0010 | İklim senaryosunda S nötr | Kabul |
 | 0011 | SYGM taşkın pafta sayısallaştırma | Kabul |
 | 0012 | MGM ekstrem kayıtları | Kabul |
+| 0009-kapanis | A1 NASA EGMS InSAR | KAPANDI |
+| 0013–0022 | V2/V3 karar kayıtları | Kabul |
+| 0023 | Zenodo DOI | Bekliyor |
+| 0024 | ZAP düşük uyarılar | Kabul |
+| 0025 | V4 kalan veri eksiklikleri | Kabul |

@@ -97,6 +97,18 @@
           <div id="topluKutu"></div>
         </div>
         <div class="kart">
+          <h5>TKGM Parsel Sorgu (A8)</h5>
+          <div class="ara-kutu">
+            <input id="tkEnlem" type="number" step="0.000001" placeholder="Enlem" aria-label="Enlem">
+            <input id="tkBoylam" type="number" step="0.000001" placeholder="Boylam" aria-label="Boylam">
+          </div>
+          <button class="btn btn-outline btn-sm w-100" id="tkgmButon">Parsel Sorgu'dan Aktar</button>
+          <label class="kucuk" for="wktGirdi" style="display:block;margin-top:8px">WKT / GeoJSON yapıştır</label>
+          <textarea id="wktGirdi" rows="2" style="width:100%" aria-label="WKT veya GeoJSON"></textarea>
+          <button class="btn btn-outline btn-sm w-100" id="wktButon">Yapıştırılanı analiz et</button>
+          <div id="tkgmDurum" class="kucuk" role="status"></div>
+        </div>
+        <div class="kart">
           <h5>Önlem senaryosu (B1)</h5>
           <label class="kucuk"><input type="checkbox" class="onlem" value="kazikli_temel"> Kazıklı temel</label>
           <label class="kucuk"><input type="checkbox" class="onlem" value="zemin_iyilestirme"> Zemin iyileştirme</label>
@@ -254,7 +266,7 @@
 </div>
 
 <footer class="alt-bilgi">
-  <span>v3.0.0 · MIT · <a href="/api/docs">API docs</a></span>
+  <span>v4.0.0 · MIT · <a href="/api/docs">API docs</a></span>
   <a href="/yardim.html#veri-kaynaklari">Veri kaynakları</a>
   <a href="/yardim.html#erisilebilirlik">Erişilebilirlik beyanı</a>
   <a href="/yardim.html#kvkk">KVKK</a>

@@ -2,6 +2,18 @@
 
 Tüm önemli değişiklikler bu dosyada kaydedilir. Semantik sürüm: MAJOR.MINOR.PATCH.
 
+## [4.0.0] — 2026-11-22
+
+V4 master sprint:
+- A1: NASA Earthdata ARIA S1 GUNW (40 granül) ile S bileşeni gerçek ölçüme
+  geçti; kapsam %100 (otorite %79.19, proxy %20.81), ADR-0009 kapandı.
+- A8: TKGM kamu parsel API'si entegre edildi (24 saat Redis önbellek,
+  Otorite rozeti, WKT/GeoJSON yapıştırma sihirbazı).
+- U9 veri merdiveni, TDTH insan adımı SOP (`make data-tdth`), ASF EULA akışı.
+- U10 araç denetim matrisi E2E + snapshot'ları.
+- Sürüm 4.0.0, ADR-0025 (A2) ve ADR-0026 (A7) ile kalan veri eksiklikleri
+  dürust etiketli.
+
 ## [3.0.0] — 2026-11-22
 
 TÜBİTAK jürisi ve belediye pilotu için master sprint:

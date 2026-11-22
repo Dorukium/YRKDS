@@ -294,6 +294,20 @@ def olustur() -> Path:
     falez = bilinmiyor.copy()
 
     gem_pga = _gem_pga_grid(transform, width, height)
+
+    # A1: ARIA S1 GUNW mm/yıl hızı + geçerlilik maskesi (Otorite/Proxy)
+    insar_tif = PROCESSED_DIR / "insar_aria_velocity_25m.tif"
+    insar_mask = PROCESSED_DIR / "insar_aria_validity.tif"
+    if insar_tif.exists():
+        with rasterio.open(insar_tif) as ds:
+            insar = ds.read(1).astype(np.float32)
+        proxy = np.zeros((height, width), dtype=bool)
+        if insar_mask.exists():
+            with rasterio.open(insar_mask) as ds:
+                proxy = ds.read(1).astype(bool) == 0
+    else:
+        insar = np.full((height, width), np.nan, dtype=np.float32)
+        proxy = np.zeros((height, width), dtype=bool)
     kiyi_2m = (dem <= 2.0) & (dem >= -2.0)
     kiyi_5m = (dem <= 5.0) & (dem >= -2.0)
     wcs_var = (PROCESSED_DIR / "soil_wcs_sand.tif").exists()
@@ -312,7 +326,8 @@ def olustur() -> Path:
             "soil_sand_pct": kum.ravel(),
             "soil_ph": toprak.get("phh2o", np.full_like(dem, np.nan)).ravel(),
             "soil_soc": toprak.get("soc", np.full_like(dem, np.nan)).ravel(),
-            "insar_velocity_mm_yr": np.full(dem.size, np.nan, dtype=np.float32),
+            "insar_velocity_mm_yr": insar.ravel(),
+            "insar_proxy": proxy.ravel(),
             "vs30": vs30.ravel(),
             "zemin_sinifi": sinif.ravel(),
             "pga_g": np.full(dem.size, np.nan, dtype=np.float32),

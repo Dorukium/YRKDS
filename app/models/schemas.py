@@ -32,6 +32,7 @@ class SkorInput(BaseModel):
     yass_m: float | None = Field(default=None, ge=0)
     kum_orani: float | None = Field(default=None, ge=0, le=100)
     insar_hiz: float | None = Field(default=None, ge=-100, le=100)
+    insar_proxy: bool | None = None
     karst: bool | None = None
     egim: float | None = Field(default=None, ge=0, le=90)
     kaya_dusmesi: bool | None = None

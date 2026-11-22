@@ -173,6 +173,39 @@
     document.getElementById("topluDosya")?.addEventListener("change", e => {
       if (e.target.files?.[0]) topluYukle(e.target.files[0]);
     });
+    document.getElementById("tkgmButon")?.addEventListener("click", async () => {
+      const lat = Number(document.getElementById("tkEnlem")?.value);
+      const lon = Number(document.getElementById("tkBoylam")?.value);
+      const durum = document.getElementById("tkgmDurum");
+      if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+        durum.textContent = "Geçerli enlem/boylam girin."; return;
+      }
+      durum.textContent = "TKGM sorgulanıyor…";
+      try {
+        const r = await fetch(`/api/parcel-search?lat=${lat}&lon=${lon}`);
+        if (!r.ok) throw new Error(String(r.status));
+        const f = await r.json();
+        window.YRKDraw.analizGeojson(f);
+        durum.innerHTML = `<b>${f.properties.mahalleAd || '—'} ${f.properties.adaNo}/${f.properties.parselNo}</b>
+          · ${f.properties.alan || '—'} m² · Kaynak: TKGM · ${f.cache}`;
+      } catch (e) { durum.textContent = "Parsel bulunamadı veya servis yanıt vermedi."; }
+    });
+    document.getElementById("wktButon")?.addEventListener("click", () => {
+      const metin = document.getElementById("wktGirdi")?.value?.trim();
+      const durum = document.getElementById("tkgmDurum");
+      if (!metin) return;
+      try {
+        let geo;
+        if (metin.startsWith("{")) geo = JSON.parse(metin);
+        else {
+          const koord = metin.replace(/^POLYGON\s*\(\s*\(\s*/i, '').replace(/\s*\)\s*\)\s*$/, '')
+            .split(',').map(p => p.trim().split(/\s+/).map(Number));
+          geo = { type: 'Polygon', coordinates: [koord] };
+        }
+        window.YRKDraw.analizGeojson(geo);
+        durum.textContent = "GeoJSON/WKT analize gönderildi.";
+      } catch (e) { durum.textContent = "WKT/GeoJSON ayrıştırılamadı."; }
+    });
     document.getElementById("onlemUygula")?.addEventListener("click", async () => {
       const geo = window.YRKDraw?.sonGeojson?.();
       const kutu = document.getElementById("onlemSonuc");

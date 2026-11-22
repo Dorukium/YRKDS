@@ -20,6 +20,7 @@ CREATE TABLE grid_cells (
     soil_ph FLOAT,
     soil_soc FLOAT,
     insar_velocity_mm_yr FLOAT,
+    insar_proxy BOOLEAN,
     pga_gem_arastirma FLOAT,
     kiyi_2m BOOLEAN,
     kiyi_5m BOOLEAN,

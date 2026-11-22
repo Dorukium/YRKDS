@@ -67,8 +67,9 @@ def kanit_olustur(girdi: SkorInput, ek: dict[str, str] | None = None) -> list[Ev
         katman="InSAR", kaynak=KAYNAKLAR["insar"],
         deger=(f"Deformasyon {girdi.insar_hiz:g} mm/yıl" if girdi.insar_hiz is not None
                else "Bilinmiyor — veri yok"),
-        guven="kaynakli" if girdi.insar_hiz is not None else "eksik",
-        yetkinlik=rozet("insar"),
+        guven=("turetilmis" if girdi.insar_proxy else
+               ("kaynakli" if girdi.insar_hiz is not None else "eksik")),
+        yetkinlik=("Proxy" if girdi.insar_proxy else rozet("insar")),
     ))
 
     if any(v is not None for v in (girdi.taskin_100y, girdi.taskin_500y,

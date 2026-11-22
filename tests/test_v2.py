@@ -112,6 +112,19 @@ def test_u7_kanit_rozeti_ve_f4_senaryo():
     assert any("S bileşeni için güvenilir iklim çarpanı yok" in u for u in ssp["uyarilar"])
 
 
+def test_a8_tkgm_parsel_sorgu():
+    with TestClient(app, follow_redirects=False) as c:
+        r = c.get("/api/parcel-search?lat=36.9050&lon=30.7050")
+        assert r.status_code == 200, r.text[:200]
+        f = r.json()
+        assert f["type"] == "Feature" and f["geometry"]["type"] == "Polygon"
+        assert f["properties"]["yetkinlik"] == "Otorite"
+        assert f["properties"]["kaynak"] == "TKGM Parsel Sorgu"
+        assert f["cache"] in ("HIT", "MISS")
+        assert c.get("/api/parcel-search?lat=40.98&lon=28.72").status_code == 400
+    assert (ROOT / "data/raw/tkgm_manifest.json").exists()
+
+
 def test_d2_d3_d4_altyapi():
     with TestClient(app, follow_redirects=False) as c:
         assert c.get("/locales/tr.json").status_code == 200

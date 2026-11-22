@@ -16,6 +16,7 @@ from app.api import (
     routes_auth,
     routes_events,
     routes_layers,
+    routes_parcel,
     routes_report,
     routes_tiles,
 )
@@ -42,7 +43,7 @@ async def yasam_dongusu(app: FastAPI) -> AsyncIterator[None]:
 
 app = FastAPI(
     title="YRKDS — Antalya Yatırım Riski Karar Destek Sistemi",
-    version="3.0.0",
+    version="4.0.0",
     description="Deterministik, kural tabanlı parsel ön-tarama risk skorlama API'si.",
     lifespan=yasam_dongusu,
 )
@@ -67,6 +68,7 @@ app.include_router(routes_auth.router)
 app.include_router(routes_analyze.router)
 app.include_router(routes_layers.router)
 app.include_router(routes_events.router)
+app.include_router(routes_parcel.router)
 app.include_router(routes_report.router)
 app.include_router(routes_tiles.router)
 

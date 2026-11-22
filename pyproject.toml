@@ -1,6 +1,6 @@
 [project]
 name = "yrkds"
-version = "3.0.0"
+version = "4.0.0"
 description = "Antalya Yatirim Riski Karar Destek Sistemi"
 readme = "README.md"
 # Kilitli veri kaynaklarinin wheel uyumsuzlugunu onlemek icin 3.12 sabitlendi.
@@ -43,6 +43,10 @@ dev = [
     "planetary-computer>=1.0",
     "pypdf>=5.0",
     "SALib>=1.5",
+    "earthaccess>=0.14",
+    "xarray>=2024.10",
+    "h5netcdf>=1.3",
+    "h5py>=3.11",
 ]
 
 [build-system]
@@ -74,5 +78,5 @@ plugins = []
 module = ["geopandas.*", "rasterio.*", "weasyprint.*", "pandas.*",
           "cdsapi.*", "geoalchemy2.*", "apscheduler.*", "skor_motoru.*",
           "psycopg.*", "requests.*", "httpx.*", "jinja2.*", "PIL.*", "shapely.*",
-          "planetary_computer.*", "pystac_client.*"]
+          "planetary_computer.*", "pystac_client.*", "scipy.*", "earthaccess.*", "h5py.*", "h5netcdf.*"]
 ignore_missing_imports = true

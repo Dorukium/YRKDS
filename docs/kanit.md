@@ -128,6 +128,26 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## [V4 / FAZ A8] TKGM Parsel Sorgu — 2026-11-22
+Komut: `curl https://cbsapi.tkgm.gov.tr/megsiswebapi.v3.1/api/parsel/36.9050/30.7050/`
+Çıktı özeti: HTTP 200, gerçek GeoJSON poligonu (Dutlubahçe 4355/10, 557 m²);
+`/api/parcel-search` 24 saat Redis önbellek + Otorite rozeti; E2E testi ve
+`tkgm-panel.png` snapshot'ı yeşil.
+Sonuç: YEŞİL
+
+## [V4 / U9-U10] Veri merdiveni ve araç denetimi — 2026-11-22
+Çıktı özeti: `docs/veri_merdiveni.md` (8 görev × 3 basamak), `docs/sop_tdth.md`,
+`make data-tdth`; 9 harita aracı E2E doğrulaması + snapshot (25 Playwright test).
+Sonuç: YEŞİL
+
+## [V4 / FAZ A1] NASA Earthdata ARIA S1 GUNW InSAR — 2026-11-22
+Komut: earthaccess login + `_ensure_asf_eula()` + `indir(40)` + `hiz_haritasi_olustur()`
+Çıktı özeti: EULA kabulü sonrası HTTP 206; 40 granül (4.9 GB), SHA256
+`0dbe87ef...`; toplam kapsam %100, otorite %79.19, proxy %20.81; örnek hızlar
+-7.83 / -6.25 / +12.54 mm/yıl. `docs/kanit/insar_kapsam.png` kapsam haritası.
+Sonuç: **YEŞİL** — ADR-0009 kapandı (docs/ADR/0009-kapanis.md). S bileşeni artık
+gerçek ölçümle hesaplanıyor; `skor_kapsami.tur="tam"`, proxy hücrelerde güven cezası.
+
 ## [V3 / KAPANAN AÇIKLAR] ZAP + 500 VU — 2026-11-22
 Komut: `docker run --rm -v $PWD/zap.conf:/zap/wrk/zap.conf ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://172.17.0.1:8000 -c zap.conf -I -d 3`
 Çıktı özeti: `FAIL-NEW: 0`, PASS 59, `WARN-NEW: 9` (düşük: COEP/COOP, ADR-0024), `ZAP_EXIT=0`.

@@ -79,6 +79,7 @@ def analiz_et(
 ) -> AnalyzeResponse:
     pid = parsel_id or "Q-" + datetime.now(UTC).strftime("%Y%m%d-%H%M%S-%f")[:-3]
     durum = katman_durumu(girdi)
+    durum["insar_proxy"] = "var" if girdi.insar_proxy else "yok"
     tamlik = veri_tamligi(durum)
     guven = guven_skoru(tamlik, durum)
     aciklama = tamlık_aciklama(durum, tamlik)
