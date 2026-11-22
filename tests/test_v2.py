@@ -126,6 +126,109 @@ def test_d2_d3_d4_altyapi():
     assert (ROOT / "docs/ADR/0022-i18n-kapsam.md").exists()
 
 
+def test_v3_yeni_pipeline_fonksiyonlari(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    from app.data_pipeline import download_era5_extremes as era5
+
+    monkeypatch.setattr(era5, "PROCESSED_DIR", tmp_path)
+    monkeypatch.setattr(era5, "RAW_DIR", tmp_path)
+
+    def fake_get(url, params=None, timeout=None):
+        gunler = {
+            "time": ["1969-01-17", "1991-06-01"],
+            "precipitation_sum": [57.1, 10.0],
+            "temperature_2m_max": [12.0, 25.0],
+        }
+        return SimpleNamespace(
+            raise_for_status=lambda: None,
+            json=lambda: {"daily": gunler},
+            content=b'{"daily":{}}',
+        )
+
+    monkeypatch.setattr(era5.requests, "get", fake_get)
+    r = era5.indir()
+    assert r["gun_sayisi"] > 0 and r["olay_1969_01_17_yagis_mm"] == 57.1
+
+    # Yasal geometri seed (DB yerine taklit imleç)
+    from app.data_pipeline import seed_legal_geometry as slg
+
+    class FakeCursor:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def execute(self, sql, params=None):
+            self.son = (3,)
+
+        def fetchone(self):
+            return self.son
+
+    class FakeConn:
+        def cursor(self):
+            return FakeCursor()
+
+    class Ctx:
+        def __enter__(self):
+            return FakeConn()
+
+        def __exit__(self, *a):
+            return False
+
+    monkeypatch.setattr(slg, "get_conn", lambda: Ctx())
+    monkeypatch.setattr(slg, "RAW_DIR", tmp_path)
+    assert slg.yukle() == 3
+
+
+def test_v3_exposure_stac_taklit(monkeypatch, tmp_path):
+    from types import SimpleNamespace
+
+    from app.data_pipeline import download_exposure as dex
+
+    monkeypatch.setattr(dex, "PROCESSED_DIR", tmp_path)
+    monkeypatch.setattr(dex, "RAW_DIR", tmp_path)
+
+    class FakeAsset:
+        href = "https://example.invalid/cog.tif"
+
+    class FakeItem:
+        id = "test-item"
+        assets = {"map": FakeAsset()}
+        datetime = "2021-01-01T00:00:00Z"
+
+    class FakeSearch:
+        def items(self):
+            return [FakeItem()]
+
+    class FakeClient:
+        def search(self, **kwargs):
+            return FakeSearch()
+
+    monkeypatch.setattr(dex.pystac_client.Client, "open", lambda *a, **k: FakeClient())
+
+    class FakeDs:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def index(self, lon, lat):
+            return 0, 0
+
+        def read(self, *a, **k):
+            import numpy as np
+
+            return np.array([[50]], dtype=np.uint8)
+
+    monkeypatch.setattr(dex.rasterio, "open", lambda *a, **k: FakeDs())
+    r = dex.calistir()
+    assert r["worldcover_okundu"] is True
+    assert len(r["worldcover_ornekleri"]) == 18
+
+
 def test_b4_b5_embed_ve_pwa():
     with TestClient(app, follow_redirects=False) as c:
         assert c.get("/embed.html").status_code == 200

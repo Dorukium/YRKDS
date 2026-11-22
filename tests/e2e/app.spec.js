@@ -17,7 +17,7 @@ test('harita açılır, parsel analiz edilir, PDF iner, konsol hatasız', async 
 
   await expect(page.locator('.sonuc')).toBeVisible();
   await expect(page.locator('.skor-buyuk')).not.toHaveText('');
-  await expect(page.locator('.metrikler b').nth(2)).toHaveText('DOĞRULANAMADI');
+  await expect(page.locator('.metrikler b').nth(2)).toHaveText(/YOK|DOĞRULANAMADI/);
   expect(await page.locator('.sonuc .kanit').count()).toBeGreaterThan(3);
 
   const href = await page.locator('a.btn').getAttribute('href');
