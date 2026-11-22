@@ -128,6 +128,18 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## [V3 / FAZ 1] A5 — ERA5 ekstrem serisi — 2026-11-22
+Komut: `uv run python -m app.data_pipeline.download_era5_extremes`
+Çıktı özeti: 2559 günlük kayıt, p99 42.6 mm/gün, 1969-01-17 ızgara 57.1 mm
+(istasyon 331.5 mm → ADR-0014), manifest SHA256 + URL + tarih.
+Sonuç: YEŞİL (Proxy — araştırma rozeti)
+
+## [V3 / FAZ 1] A1 — EGMS kimlik kontrolü — 2026-11-22
+Komut: `printenv COPERNICUS_USER / COPERNICUS_PASS`
+Çıktı özeti: ikisi de boş; EGMS Ortho indirilemedi. ADR-0009 açık kalır,
+S bileşeni NULL + güven cezası. Uydurma hız üretilmedi.
+Sonuç: KIRMIZI → ADR (dış bağımlılık)
+
 ## Tek komut doğrulaması (V2 son) — 2026-11-22
 Komut: `make gate-all > /tmp/gate_all4.log 2>&1`
 Çıktı özeti: `All checks passed!` · `Success: no issues found in 47 source files`
