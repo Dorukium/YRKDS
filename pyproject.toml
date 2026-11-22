@@ -39,6 +39,8 @@ dev = [
     "argon2-cffi>=23.2",
     "python-multipart>=0.0.20",
     "itsdangerous>=2.2",
+    "pystac-client>=0.8",
+    "planetary-computer>=1.0",
 ]
 
 [build-system]
@@ -69,5 +71,6 @@ plugins = []
 [[tool.mypy.overrides]]
 module = ["geopandas.*", "rasterio.*", "weasyprint.*", "pandas.*",
           "cdsapi.*", "geoalchemy2.*", "apscheduler.*", "skor_motoru.*",
-          "psycopg.*", "requests.*", "httpx.*", "jinja2.*", "PIL.*", "shapely.*"]
+          "psycopg.*", "requests.*", "httpx.*", "jinja2.*", "PIL.*", "shapely.*",
+          "planetary_computer.*", "pystac_client.*"]
 ignore_missing_imports = true

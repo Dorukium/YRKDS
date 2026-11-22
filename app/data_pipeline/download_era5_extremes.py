@@ -8,8 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import UTC, date, datetime
-from pathlib import Path
+from datetime import UTC, datetime
 
 import numpy as np
 import requests

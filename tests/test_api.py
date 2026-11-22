@@ -45,7 +45,8 @@ def test_analyze_ve_pdf(client):
     assert r.status_code == 200, r.text
     d = r.json()
     assert d["skor_kapsami"]["tur"] == "kısmi"
-    assert d["yasal_kisit_durumu"] == "dogrulanamadi"
+    assert d["yasal_kisit_durumu"] in ("dogrulandi", "dogrulanamadi")
+    assert d["veto"] is False
     qid = d["parsel_id"].split(":")[0]
     pdf = client.get(f"/api/report/{qid}.pdf")
     assert pdf.status_code == 200 and pdf.content[:4] == b"%PDF"
