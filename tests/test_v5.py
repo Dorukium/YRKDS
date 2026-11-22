@@ -143,6 +143,42 @@ def test_publish_guncelle_ve_basarili_yayin(monkeypatch, tmp_path):
     assert "10.5281/zenodo.999" in (tmp_path / "CITATION.cff").read_text(encoding="utf-8")
 
 
+def test_ensure_schema_advisory_lock(monkeypatch):
+    """K6 regresyon: çoklu worker DDL deadlock'u advisory lock ile serileşir."""
+    from app.data_pipeline import ensure_schema as es
+
+    cagirilar = []
+
+    class Cur:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def execute(self, sql, params=None):
+            cagirilar.append(sql)
+
+        def fetchone(self):
+            return (None,)
+
+    class Conn:
+        def cursor(self):
+            return Cur()
+
+    class Ctx:
+        def __enter__(self):
+            return Conn()
+
+        def __exit__(self, *a):
+            return False
+
+    monkeypatch.setattr(es, "get_conn", lambda: Ctx())
+    assert es.ensure_schema() is True
+    assert any("pg_advisory_xact_lock" in s for s in cagirilar)
+    assert not any("pg_advisory_unlock" in s for s in cagirilar)
+
+
 def test_modul_main_bloklari(monkeypatch, tmp_path, capsys):
     import runpy
 
