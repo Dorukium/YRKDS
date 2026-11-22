@@ -1,7 +1,21 @@
 # ADR-0004 — GEM sismik çapraz kontrol ve lisans
 
 - Tarih: 2026-11-22
-- Durum: Kabul
+- Güncelleme: 2026-11-22 (V5 — TDTH kaynağı deaktif)
+- Durum: **Kalıcı açık — kaynak deaktif, alternatif çapraz kontrol kullanıldı**
+
+## V5 Güncellemesi — TDTH deaktif
+`tdth.afad.gov.tr` erişilemiyor/deaktif. Kullanıcı kararı gereği **başka erişim
+denemesi yapılmaz** (U12: 3 deneme şartı bu kaynak için geçerli değildir;
+kaynakın kendisi kapalıdır). Bu ADR kalıcı açık kalır.
+
+- PGA katmanı: **GEM OpenQuake + USGS Vs30 çapraz kontrol**, "Araştırma" rozeti.
+- `docs/sop_tdth.md` site geri geldiğinde uygulanmak üzere **hazır tutulur**;
+  `make data-tdth` o an otorite katmanına yükseltir.
+- DoD: yeni TDTH denemesi yok; alternatif rozetli katman korunur.
+
+Kanıt (U11): `make check-auth` → `tdth: deaktif`; komut `git log -1`;
+commit hash kanıt günlüğünde.
 
 ## Bağlam
 Faz D, proje TDTH PGA değerlerini GEM açık modeliyle çapraz kontrol etmeyi

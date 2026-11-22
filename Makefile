@@ -1,8 +1,18 @@
 .PHONY: lint typecheck test cov parity hydro independent seismic legal \
-        e2e load a11y lighthouse security sbom data-tdth clean gate-all
+        e2e load a11y lighthouse security sbom data-tdth clean gate-all \
+        check-auth publish citation
 
 data-tdth:
 	uv run python -m app.data_pipeline.load_tdth
+
+check-auth:
+	uv run python -m app.data_pipeline.check_auth
+
+citation:
+	uv run python -m app.data_pipeline.publish --citation
+
+publish:
+	uv run python -m app.data_pipeline.publish
 
 lint:
 	uv run ruff check .
