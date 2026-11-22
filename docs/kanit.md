@@ -128,6 +128,30 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5 / HAZIRLIK KAPILARI (geçici, kimlikler bekliyor) — 2026-11-22
+Komut: `docker compose up -d --build && sleep 8 && make gate-all`
+Çıktı özeti: `All checks passed!` · `Success: no issues found in 57 source files`
+· `116 passed` · kapsam `90.18%` · E2E `25 passed` · axe `9 passed` ·
+k6 `0.00%` hata (0/17576), p95 `264.39 ms` · `No known vulnerabilities found`
+· `TUM KAPILAR YEŞİL` · `GATE_EXIT=0`.
+Kapsam: bu kapı yalnızca v5 hazırlığı ve K2 deadlock fix'ini doğrular.
+GEE/Zenodo kimlikleri olmadan A2 etiketi ve DOI **henüz üretilmedi**; sürüm
+5.0.0 etiketi bu görevler tamamlanmadan basılmayacak (K3 dürüstlük).
+Commit: `525e7985ddbedb6bdd8524e8e495684be4db4745`
+
+## V5 / K2 KIRMIZI KAPI — ensure_schema deadlock — 2026-11-22
+Komut: `make gate-all` (ilk koşu) → `docker compose logs db | grep deadlock`
+Çıktı özeti: `http_req_failed 34.29%` (8095/23606), `connection reset by peer`;
+DB log'unda 8 worker'ın aynı `ALTER TABLE legal_constraints` DDL'ini çalıştırıp
+`AccessExclusiveLock` deadlock'una girdiği görüldü.
+Fix: `ensure_schema()` tüm DDL'i tek `pg_advisory_xact_lock(0x59524B44)` altında
+serileştiriyor (commit/rollback'da otomatik bırakılır). `tests/test_v5.py` regression
+testi eklendi.
+Doğrulama: `make load` → `http_req_failed 0.00% (0/20702)`, p95 `225.4 ms`,
+`LOAD_EXIT=0`.
+Commit: `525e7985ddbedb6bdd8524e8e495684be4db4745`
+Sonuç: **YEŞİL** (K2: kapı atlanmadı, kök neden düzeltildi).
+
 ## V5 / FAZ 1 — Kimlik hazırlığı ve TDTH ADR (U11) — 2026-11-22
 Komut: `uv sync --python 3.12 --all-extras` + `uv run earthengine --help` +
 `make check-auth` + `make citation` + `make cov`
