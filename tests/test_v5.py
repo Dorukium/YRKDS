@@ -91,6 +91,81 @@ def test_gee_dogrula_hata_yolu(monkeypatch, tmp_path):
     assert d["baglanti"] == "hata" and d["hata"] == "RuntimeError"
 
 
+def test_gee_flood_tarih_ve_baglanti(monkeypatch):
+    from app.data_pipeline import gee_flood
+
+    assert gee_flood._tarih(0) == "1970-01-01"
+
+    from app.data_pipeline import gee_auth
+
+    monkeypatch.setattr(gee_auth, "initialize", lambda: "ee-modul")
+    assert gee_flood.initializeee() == "ee-modul"
+
+
+def test_gee_flood_aoi_olaylari_taklit():
+    from app.data_pipeline.gee_flood import aoi_olaylari
+
+    class FakeEE:
+        def FeatureCollection(self, ad):
+            return self
+
+        @property
+        def Geometry(self):
+            return SimpleNamespace(Rectangle=lambda koord: object())
+
+        def filterBounds(self, box):
+            return self
+
+        def getInfo(self):
+            return {"features": [{
+                "properties": {
+                    "id": "2175",
+                    "system:time_start": 1044345600000,
+                    "system:time_end": 1049289600000,
+                    "dfo_country": "Turkey",
+                    "system:asset_size": 123,
+                }
+            }]}
+
+    r = aoi_olaylari(FakeEE())
+    assert r[0]["id"] == "2175" and r[0]["baslangic"].startswith("2003-02")
+
+
+def test_gee_flood_etiket_yok_durumu():
+    from app.data_pipeline.gee_flood import dogrulama_etiketleri
+
+    olaylar = [
+        {"id": "2175", "baslangic": "2003-02-04", "bitis": "2003-03-12"},
+        {"id": "2433", "baslangic": "2004-01-24", "bitis": "2004-02-14"},
+    ]
+    r = dogrulama_etiketleri(olaylar)
+    assert r["durum"] == "etiket_yok"
+    assert r["aoi_olay_sayisi"] == 2 and r["eslesen_olay_sayisi"] == 0
+
+
+def test_gee_flood_eslesen_olay_var():
+    from app.data_pipeline.gee_flood import dogrulama_etiketleri
+
+    olaylar = [{"id": "X", "baslangic": "2003-12-01", "bitis": "2003-12-15"}]
+    r = dogrulama_etiketleri(olaylar)
+    assert r["durum"] == "etiket_var" and r["eslesen_olay_sayisi"] == 1
+
+
+def test_gee_flood_calistir_taklit(monkeypatch, tmp_path):
+    from app.data_pipeline import gee_flood
+
+    monkeypatch.setattr(gee_flood, "LABELS", tmp_path)
+    monkeypatch.setattr(gee_flood, "initializeee", lambda: object())
+    monkeypatch.setattr(
+        gee_flood, "aoi_olaylari",
+        lambda ee: [{"id": "1", "baslangic": "2003-02-01", "bitis": "2003-03-01"}],
+    )
+    r = gee_flood.calistir()
+    assert r["durum"] == "etiket_yok"
+    assert (tmp_path / "gfd_antalya_events.json").exists()
+    assert (tmp_path / "gfd_validation_labels.json").exists()
+
+
 def test_publish_citation_ve_token_yok(monkeypatch, tmp_path):
     from app.data_pipeline import publish
 

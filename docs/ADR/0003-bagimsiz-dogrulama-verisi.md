@@ -25,11 +25,13 @@ K2 alternatif ölçüm: sentetik HAND vadi testleri (`tests/test_hydro.py`) ve
 kapsamında **doğrulanamadı**; raporda dürüstçe belirtilir.
 
 ## V5 son durum (2026-11-22)
-GEE kimlik dosyası oluştu fakat hesap Earth Engine'e kayıtlı değil
-(`ee.Initialize()` → "project is not registered"). Bu nedenle L1 GFD erişilemedi.
-GEE'siz alternatif olarak GFD GeoTIFF bucket'ı (`gfd_v1_4`) doğrudan tarandı:
-**913 olayın hiçbiri Antalya AOI'sinde değil**; tarih eşleşenler Endonezya
-(2403) ve Avustralya'ya (3257) ait. Sentinel-1 2014 öncesi veri içermez;
+Kullanıcı Google Cloud proje ID'sini (`rosy-fiber-478123-i1`) sağladıktan
+sonra `ee.Initialize(project=...)` başarılı oldu. GFD v1 sorgusunda Antalya
+AOI'sini **footprint ile kesen 11 olay** bulundu; ancak hiçbiri 2003-12-10
+veya 2008-01-27 tarihlerini kapsamıyor (en yakınları 2003-02 ve 2004-01).
+GEE'siz ikincil taramada GFD GeoTIFF bucket'ındaki 913 olayın merkez
+koordinatlarının hiçbiri AOI'de değildi (merkez bazlı tarama footprint
+taramasıyla geçersiz kılındı). Sentinel-1 2014 öncesi veri içermez;
 literatürde jeoreferanslı nokta etiketi yok. 4 deneme kaydı
 `data/labels/gfd_2003_2008_manifest.json`'de. K4 korundu: 2009 (18 nokta)
 yalnızca kalibrasyon, doğrulama etiket sayısı 0 → Recall hesaplanmadı.

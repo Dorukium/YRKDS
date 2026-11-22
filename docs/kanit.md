@@ -143,9 +143,10 @@ sürüm), `f4a18eba9b41f5019db1212bba4d99f27d22c81d` (görsel snapshot'lar),
 `6147d150793f031a6ee0c359c54f5120cb7cd8bf` (rapor/slayt).
 Açık (dürüst): A2 Recall ≥0.60 doğrulanamadı — GFD'de AOI'de 0 olay, S1
 tarihsel olarak yok, literatürde etiket yok (ADR-0003/0018/0025 kalıcı);
-A7/A3 vektör pafta yok (ADR-0007/0017); TDTH deaktif (ADR-0004). GEE kimlik
-dosyası var fakat `ee.Initialize()` hâlâ "project is not registered" — kullanıcı
-Google Cloud proje ID'sini sağlamalı. Git remote olmadığı için GitHub release
+A7/A3 vektör pafta yok (ADR-0007/0017); TDTH deaktif (ADR-0004). GEE proje ID'si
+(`rosy-fiber-478123-i1`) sağlandıktan sonra `ee.Initialize()` başarılı; GFD'de
+AOI'yi kesen 11 olay bulundu ama 2003-12/2008-01 ile eşleşen **0** — etiket
+yok, `data/labels/gfd_validation_labels.json` kanıtı. Git remote olmadığı için GitHub release
 oluşturulamadı; yerel `v5.0.0` etiketi basıldı.
 
 ## V5 / A3 + A7 + A2-L3 MERDİVEN DENEMELERİ (U12) — 2026-11-22
@@ -165,7 +166,8 @@ Komut: Firecrawl/Exa aramaları + `curl` WMS + RG arşiv taraması + PDF scrape
   F bileşeni TWI/HAND + OSM akarsu **proxy** olarak kalır (ADR-0007/0011).
 - **A2 L3 literatür:** IMO 2003 sel raporu, JMO Boğaçay jeoloji raporu,
   Akdeniz Üniv. Konyaaltı Q100 harita atfı bulundu; makine okunabilir
-  jeoreferanslı 2003/2008 etiket seti yok. GEE L1 kimlik onayında.
+  jeoreferanslı 2003/2008 etiket seti yok. GEE L1 daha sonra proje ID'siyle
+  çalıştırıldı: AOI'de 11 GFD olayı var, hedef tarihlerle eşleşen 0.
 Sonuç: üç görev de ADR'li bırakıldı; uydurma poligon/etiket üretilmedi (K3).
 
 ## V5 / HAZIRLIK KAPILARI (geçici, kimlikler bekliyor) — 2026-11-22

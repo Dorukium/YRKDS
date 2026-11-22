@@ -5,9 +5,17 @@
   "denemeler": [
     {
       "basamak": "L1a — GEE Global Flood Database",
-      "komut": "ee.Initialize() → GLOBAL_FLOOD_DB/MODIS_EVENTS/V1",
-      "sonuc": "basarisiz",
-      "neden": "EEException: Not signed up for Earth Engine or project is not registered. ~/.config/earthengine/credentials var ama proje yok; kullanıcı Google Cloud'da EE API'sini etkinleştirip proje oluşturmalı."
+      "komut": "ee.Initialize(project='rosy-fiber-478123-i1') → GLOBAL_FLOOD_DB/MODIS_EVENTS/V1.filterBounds(AOI)",
+      "sonuc": "baglanti_basarili_etiket_yok",
+      "bulgu": {
+        "aoi_olay_sayisi": 11,
+        "hedef_tarihler": ["2003-12-10", "2008-01-27"],
+        "tarih_eslesen_olay_sayisi": 0,
+        "yakin_olaylar": ["2003-02-04..2003-03-12 (id 2175)", "2004-01-24..2004-02-14 (id 2433)"],
+        "kanit": "data/labels/gfd_antalya_events.json + gfd_validation_labels.json",
+        "yetkinlik": "Otorite"
+      },
+      "neden": "GFD'de Antalya AOI'sini kesen 11 olay var; hiçbiri 2003-12-10 veya 2008-01-27 tarihlerini kapsamıyor. Bu nedenle bağımsız etiket yok."
     },
     {
       "basamak": "L1b — GFD GeoTIFF (GEE'siz, GCS bucket gfd_v1_4)",
@@ -23,7 +31,7 @@
         "kaynak_csv": "https://raw.githubusercontent.com/cloudtostreet/MODIS_GlobalFloodDatabase/master/data/gfd_qcdatabase_2019_08_01.csv",
         "yetkinlik": "Otorite"
       },
-      "neden": "GFD v1 veritabanında Antalya AOI'sinde hiçbir taşkın olayı yok; 2003/2008 için etiket çıkarılamaz."
+      "neden": "GCS CSV yalnızca DFO merkez koordinatlarını içerir; 913 olayın hiçbirinin merkezi AOI'de değil. GEE footprint sorgusu (L1a) bunu geçersiz kıldı: AOI'yi kesen 11 olay var ama hedef tarihlerde eşleşme yok. Merkez bazlı tarama ikincil kanıt olarak kalır."
     },
     {
       "basamak": "L2 — Sentinel-1 SAR değişim tespiti",
