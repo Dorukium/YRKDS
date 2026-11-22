@@ -1,6 +1,9 @@
 .PHONY: lint typecheck test cov parity hydro independent seismic legal \
         e2e load a11y lighthouse security sbom data-tdth clean gate-all \
-        check-auth publish citation
+        check-auth publish citation data-gfd
+
+data-gfd:
+	uv run python -m app.data_pipeline.gee_flood
 
 data-tdth:
 	uv run python -m app.data_pipeline.load_tdth
