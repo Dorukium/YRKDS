@@ -128,6 +128,15 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V4 SON KABUL — 2026-11-22
+Komut: `make gate-all > /tmp/gate_v4d.log 2>&1`
+Çıktı özeti: `All checks passed!` · `Success: no issues found in 54 source files`
+· `104 passed` · kapsam `90.06%` · E2E `25 passed` · axe `9 passed` ·
+Lighthouse `100/100/100/91` · k6 hata `0.00%`, p95 `184.79 ms` ·
+`No known vulnerabilities found` · `TUM KAPILAR YEŞİL` · `GATE_EXIT=0`.
+Sürüm 4.0.0, tag v4.0.0, CHANGELOG güncel. Zenodo DOI bekliyor (ADR-0023),
+A2/A7 veri eksiklikleri ADR-0025 ile dürüst etiketli.
+
 ## [V4 / FAZ A8] TKGM Parsel Sorgu — 2026-11-22
 Komut: `curl https://cbsapi.tkgm.gov.tr/megsiswebapi.v3.1/api/parsel/36.9050/30.7050/`
 Çıktı özeti: HTTP 200, gerçek GeoJSON poligonu (Dutlubahçe 4355/10, 557 m²);
