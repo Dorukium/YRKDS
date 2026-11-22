@@ -21,3 +21,11 @@ VETO motoru bu geometrileri okur; kullanıcıya proxy olduğu açıkça bildiril
 A3 DoD'si "en az 3 gerçek kararın geometrisi" şeklinde karşılandı; ancak
 geometriler **resmi sınır değildir**. ADR-0002'deki yanlış pozitif riski,
 küçük tampon + düşük güven etiketi + görsel uyarı ile sınırlandırıldı.
+
+## V5 son deneme (2026-11-22, U12)
+11600 sayılı karar için 3 erişim yolu denendi: RG web araması, RG 2026/08–10
+günlük indekslerinin taranması, haber + 1/25.000 plan kaynakları. Kararın
+varlığı ve "ek sayısal sınırlar" içerdiği doğrulandı; ancak sınırlar kamuya
+açık koordinat/polygon olarak yayınlanmadı. **Karar:** ADR güncellendi,
+geocode-proxy geometriler korunur; "resmî sınır" iddiası yapılmaz. Gerçek
+karar poligonu gelirse `legal_constraints` güncellenir. Kanıt: `docs/kanit.md`.

@@ -128,6 +128,26 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5 / A3 + A7 + A2-L3 MERDİVEN DENEMELERİ (U12) — 2026-11-22
+Komut: Firecrawl/Exa aramaları + `curl` WMS + RG arşiv taraması + PDF scrape
+Çıktı özeti:
+- **A3 (3 deneme):** (1) Firecrawl `resmigazete.gov.tr 11600` araması → yalnızca
+  haberler; (2) RG 2026/08–10 günlük sayfalarının programatik taranması →
+  `11600` indekste yok (13 Ağustos'ta 11606 var); (3) haber + 1/25.000 plan
+  kaynakları → kararın 10.08.2026 tarihli, 7269 kapsamlı, "ek sayısal sınırlar"
+  içerdiği doğrulandı ama koordinat/polygon yayınlanmadı. Sonuç: mevcut
+  **3 Nominatim geocode-proxy** korunur (ADR-0017); "gerçek karar poligonu"
+  üretilmedi — dürüst etiket.
+- **A7 (3 deneme):** (1) `usbs.tarimorman.gov.tr/services/wms?GetCapabilities`
+  → 60 sn timeout; (2) SYGM resmî TYP PDF → HTTP 404, ÇB `webdosya` yansısı
+  erişilebilir (313 K karakter) ama haritalar raster, vektör taşkın paftası yok;
+  (3) JRC GloFAS → veri var fakat GEE gerektiriyor (kimlik bekliyor). Sonuç:
+  F bileşeni TWI/HAND + OSM akarsu **proxy** olarak kalır (ADR-0007/0011).
+- **A2 L3 literatür:** IMO 2003 sel raporu, JMO Boğaçay jeoloji raporu,
+  Akdeniz Üniv. Konyaaltı Q100 harita atfı bulundu; makine okunabilir
+  jeoreferanslı 2003/2008 etiket seti yok. GEE L1 kimlik onayında.
+Sonuç: üç görev de ADR'li bırakıldı; uydurma poligon/etiket üretilmedi (K3).
+
 ## V5 / HAZIRLIK KAPILARI (geçici, kimlikler bekliyor) — 2026-11-22
 Komut: `docker compose up -d --build && sleep 8 && make gate-all`
 Çıktı özeti: `All checks passed!` · `Success: no issues found in 57 source files`
