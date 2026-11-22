@@ -128,6 +128,18 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## [V3 / FAZ 3] C1–C5 — Bilimsel iletişim — 2026-11-22
+Komut: `uv run python scripts/sensitivity.py`
+Çıktı özeti: SALib Morris 2000 trajektör; H %49.9, F %25.6, ZB/L %12.2,
+S %0 (NULL). `docs/duyarlilik.md` + SVG çubuk grafik. F +%10 → skor 0.70 kayar.
+Sonuç: YEŞİL
+
+Komut: Firecrawl aramaları + `../data/qa_tmp/node_modules/.bin/marp ... --pdf`
+Çıktı özeti: 5 literatür kaynağı (docs/literatur_kiyas.md, ADR-0021: nicel
+korelasyon yok); TÜBİTAK raporu 6 bölüm; 12 slaytlık Marp PDF → 13 sayfa;
+3 dakikalık video senaryosu.
+Sonuç: YEŞİL
+
 ## [V3 / FAZ 1] A5 — ERA5 ekstrem serisi — 2026-11-22
 Komut: `uv run python -m app.data_pipeline.download_era5_extremes`
 Çıktı özeti: 2559 günlük kayıt, p99 42.6 mm/gün, 1969-01-17 ızgara 57.1 mm

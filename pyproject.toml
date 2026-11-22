@@ -42,6 +42,7 @@ dev = [
     "pystac-client>=0.8",
     "planetary-computer>=1.0",
     "pypdf>=5.0",
+    "SALib>=1.5",
 ]
 
 [build-system]
