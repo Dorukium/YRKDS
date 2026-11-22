@@ -23,7 +23,7 @@ OLAY_TARIHI = "1969-01-17"
 def indir() -> dict[str, object]:
     seri: list[dict[str, float | str]] = []
     for yil in (1991, 2000, 2003, 2008, 2009, 2020, 2024):
-        params = {
+        params: dict[str, str | float] = {
             "latitude": LAT, "longitude": LON,
             "start_date": f"{yil}-01-01", "end_date": f"{yil}-12-31",
             "daily": "precipitation_sum,temperature_2m_max", "timezone": "UTC",
@@ -38,11 +38,12 @@ def indir() -> dict[str, object]:
             if p is not None:
                 seri.append({"tarih": t, "yagis_mm": float(p), "sicaklik_C": float(s)})
 
-    olay = requests.get(API, params={
+    olay_params: dict[str, str | float] = {
         "latitude": LAT, "longitude": LON,
         "start_date": OLAY_TARIHI, "end_date": OLAY_TARIHI,
         "daily": "precipitation_sum", "timezone": "UTC",
-    }, timeout=60)
+    }
+    olay = requests.get(API, params=olay_params, timeout=60)
     olay.raise_for_status()
     olay_j = olay.json()
     olay_mm = float(olay_j["daily"]["precipitation_sum"][0])
