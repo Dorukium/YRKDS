@@ -21,6 +21,9 @@ V5 kapanış sprinti:
   deadlock'u giderildi; k6 hata oranı %34.29 → %0.00.
 - `make check-auth`, `make publish`, `earthengine` CLI kurulumu; 57 kaynak
   dosya, 117 pytest, kapsam >%90.
+- A7 eki: JRC CEMS-GLOFAS v2.1 RP100/RP500 gerçek rasteri (Otorite, 93 m)
+  indirildi, `make data-jrc` eklendi. 2009 "Ağır" noktalarıyla çakışma 0/6
+  olduğu için ≥%60 DoD sağlanamadı; ADR-0007 açık kalır, F proxy olarak kalır.
 
 ## [4.0.0] — 2026-11-22
 

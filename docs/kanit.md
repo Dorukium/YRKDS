@@ -128,6 +128,19 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5.1 / A7 JRC GERÇEK RASTERİ — 2026-11-23
+Komut: `ee.Initialize(project='rosy-fiber-478123-i1')` +
+`JRC/CEMS_GLOFAS/FloodHazard/v2_1` → `getDownloadURL` (RP100/RP500, 93 m) +
+`make data-jrc`
+Çıktı özeti: 264 tile, lisans "kullanım/dağıtım kısıtsız" → **Otorite** rozeti.
+`data/processed/jrc_flood_rp100.tif` (336×217, 6265 tehlike pikseli),
+`jrc_flood_rp500.tif` (7110 piksel), SHA256 `enrichment_manifest.json`'de.
+2009 "Ağır" noktalarıyla çakışma: **0/6 (%0.00)**, en yakın hücre 1.0–2.8 km;
+DoD ≥%60 **sağlanamadı** — ADR-0007 açık kalır, F proxy olarak kalır, uydurma
+çakışma üretilmedi. Kanıt: `data/processed/jrc_overlap_report.json`.
+Yeni modül `app/data_pipeline/jrc_flood.py`, `make data-jrc`, 3 birim testi;
+kapsam %90.08, ruff/mypy temiz.
+
 ## V5.0.0 SON KABUL — 2026-11-23
 Komut: `make publish` · `uv lock` · `make check-auth` · `make gate-all`
 Çıktı özeti: Zenodo DOI **10.5281/zenodo.24449066** (`"durum": "ok"`, deposition

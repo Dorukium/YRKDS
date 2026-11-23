@@ -1,6 +1,7 @@
 """V5 FAZ 1/5 altyapı testleri — ağ/gerçek kimlik kullanmadan (K6 regresyon)."""
 from __future__ import annotations
 
+import json
 from types import SimpleNamespace
 
 import pytest
@@ -164,6 +165,59 @@ def test_gee_flood_calistir_taklit(monkeypatch, tmp_path):
     assert r["durum"] == "etiket_yok"
     assert (tmp_path / "gfd_antalya_events.json").exists()
     assert (tmp_path / "gfd_validation_labels.json").exists()
+
+
+def test_jrc_agir_noktalar():
+    from app.data_pipeline.jrc_flood import agir_noktalar
+
+    n = agir_noktalar()
+    assert len(n) == 6
+    assert all(p["derinlik"] >= 1.0 for p in n)
+    assert n[0]["id"] == "ANT-2009-001"
+
+
+def test_jrc_overlap_durust_rapor(monkeypatch, tmp_path):
+    import numpy as np
+    import rasterio
+    from rasterio.transform import from_origin
+
+    from app.data_pipeline import jrc_flood
+
+    tif = tmp_path / "jrc_flood_rp100.tif"
+    with rasterio.open(tif, "w", driver="GTiff", height=10, width=10, count=1,
+                       dtype="uint8", crs="EPSG:4326",
+                       transform=from_origin(30.58, 37.00, 0.03, 0.02)) as ds:
+        a = np.zeros((10, 10), dtype=np.uint8)
+        a[4, 4] = 1
+        ds.write(a, 1)
+    monkeypatch.setattr(jrc_flood, "PROCESSED_DIR", tmp_path)
+    r = jrc_flood.overlap_raporu()
+    assert r["durum"] == "ok" and r["nokta_sayisi"] == 6
+    assert r["yetkinlik"] == "Otorite" and r["dod"] is False
+    assert "uydurulmaz" in r["not"]
+
+    tif.unlink()
+    assert jrc_flood.overlap_raporu()["durum"] == "raster_yok"
+
+
+def test_jrc_calistir_manifest(monkeypatch, tmp_path):
+    import numpy as np
+    import rasterio
+    from rasterio.transform import from_origin
+
+    from app.data_pipeline import jrc_flood
+
+    with rasterio.open(tmp_path / "jrc_flood_rp100.tif", "w", driver="GTiff",
+                       height=5, width=5, count=1, dtype="uint8", crs="EPSG:4326",
+                       transform=from_origin(30.58, 37.00, 0.06, 0.04)) as ds:
+        ds.write(np.ones((5, 5), dtype=np.uint8), 1)
+    monkeypatch.setattr(jrc_flood, "PROCESSED_DIR", tmp_path)
+    monkeypatch.setattr(jrc_flood, "RAW_DIR", tmp_path)
+    r = jrc_flood.calistir()
+    assert (tmp_path / "jrc_overlap_report.json").exists()
+    if r["durum"] == "ok":
+        m = json.loads((tmp_path / "enrichment_manifest.json").read_text())
+        assert any(k.get("id") == "JRC_GLOFAS" for k in m)
 
 
 def test_publish_citation_ve_token_yok(monkeypatch, tmp_path):
