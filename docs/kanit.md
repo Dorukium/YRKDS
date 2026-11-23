@@ -128,6 +128,15 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5.1 / A2 LANDSAT DENEMESİ — 2026-11-23
+Komut: `LANDSAT/LE07/C02/T1_L2` NDWI (SR_B2/SR_B4), QA_PIXEL bulut maskesi,
+2003-12-04→12-20 ve 2007-12-31→2008-01-16, 18 sabit noktada 30 m örnekleme.
+Çıktı özeti: 2003 ön görüntüsü noktalarda bulutlu; 2008 NDWI farkı yalnızca
+-0.03..+0.01, pozitif etiket yok. Tek yüksek NDWI (0.48) Lara kıyı suyu,
+taşkın değil. Kanıt: `data/raw/labels/landsat_ndwi_probe.json`.
+Sonuç: 7 bağımsız deneme tamamlandı; güvenilir etiket yok, Recall hesaplanmadı,
+ADR-0003/0018 kalıcı açık (K3/U12). Uydurma veri yok.
+
 ## V5.1 / TÜBİTAK ÇIKTILARI — 2026-11-23
 Komut: `node_modules/.bin/marp --pdf --allow-local-files docs/sunum/sunum.md -o docs/sunum/sunum.pdf`
 · `node scripts/demo_video.js` + `ffmpeg ... demo.webm demo.mp4` ·

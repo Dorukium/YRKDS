@@ -62,6 +62,18 @@
       "neden": "Tek noktalık sinyaller kıyı bulutu/gürültü ile ayırt edilemiyor; 1/18 pozitif ile Recall hesaplamak bilimsel olarak geçersiz."
     },
     {
+      "basamak": "L6 — Landsat 7 ETM+ NDWI (30 m, GEE)",
+      "komut": "LANDSAT/LE07/C02/T1_L2 → SR_B2/SR_B4 NDWI, QA_PIXEL bulut maskesi",
+      "sonuc": "basarisiz",
+      "bulgu": {
+        "2003": "ön görüntü (2003-12-04) noktalarda bulutlu; son görüntü 2003-12-20 NDWI negatif",
+        "2008": "2007-12-31 → 2008-01-16 NDWI farkı -0.03..+0.01; taşkın izi yok",
+        "pozitif": "yalnızca Lara kıyı suyu (NDWI 0.48), taşkın değil",
+        "kanit": "data/raw/labels/landsat_ndwi_probe.json"
+      },
+      "neden": "Optik görüntüler olaydan 6-11 gün sonra geçici taşkını göstermiyor."
+    },
+    {
       "basamak": "L3 — Literatür jeoreferansı",
       "sonuc": "basarisiz",
       "kaynaklar": [
