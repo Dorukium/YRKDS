@@ -138,8 +138,13 @@ Komut: `ee.Initialize(project='rosy-fiber-478123-i1')` +
 2009 "Ağır" noktalarıyla çakışma: **0/6 (%0.00)**, en yakın hücre 1.0–2.8 km;
 DoD ≥%60 **sağlanamadı** — ADR-0007 açık kalır, F proxy olarak kalır, uydurma
 çakışma üretilmedi. Kanıt: `data/processed/jrc_overlap_report.json`.
-Yeni modül `app/data_pipeline/jrc_flood.py`, `make data-jrc`, 3 birim testi;
-kapsam %90.08, ruff/mypy temiz.
+Yeni modül `app/data_pipeline/jrc_flood.py`, `make data-jrc`, 3 birim testi.
+Son kapılar (`make gate-all`): `All checks passed!` · `Success: no issues found
+in 59 source files` · `125 passed` · kapsam `90.08%` · E2E `25 passed` · axe
+`9 passed` · k6 `0.00%` (0/26796), p95 `152.1 ms` · `TUM KAPILAR YEŞİL` ·
+`GATE_EXIT=0` (`/tmp/gate_v51_final.log`). E2E tur testi 3 ardışık doğrulamada
+yeşil. Commitler: `3fa3775b5ef1cd75f12e7fa730733875ae1f2723` (JRC modülü),
+`46775e58da4e793dd34a010f5936e58df9e1aca9` (E2E determinizmi).
 
 ## V5.0.0 SON KABUL — 2026-11-23
 Komut: `make publish` · `uv lock` · `make check-auth` · `make gate-all`
