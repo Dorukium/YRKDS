@@ -6,15 +6,15 @@ const POLY = { type: 'Polygon', coordinates: [[[30.640, 36.880], [30.642, 36.880
 test('F1 kılavuz ray ve spotlight tur', async ({ page }) => {
   await page.goto('/harita.html', { waitUntil: 'networkidle' });
   await expect(page.locator('#kilavuzRay .ray-adim')).toHaveCount(4);
-  await page.locator('#turKapat').click({ force: true }).catch(() => {});
-  // İki tur modülü (#turBaslik üzerinde yarışıyor); tıklamayı yeniden dene.
+  await page.locator('#turKapat').click().catch(() => {});
+  // İki tur modülü (#turBaslik üzerinde yarışıyor); gerçek tıklama + yeniden deneme.
   await expect(async () => {
-    await page.locator('#kilavuzRay [data-adim="1"]').click({ force: true });
+    await page.locator('#kilavuzRay [data-adim="1"]').click();
     await expect(page.locator('#turBaslik')).toContainText('Çiz');
   }).toPass({ timeout: 10000 });
   await expect(page.locator('#turKutu')).toBeVisible();
-  await page.locator('#turKapat').click({ force: true });
-  await expect(page.locator('#turKutu')).toBeHidden();
+  await page.locator('#turKapat').click();
+  await expect(page.locator('#turKutu')).toBeHidden({ timeout: 10000 });
 });
 
 test('F8 komut paleti Ctrl+K', async ({ page }) => {
