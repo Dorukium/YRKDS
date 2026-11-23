@@ -143,6 +143,9 @@ A3: AFAD resmî sayısal sınırların (KML/NCZ) herkese açık paylaşımı bul
 `docs/sop_afad_kml.md`; ADR-0017 güncellendi. Kanıt: PDF metni alıntılandı.
 A7: harita.gov.tr SYGM sunumu (12 MB) indirildi, 24 sayfada WMS/vektör linki
 yok → ADR-0007 kalıcı.
+Doğrulama: `make gate-all` → `125 passed`, kapsam `90.08%`, E2E `25`, axe `9`,
+k6 `0.00%` (0/21255), p95 `215.36 ms`, `TUM KAPILAR YEŞİL`, `GATE_EXIT=0`
+(`/tmp/gate_v54.log`).
 
 ## V5.1 / A2 LANDSAT DENEMESİ — 2026-11-23
 Komut: `LANDSAT/LE07/C02/T1_L2` NDWI (SR_B2/SR_B4), QA_PIXEL bulut maskesi,
