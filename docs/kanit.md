@@ -136,6 +136,9 @@ Komut: `LANDSAT/LE07/C02/T1_L2` NDWI (SR_B2/SR_B4), QA_PIXEL bulut maskesi,
 taşkın değil. Kanıt: `data/raw/labels/landsat_ndwi_probe.json`.
 Sonuç: 7 bağımsız deneme tamamlandı; güvenilir etiket yok, Recall hesaplanmadı,
 ADR-0003/0018 kalıcı açık (K3/U12). Uydurma veri yok.
+Doğrulama: `make gate-all` → `125 passed`, kapsam `90.08%`, E2E `25`,
+axe `9`, k6 `0.00%` (0/26126), p95 `160.48 ms`, `TUM KAPILAR YEŞİL`,
+`GATE_EXIT=0` (`/tmp/gate_v53.log`).
 
 ## V5.1 / TÜBİTAK ÇIKTILARI — 2026-11-23
 Komut: `node_modules/.bin/marp --pdf --allow-local-files docs/sunum/sunum.md -o docs/sunum/sunum.pdf`
