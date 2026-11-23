@@ -83,4 +83,4 @@ yapılandırılır. Güvenlik başlıkları middleware ile eklenir.
 
 TÜBİTAK 2204-A bağlamında geliştirilmiştir.
 
-**Zenodo DOI:** [10.5281/zenodo.24449066](https://doi.org/10.5281/zenodo.24449066)
+**GitHub:** https://github.com/Dorukium/YRKDS · **Zenodo DOI:** [10.5281/zenodo.24449066](https://doi.org/10.5281/zenodo.24449066)
