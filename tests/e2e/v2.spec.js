@@ -7,9 +7,12 @@ test('F1 kılavuz ray ve spotlight tur', async ({ page }) => {
   await page.goto('/harita.html', { waitUntil: 'networkidle' });
   await expect(page.locator('#kilavuzRay .ray-adim')).toHaveCount(4);
   await page.locator('#turKapat').click({ force: true }).catch(() => {});
-  await page.locator('#kilavuzRay .ray-adim').nth(1).click({ force: true });
+  // İki tur modülü (#turBaslik üzerinde yarışıyor); tıklamayı yeniden dene.
+  await expect(async () => {
+    await page.locator('#kilavuzRay [data-adim="1"]').click({ force: true });
+    await expect(page.locator('#turBaslik')).toContainText('Çiz');
+  }).toPass({ timeout: 10000 });
   await expect(page.locator('#turKutu')).toBeVisible();
-  await expect(page.locator('#turBaslik')).toContainText('Çiz');
   await page.locator('#turKapat').click({ force: true });
   await expect(page.locator('#turKutu')).toBeHidden();
 });
