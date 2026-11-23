@@ -1,5 +1,9 @@
 # C5 — 3 Dakikalık Demo Video Senaryosu
 
+> **Üretilen video:** `docs/sunum/demo.mp4` (122.7 sn, altyazılı, 1280×720).
+> Kayıt: `node scripts/demo_video.js` (Playwright recordVideo) → `demo.webm`
+> → ffmpeg ile MP4. Senaryo aşağıda referans olarak duruyor.
+
 Kayıt: 1920×1080, 30 fps, Playwright video export veya ekran kaydı.
 Seslendirme metni sade Türkçe; jargon yok. Ekran görüntüleri `docs/sunum/frames/`
 altına alınır (opsiyonel).

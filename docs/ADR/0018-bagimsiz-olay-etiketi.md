@@ -29,4 +29,6 @@ L1 artık iki yolla denendi: **GEE bağlantısı başarılı** (proje
 merkez bazlı taranması (913 olay, AOI'de 0 merkez). L2 fiziksel olarak
 olanaksız (S1 2014+), L3 literatürde koordinatlı etiket yok. Kanıt:
 `data/raw/labels/gfd_antalya_events.json`, `gfd_validation_labels.json`,
-`data/labels/gfd_2003_2008_manifest.json`. Etiket üretilmedi; ADR kalıcı.
+`data/labels/gfd_2003_2008_manifest.json`. Ayrıca DFO GeoPackage (61 Türkiye
+olayı, hedef tarihlerde 0) ve MODIS NDWI (1/18 + 1/18, güvenilmez) denendi.
+Etiket üretilmedi; ADR kalıcı.

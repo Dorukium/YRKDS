@@ -39,6 +39,29 @@
       "neden": "Sentinel-1A 2014'te fırlatıldı; 2003-12-10 ve 2008-01-27 için arşiv verisi yok."
     },
     {
+      "basamak": "L4 — DFO Global Flood Records (Zenodo 10.5281/zenodo.19288170)",
+      "komut": "Global_Flood_Records.gpkg (5503 olay) → Country='Türkiye' → BeginDate/EndDate + AOI kesişimi",
+      "sonuc": "basarisiz",
+      "bulgu": {
+        "turkiye_olay_sayisi": 61,
+        "aoi_ile_kesen": 5,
+        "hedef_tarihlerle_eslesen": 0,
+        "en_yakin": "ReportNumber 2410, 2003-12-24..26 (hedef 2003-12-10'dan 14 gün sonra)"
+      },
+      "neden": "2003-12-10 ve 2008-01-27 için DFO kaydı yok; en yakın olay farklı tarih."
+    },
+    {
+      "basamak": "L5 — MODIS NDWI değişim tespiti (GEE)",
+      "komut": "MODIS/061/MOD09GA → NDWI(sur_refl_b04,sur_refl_b02) → event-baseline farkı",
+      "sonuc": "etiket_güvenilmez",
+      "bulgu": {
+        "2003-12-10_pozitif": "1/18 nokta",
+        "2008-01-27_pozitif": "1/18 nokta",
+        "kanit": "data/raw/labels/modis_ndwi_probe.json"
+      },
+      "neden": "Tek noktalık sinyaller kıyı bulutu/gürültü ile ayırt edilemiyor; 1/18 pozitif ile Recall hesaplamak bilimsel olarak geçersiz."
+    },
+    {
       "basamak": "L3 — Literatür jeoreferansı",
       "sonuc": "basarisiz",
       "kaynaklar": [

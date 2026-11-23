@@ -35,5 +35,10 @@ taramasıyla geçersiz kılındı). Sentinel-1 2014 öncesi veri içermez;
 literatürde jeoreferanslı nokta etiketi yok. 4 deneme kaydı
 `data/labels/gfd_2003_2008_manifest.json`'de. K4 korundu: 2009 (18 nokta)
 yalnızca kalibrasyon, doğrulama etiket sayısı 0 → Recall hesaplanmadı.
+**Ek denemeler (2026-11-23):** DFO Global Flood Records GeoPackage'i (5503
+olay, 61 Türkiye kaydı) tarandı: AOI'yi kesen 5 olay var ama hedef tarihlerle
+eşleşen yok (en yakını 2003-12-24). GEE MODIS NDWI değişim tespiti 2003'te
+1/18, 2008'de 1/18 pozitif üretti — kıyı bulutu/gürültü şüphesi nedeniyle
+güvenilir etiket sayılmadı (`data/raw/labels/modis_ndwi_probe.json`).
 **Karar:** ADR kalıcı açık; Zenodo DOI `10.5281/zenodo.24449066` ile yayımlanan
 sürümde bu eksiklik açıkça belirtilir.

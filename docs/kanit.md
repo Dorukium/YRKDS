@@ -128,6 +128,28 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5.1 / TÜBİTAK ÇIKTILARI — 2026-11-23
+Komut: `node_modules/.bin/marp --pdf --allow-local-files docs/sunum/sunum.md -o docs/sunum/sunum.pdf`
+· `node scripts/demo_video.js` + `ffmpeg ... demo.webm demo.mp4` ·
+`uv run python scripts/build_report.py`
+Çıktı özeti: `docs/sunum/sunum.pdf` **13 sayfa** (kapak + 12 slayt, 960×540);
+`docs/sunum/demo.mp4` **122.7 sn**, altyazılı, 1280×720 (kaynak `demo.webm`,
+WebM 21.7 MB / MP4 1.9 MB); `docs/tubitak_rapor/YRKDS_TUBITAK_RAPORU.pdf`
+**13 sayfa A4**, 6 bölüm + kapak, DOI `10.5281/zenodo.24449066`.
+Sonuç: YEŞİL — jüriye fiziksel teslim hazır.
+
+## V5.1 / A2 EK DENEMELER (DFO + MODIS) — 2026-11-23
+Komut: DFO GPKG indir (Zenodo 19288171) + GeoPandas filtre;
+`MODIS/061/MOD09GA` NDWI farkı (GEE)
+Çıktı özeti: DFO Global Flood Records 5503 olay / 61 Türkiye / AOI'yi kesen 5;
+2003-12-10 ve 2008-01-27 ile **0 eşleşme** (en yakın 2003-12-24). MODIS NDWI
+değişimi hedef noktalarda 2003'te **1/18**, 2008'de **1/18** pozitif üretti;
+kıyı bulutu/gürültü ile ayırt edilemediği için etiket olarak kabul edilmedi
+(`data/raw/labels/modis_ndwi_probe.json`). GFD GEE (11 olay, 0 eşleşme), GCS
+merkez taraması (913 olay, 0), S1 (2014+), literatür ile birlikte 6 bağımsız
+deneme kaydedildi. Sonuç: Recall hesaplanmadı, ADR-0003/0018 kalıcı açık,
+uydurma etiket yok (K3/U12).
+
 ## V5.1 / A7 JRC GERÇEK RASTERİ — 2026-11-23
 Komut: `ee.Initialize(project='rosy-fiber-478123-i1')` +
 `JRC/CEMS_GLOFAS/FloodHazard/v2_1` → `getDownloadURL` (RP100/RP500, 93 m) +
