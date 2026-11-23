@@ -128,6 +128,22 @@ Sonuç: YEŞİL
 Kapanamayanlar (ADR + rozet): D1 EGMS (ADR-0009), D2 SYGM pafta (ADR-0011),
 D7 MGM ekstrem (ADR-0012), D5/D6 kısmi (docs/capraz_kontrol.md).
 
+## V5.2 / GITHUB RELEASE + A3 GERÇEK KAYNAK — 2026-11-23
+Komut: `gh repo create Dorukium/YRKDS --public --source=. --remote=origin --push`
+· `git push --tags --force` · `gh release create v5.0.0 ...`
+Çıktı özeti: repo https://github.com/Dorukium/YRKDS oluşturuldu, `main` + etiketler
+(v3/v4/v5) push edildi; GitHub release
+https://github.com/Dorukium/YRKDS/releases/tag/v5.0.0 oluşturuldu ve 3 çıktı
+eklendi (rapor PDF, slayt PDF, demo MP4). `CITATION.cff` repository-code gerçek
+repo URL'sine düzeltildi, README'ye GitHub bağlantısı eklendi.
+A3: AFAD resmî sayısal sınırların (KML/NCZ) herkese açık paylaşımı bulundu —
+`https://dosya.afad.gov.tr/index.php/s/YD7NnfBDZZzdscD`, şifre `afad123456`
+(kaynak: Antalya Valiliği AFAD yazısı, KAS belediye PDF'i). Sunucu bu ortamdan
+`ERR_CONNECTION_CLOSED` verdiği için indirme insan adımına alındı:
+`docs/sop_afad_kml.md`; ADR-0017 güncellendi. Kanıt: PDF metni alıntılandı.
+A7: harita.gov.tr SYGM sunumu (12 MB) indirildi, 24 sayfada WMS/vektör linki
+yok → ADR-0007 kalıcı.
+
 ## V5.1 / A2 LANDSAT DENEMESİ — 2026-11-23
 Komut: `LANDSAT/LE07/C02/T1_L2` NDWI (SR_B2/SR_B4), QA_PIXEL bulut maskesi,
 2003-12-04→12-20 ve 2007-12-31→2008-01-16, 18 sabit noktada 30 m örnekleme.

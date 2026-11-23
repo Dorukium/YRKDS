@@ -29,3 +29,15 @@ varlığı ve "ek sayısal sınırlar" içerdiği doğrulandı; ancak sınırlar
 açık koordinat/polygon olarak yayınlanmadı. **Karar:** ADR güncellendi,
 geocode-proxy geometriler korunur; "resmî sınır" iddiası yapılmaz. Gerçek
 karar poligonu gelirse `legal_constraints` güncellenir. Kanıt: `docs/kanit.md`.
+
+## V5.2 — gerçek vektör kaynağı bulundu (2026-11-23)
+Antalya Valiliği AFAD yazısında (Konyaaltı Belediyesi arşivi,
+`www.kas.bel.tr/Evraklar/5b56140d-5b1a-4443-8338-df6013fb9d6c.pdf`) tüm
+afete maruz bölgelerin **sayısal KML/NCZ** verilerinin herkese açık paylaşımda
+olduğu belirtiliyor:
+`https://dosya.afad.gov.tr/index.php/s/YD7NnfBDZZzdscD` (şifre `afad123456`).
+Bu, 11600 kararının resmî sınırını içeren **Otorite** kaynaktır. Sunucu bu
+ortamdan `ERR_CONNECTION_CLOSED` döndüğü için indirme insan adımına alındı
+(`docs/sop_tdth.md` benzeri): `docs/sop_afad_kml.md`. Veri gelince proxy →
+Otorite yükseltmesi yapılır; o ana kadar ADR açık kalır. Kanıt: PDF metni
+`docs/kanit.md`'de alıntılandı, SOP eklendi.
