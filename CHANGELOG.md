@@ -24,6 +24,11 @@ V5 kapanış sprinti:
 - A7 eki: JRC CEMS-GLOFAS v2.1 RP100/RP500 gerçek rasteri (Otorite, 93 m)
   indirildi, `make data-jrc` eklendi. 2009 "Ağır" noktalarıyla çakışma 0/6
   olduğu için ≥%60 DoD sağlanamadı; ADR-0007 açık kalır, F proxy olarak kalır.
+- A2 ek denemeleri: DFO FloodRecords (61 Türkiye olayı, hedef tarihlerde 0),
+  MODIS NDWI (1/18 + 1/18, güvenilmez) → ADR-0003/0018 kalıcı açık.
+- Fiziksel çıktılar: `docs/sunum/sunum.pdf` (12 slayt), `docs/sunum/demo.mp4`
+  (2 dk 03 sn altyazılı), `docs/tubitak_rapor/YRKDS_TUBITAK_RAPORU.pdf`
+  (13 sayfa A4); üretim betikleri `scripts/demo_video.js`, `scripts/build_report.py`.
 
 ## [4.0.0] — 2026-11-22
 

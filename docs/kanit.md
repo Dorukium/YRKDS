@@ -137,6 +137,9 @@ Komut: `node_modules/.bin/marp --pdf --allow-local-files docs/sunum/sunum.md -o 
 WebM 21.7 MB / MP4 1.9 MB); `docs/tubitak_rapor/YRKDS_TUBITAK_RAPORU.pdf`
 **13 sayfa A4**, 6 bölüm + kapak, DOI `10.5281/zenodo.24449066`.
 Sonuç: YEŞİL — jüriye fiziksel teslim hazır.
+Doğrulama: `make gate-all` → `125 passed`, kapsam `90.08%`, E2E `25 passed`,
+axe `9 passed`, k6 `0.00%` (0/27190), p95 `159.83 ms`, `TUM KAPILAR YEŞİL`,
+`GATE_EXIT=0` (`/tmp/gate_v52.log`).
 
 ## V5.1 / A2 EK DENEMELER (DFO + MODIS) — 2026-11-23
 Komut: DFO GPKG indir (Zenodo 19288171) + GeoPandas filtre;
